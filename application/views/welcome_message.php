@@ -1,265 +1,666 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
+
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
     <meta name="author" content="">
-    <!-- Add Your favicon here -->
-    <!--<link rel="icon" href="<?=base_url()?>landing/img/favicon.ico">-->
 
-    <title>GuestByDay | Aprovecha todas las posibilidades de ingresos de tu hotel</title>
+    <title>Agency - Start Bootstrap Theme</title>
 
-    <!-- Bootstrap core CSS -->
-    <link href="<?=base_url()?>landing/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap Core CSS -->
+    <link href="<?=base_url() ?>landing2/css/bootstrap.min.css" rel="stylesheet">
 
-    <!-- Animation CSS -->
-    <link href="<?=base_url()?>landing/css/animate.min.css" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link href="<?=base_url() ?>landing2/css/agency.css" rel="stylesheet">
 
-    <link href="<?=base_url()?>landing/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+    <!-- Custom Fonts -->
+    <link href="<?=base_url() ?>landing2/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
+    <link href='https://fonts.googleapis.com/css?family=Kaushan+Script' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700' rel='stylesheet' type='text/css'>
 
-    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
-    <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
-    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
 
-    <!-- Custom styles for this template -->
-    <link href="<?=base_url()?>landing/css/style.css" rel="stylesheet">
 </head>
-<body id="page-top">
-<div class="navbar-wrapper">
-    <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
-        <div class="container">
-            <div class="navbar-header page-scroll">
-                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <a class="navbar-brand page-scroll" href="<?=site_url("welcome")?>"><img src="<?=base_url()?>landing/img/logo.png">GuestByDay</a>
-            </div>
-            <div id="navbar" class="navbar-collapse collapse">
-                <ul class="nav navbar-nav navbar-right">
-                    <!-- <li><a class="page-scroll" href="#page-top">Home</a></li> -->
-                    <li><a class="page-scroll" href="#que-es">¿Qué es?</a></li>
-                    <li><a class="page-scroll" href="#beneficios">Beneficios</a></li>
-                    <li><a class="page-scroll" href="#aplicacion">App</a></li>
-                    <li><a class="page-scroll" href="#plataforma">Plataforma</a></li>
-                    <li><a class="page-scroll" href="#contacto">Contacto</a></li>
-                    <li><a href="<?=site_url("welcome/login")?>" class="btn-login"><i class="fa fa-user"></i> Login</a></li>
-                </ul>
+
+<body id="page-top" class="index">
+
+<!-- Navigation -->
+<nav class="navbar navbar-default navbar-fixed-top">
+    <div class="container">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand page-scroll" href="#page-top">Start Bootstrap</a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav navbar-right">
+                <li class="hidden">
+                    <a href="#page-top"></a>
+                </li>
+                <li>
+                    <a class="page-scroll" href="#services">Services</a>
+                </li>
+                <li>
+                    <a class="page-scroll" href="#portfolio">Portfolio</a>
+                </li>
+                <li>
+                    <a class="page-scroll" href="#about">About</a>
+                </li>
+                <li>
+                    <a class="page-scroll" href="#team">Team</a>
+                </li>
+                <li>
+                    <a class="page-scroll" href="#contact">Contact</a>
+                </li>
+                <li>
+                    <a class="page-scroll" href="#contact">Login</a>
+                </li>
+            </ul>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+    <!-- /.container-fluid -->
+</nav>
+
+<!-- Header -->
+<header>
+    <div class="container">
+        <div class="intro-text">
+            <div class="intro-lead-in">Welcome To Our Studio!</div>
+            <div class="intro-heading">It's Nice To Meet You</div>
+            <a href="#services" class="page-scroll btn btn-xl">Tell Me More</a>
+        </div>
+    </div>
+</header>
+
+<!-- Services Section -->
+<section id="services">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 text-center">
+                <h2 class="section-heading">Services</h2>
+                <h3 class="section-subheading text-muted">Lorem ipsum dolor sit amet consectetur.</h3>
             </div>
         </div>
-    </nav>
-</div>
-<div id="inSlider" class="carousel slide carousel-fade" data-ride="carousel">
-    <!-- <ol class="carousel-indicators">
-        <li data-target="#inSlider" data-slide-to="0" class="active"></li>
-        <li data-target="#inSlider" data-slide-to="1"></li>
-    </ol> -->
-    <div class="carousel-inner" role="listbox">
-        <div class="item active">
-            <div class="container">
-                <div class="row">
-                    <div class="carousel-caption col-sm-6">
-                        <div class="carousel-caption-content">
-                            <h1>NUEVAS FUENTES DE INGRESOS PARA TU HOTEL</h1>
-                            <p>DIFRUTAR DE LOS MEJORES HOTELES ES AHORA MÁS FACIL QUE NUNCA. LOS MEJORES PLANES Y SERVICIOS HOTELEROS SE ENCUENTRAN EN GuestByDay.com Y GuestByDay App.</p>
-                            <p>
-                                <a class="btn btn-lg btn-primary page-scroll" href="#contacto" role="button">+ INFO</a>
-                            </p>
+        <div class="row text-center">
+            <div class="col-md-4">
+                    <span class="fa-stack fa-4x">
+                        <i class="fa fa-circle fa-stack-2x text-primary"></i>
+                        <i class="fa fa-shopping-cart fa-stack-1x fa-inverse"></i>
+                    </span>
+                <h4 class="service-heading">E-Commerce</h4>
+                <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima maxime quam architecto quo inventore harum ex magni, dicta impedit.</p>
+            </div>
+            <div class="col-md-4">
+                    <span class="fa-stack fa-4x">
+                        <i class="fa fa-circle fa-stack-2x text-primary"></i>
+                        <i class="fa fa-laptop fa-stack-1x fa-inverse"></i>
+                    </span>
+                <h4 class="service-heading">Responsive Design</h4>
+                <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima maxime quam architecto quo inventore harum ex magni, dicta impedit.</p>
+            </div>
+            <div class="col-md-4">
+                    <span class="fa-stack fa-4x">
+                        <i class="fa fa-circle fa-stack-2x text-primary"></i>
+                        <i class="fa fa-lock fa-stack-1x fa-inverse"></i>
+                    </span>
+                <h4 class="service-heading">Web Security</h4>
+                <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima maxime quam architecto quo inventore harum ex magni, dicta impedit.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Portfolio Grid Section -->
+<section id="portfolio" class="bg-light-gray">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 text-center">
+                <h2 class="section-heading">Portfolio</h2>
+                <h3 class="section-subheading text-muted">Lorem ipsum dolor sit amet consectetur.</h3>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-4 col-sm-6 portfolio-item">
+                <a href="#portfolioModal1" class="portfolio-link" data-toggle="modal">
+                    <div class="portfolio-hover">
+                        <div class="portfolio-hover-content">
+                            <i class="fa fa-plus fa-3x"></i>
                         </div>
-
                     </div>
-                    <div class="carousel-image wow fadeInUp col-sm-6 hand">
-                        <img src="<?=base_url()?>landing/img/bg_pool_hand.png" alt="mobile app">
-                    </div>
+                    <img src="<?=base_url() ?>landing2/img/portfolio/roundicons.png" class="img-responsive" alt="">
+                </a>
+                <div class="portfolio-caption">
+                    <h4>Roasdsadasdsaund Icons</h4>
+                    <p class="text-muted">Graphic Design</p>
                 </div>
             </div>
-            <div class="carousel-foot">
-                <h2>Próximamente podrás aprovechar todas las fuentes de ingresos de tu hotel.</h2>
-            </div>
-            <div class="header-back one"></div>
-        </div>
-        <div class="item">
-            <div class="container">
-                <div class="row">
-                    <div class="carousel-caption col-sm-6">
-                        <div class="carousel-caption-content">
-                            <h1>¿QUIÉN DIJO QUE LOS HOTELES SON PARA DORMIR?</h1>
-                            <p>LA MEJOR MANERA DE OFRECER PLANES Y SERVICIOS. CAPTA CLIENTES DE FORMA FÁCIL Y RÁPIDA Y SACA LA MÁXIMA RENTABILIDAD A TU HOTEL.</p>
-                            <p>
-                                <a class="btn btn-lg btn-primary page-scroll" href="#contacto" role="button">+ INFO</a>
-                            </p>
+            <div class="col-md-4 col-sm-6 portfolio-item">
+                <a href="#portfolioModal2" class="portfolio-link" data-toggle="modal">
+                    <div class="portfolio-hover">
+                        <div class="portfolio-hover-content">
+                            <i class="fa fa-plus fa-3x"></i>
                         </div>
-
                     </div>
-                    <div class="carousel-image wow fadeInLeft col-sm-6 desktop">
-                        <img src="<?=base_url()?>landing/img/desktop02x2.png" alt="mobile app">
+                    <img src="<?=base_url() ?>landing2/img/portfolio/startup-framework.png" class="img-responsive" alt="">
+                </a>
+                <div class="portfolio-caption">
+                    <h4>Startup Framework</h4>
+                    <p class="text-muted">Website Design</p>
+                </div>
+            </div>
+            <div class="col-md-4 col-sm-6 portfolio-item">
+                <a href="#portfolioModal3" class="portfolio-link" data-toggle="modal">
+                    <div class="portfolio-hover">
+                        <div class="portfolio-hover-content">
+                            <i class="fa fa-plus fa-3x"></i>
+                        </div>
                     </div>
+                    <img src="<?=base_url() ?>landing2/img/portfolio/treehouse.png" class="img-responsive" alt="">
+                </a>
+                <div class="portfolio-caption">
+                    <h4>Treehouse</h4>
+                    <p class="text-muted">Website Design</p>
                 </div>
             </div>
-            <div class="carousel-foot">
-                <h2>Próximamente podrás aprovechar todas las fuentes de ingresos de tu hotel.</h2>
+            <div class="col-md-4 col-sm-6 portfolio-item">
+                <a href="#portfolioModal4" class="portfolio-link" data-toggle="modal">
+                    <div class="portfolio-hover">
+                        <div class="portfolio-hover-content">
+                            <i class="fa fa-plus fa-3x"></i>
+                        </div>
+                    </div>
+                    <img src="<?=base_url() ?>landing2/img/portfolio/golden.png" class="img-responsive" alt="">
+                </a>
+                <div class="portfolio-caption">
+                    <h4>Golden</h4>
+                    <p class="text-muted">Website Design</p>
+                </div>
             </div>
-            <div class="header-back one"></div>
-        </div>
-    </div>
-    <a class="left carousel-control" href="#inSlider" role="button" data-slide="prev">
-        <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
-        <span class="sr-only">Previous</span>
-    </a>
-    <a class="right carousel-control" href="#inSlider" role="button" data-slide="next">
-        <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
-        <span class="sr-only">Next</span>
-    </a>
-</div>
-
-<section id="que-es" class="container features">
-    <div class="row">
-        <div class="col-lg-12 text-center">
-            <div class="navy-line"></div>
-            <h1><span class="turquoise">¿Qué es GuestByDay?</span></h1>
-            <h2 class="doble-bottom"><span class="navy">El portal de intermediación y selección de productos turísticos, que te ayudara a captar nuevos clientes, ofreciéndoles experiencias épicas gracias a las instalaciones y servicios de tu hotel.</span></h2>
-            <p>GuestByDay se encarga de seleccionar las mejores experiencias clasificándolas por categoría y destino. Ofreciendo a los clientes que no están alojados en el hotel la oportunidad de disfrutar de un día épico en las mejores instalaciones.</p>
+            <div class="col-md-4 col-sm-6 portfolio-item">
+                <a href="#portfolioModal5" class="portfolio-link" data-toggle="modal">
+                    <div class="portfolio-hover">
+                        <div class="portfolio-hover-content">
+                            <i class="fa fa-plus fa-3x"></i>
+                        </div>
+                    </div>
+                    <img src="<?=base_url() ?>landing2/img/portfolio/escape.png" class="img-responsive" alt="">
+                </a>
+                <div class="portfolio-caption">
+                    <h4>Escape</h4>
+                    <p class="text-muted">Website Design</p>
+                </div>
+            </div>
+            <div class="col-md-4 col-sm-6 portfolio-item">
+                <a href="#portfolioModal6" class="portfolio-link" data-toggle="modal">
+                    <div class="portfolio-hover">
+                        <div class="portfolio-hover-content">
+                            <i class="fa fa-plus fa-3x"></i>
+                        </div>
+                    </div>
+                    <img src="<?=base_url() ?>landing2/img/portfolio/dreams.png" class="img-responsive" alt="">
+                </a>
+                <div class="portfolio-caption">
+                    <h4>Dreams</h4>
+                    <p class="text-muted">Website Design</p>
+                </div>
+            </div>
         </div>
     </div>
 </section>
 
-<section id="beneficios" class="features features-bg">
+<!-- About Section -->
+<section id="about">
     <div class="container">
         <div class="row">
             <div class="col-lg-12 text-center">
-                <div class="navy-line"></div>
-                <h1><span class="white">Beneficios</span></h1>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-md-3 text-center wow fadeInLeft">
-                <div>
-                    <i class="fa fa-line-chart features-icon"></i>
-                    <h2>Rentabilidad</h2>
-                    <p>Promocionamos servicios y planes de ocio en tu hotel, provocando que tu piscina, spa o cualquier otro servicio atractivo de tu hotel genere ingresos por si mismo.</p>
-                </div>
-                <div class="m-t-lg">
-                    <i class="fa fa-eye features-icon"></i>
-                    <h2>Mayor visibilidad</h2>
-                    <p>No hay mejor reclamo que dejar a un cliente satisfecho. Cada cliente dispuesto a dedicar un tiempo en tu hotel es un potencial cliente para el futuro. !No dejes pasar la oportunidad de demostrar que merece la pena alojarse en tu hotel!</p>
-                </div>
-            </div>
-            <div class="col-md-6 text-center wow zoomIn">
-                <img src="<?=base_url()?>landing/img/drawx2.png" alt="dashboard" class="img-responsive">
-            </div>
-            <div class="col-md-3 text-center wow fadeInRight">
-                <div>
-                    <i class="fa fa-desktop features-icon"></i>
-                    <h2>Registro gratuito</h2>
-                    <p>Acceder a nuestra plataforma para promocionar tus servicios no tendrá ningún coste. Podrás acceder a tu perfil las 24 horas del día para personalizar y mejorar los servicios que ofreces.</p>
-                </div>
-                <div class="m-t-lg">
-                    <i class="fa fa-file-text features-icon"></i>
-                    <h2>Informes personalizados</h2>
-                    <p>Podrás conseguir informes personalizados de tus clientes, el uso de tus servicios y conocer cuales son los productos mas vendidos, el precio medio y las ofertas de otros hoteles en tu zona.</p>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-
-<section id="aplicacion" class="container features">
-    <div class="row">
-        <div class="col-lg-12 text-center">
-            <div class="navy-line"></div>
-            <h1><span class="turquoise">App</span></h1>
-            <p>Aplicación de descarga gratuita, que permitirá a los clientes encontrar y reservar las mejores ofertas de ocio y servicios de tu hotel, clasificadas por categorías y localización. ¡Los mejores planes al alcance de su mano!</p>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-lg-6 features-text wow fadeInLeft">
-            <small>CÓMO FUNCIONA</small>
-            <h2>App iOS / Android</h2>
-            <p>Los usuarios podrán buscar y elegir los mejores planes a través de nuestra App iOS y Android, además de a través de nuestra web.</p>
-            <p>Una vez dentro de la aplicación podrá utilizar los diferentes filtros de categorías y localización para encontrar rápidamente la experiencia que más se adapte a sus gustos. Una vez encontrado el servicio perfecto, podrá realizar su reserva en sólo unos pocos clicks.</p>
-            <p>A continuación, tanto el hotel como el cliente recibirán en su email la confirmación de la reserva. ¡A partir de este momento sólo faltará disfrutar en tu hotel de un día épico!</p>
-            <a href="#contacto" class="btn btn-primary page-scroll">+ INFO</a>
-        </div>
-        <div class="col-lg-6 text-right wow fadeInRight">
-            <img src="<?=base_url()?>landing/img/mobilex2.png" alt="dashboard" class="img-responsive pull-right">
-        </div>
-    </div>
-</section>
-
-<section id="plataforma" class="gray-section features">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-12 text-center">
-                <div class="navy-line"></div>
-                <h1>Gestor de ofertas</h1>
-                <p>El hotel contará con una sencilla plataforma que le facilitara la carga y gestión de los servicios ofrecidos. Además, cualquier oferta puede convertirse una promoción flash con descuento en sólo unos segundos, para conseguir atraer a todo el público de la zona.</p>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-lg-6 text-right wow fadeInLeft">
-                <img src="<?=base_url()?>/landing/img/desktop02x2.png" alt="dashboard" class="img-responsive pull-right">
-            </div>
-            <div class="col-lg-6 features-text wow fadeInRight">
-                <small>CÓMO FUNCIONA</small>
-                <h2>Plataforma</h2>
-                <p>Cuando su hotel este dado de alta. Podrá comenzar a personalizar las experiencias que quiera ofrecer. Una cena romántica, un desayuno, una cata de vinos o una sesión de Spa. Tú pones los limites…</p>
-                <p>Una vez personalizada la experiencia, podrás elegir qué días promocionarla y conocer el tipo de comisión que le corresponde. Cuando el cliente contrate tus servicios, recibirás un email de confirmación con todos los datos de la reserva.</p>
-                <p>Además, contaras con la posibilidad de publicar ofertas de última hora y hacérselas más visibles que nunca para los clientes cercanos. También tendrás un modulo donde podrás obtener informes personalizados, con los resultados de tu hotel, tus clientes, su evolución y destalles de cartera totalmente gratuitos.</p>
-                <a href="#contacto" class="btn btn-primary page-scroll">+ INFO</a>
-            </div>
-        </div>
-    </div>
-</section>
-
-<section id="contacto" class="navy-section contact">
-    <div class="container">
-        <div class="row m-b-lg">
-            <div class="col-lg-12 text-center">
-                <div class="navy-line"></div>
-                <h1>¿Necesitas más información?</h1>
-                <p>Indícanos cómo podemos ponernos en contacto contigo y te ayudaremos en lo que podamos.</p>
+                <h2 class="section-heading">About</h2>
+                <h3 class="section-subheading text-muted">Lorem ipsum dolor sit amet consectetur.</h3>
             </div>
         </div>
         <div class="row">
             <div class="col-lg-12">
-                <form class="contact-form" method="post" action="<?=site_url("welcome/contactForm")?>">
-                    <div class="form-group">
-                        <label for="nombre">Nombre*</label>
-                        <input class="form-control" id="name" name="name" type="text" required placeholder="Tu nombre">
-                    </div>
-                    <div class="form-group">
-                        <label for="email">E-mail*</label>
-                        <input class="form-control" id="email" name="email" type="email" required placeholder="Tu email">
-                    </div>
-                    <div class="form-group">
-                        <label for="mensaje">Mensaje*</label>
-                        <textarea class="form-control" id="body" name="body" required placeholder="Tu mensaje"></textarea>
-                    </div>
-                    <div class="text-center"><button type="submit" class="btn btn-border">Enviar</button></div>
-                </form>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-lg-8 col-lg-offset-2 text-center m-t-lg m-b-lg">
-                <span class="footer-brand"><img src="<?=base_url()?>landing/img/logo.png" width="80"><br>GuestByDay</span>
+                <ul class="timeline">
+                    <li>
+                        <div class="timeline-image">
+                            <img class="img-circle img-responsive" src="<?=base_url() ?>landing2/img/about/1.jpg" alt="">
+                        </div>
+                        <div class="timeline-panel">
+                            <div class="timeline-heading">
+                                <h4>2009-2011</h4>
+                                <h4 class="subheading">Our Humble Beginnings</h4>
+                            </div>
+                            <div class="timeline-body">
+                                <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sunt ut voluptatum eius sapiente, totam reiciendis temporibus qui quibusdam, recusandae sit vero unde, sed, incidunt et ea quo dolore laudantium consectetur!</p>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="timeline-inverted">
+                        <div class="timeline-image">
+                            <img class="img-circle img-responsive" src="<?=base_url() ?>landing2/img/about/2.jpg" alt="">
+                        </div>
+                        <div class="timeline-panel">
+                            <div class="timeline-heading">
+                                <h4>March 2011</h4>
+                                <h4 class="subheading">An Agency is Born</h4>
+                            </div>
+                            <div class="timeline-body">
+                                <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sunt ut voluptatum eius sapiente, totam reiciendis temporibus qui quibusdam, recusandae sit vero unde, sed, incidunt et ea quo dolore laudantium consectetur!</p>
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="timeline-image">
+                            <img class="img-circle img-responsive" src="<?=base_url() ?>landing2/img/about/3.jpg" alt="">
+                        </div>
+                        <div class="timeline-panel">
+                            <div class="timeline-heading">
+                                <h4>December 2012</h4>
+                                <h4 class="subheading">Transition to Full Service</h4>
+                            </div>
+                            <div class="timeline-body">
+                                <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sunt ut voluptatum eius sapiente, totam reiciendis temporibus qui quibusdam, recusandae sit vero unde, sed, incidunt et ea quo dolore laudantium consectetur!</p>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="timeline-inverted">
+                        <div class="timeline-image">
+                            <img class="img-circle img-responsive" src="<?=base_url() ?>landing2/img/about/4.jpg" alt="">
+                        </div>
+                        <div class="timeline-panel">
+                            <div class="timeline-heading">
+                                <h4>July 2014</h4>
+                                <h4 class="subheading">Phase Two Expansion</h4>
+                            </div>
+                            <div class="timeline-body">
+                                <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sunt ut voluptatum eius sapiente, totam reiciendis temporibus qui quibusdam, recusandae sit vero unde, sed, incidunt et ea quo dolore laudantium consectetur!</p>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="timeline-inverted">
+                        <div class="timeline-image">
+                            <h4>Be Part
+                                <br>Of Our
+                                <br>Story!</h4>
+                        </div>
+                    </li>
+                </ul>
             </div>
         </div>
     </div>
 </section>
 
-<script src="<?=base_url()?>landing/js/jquery-2.1.1.js"></script>
-<script src="<?=base_url()?>js/plugins/validate/jquery.validate.min.js"></script>
-<script src="<?=base_url()?>landing/js/pace.min.js"></script>
-<script src="<?=base_url()?>landing/js/bootstrap.min.js"></script>
-<script src="<?=base_url()?>landing/js/classie.js"></script>
-<script src="<?=base_url()?>landing/js/cbpAnimatedHeader.js"></script>
-<script src="<?=base_url()?>landing/js/wow.min.js"></script>
-<script src="<?=base_url()?>landing/js/inspinia.js"></script>
+<!-- Team Section -->
+<section id="team" class="bg-light-gray">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 text-center">
+                <h2 class="section-heading">Our Amazing Team</h2>
+                <h3 class="section-subheading text-muted">Lorem ipsum dolor sit amet consectetur.</h3>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-4">
+                <div class="team-member">
+                    <img src="<?=base_url() ?>landing2/img/team/1.jpg" class="img-responsive img-circle" alt="">
+                    <h4>Kay Garland</h4>
+                    <p class="text-muted">Lead Designer</p>
+                    <ul class="list-inline social-buttons">
+                        <li><a href="#"><i class="fa fa-twitter"></i></a>
+                        </li>
+                        <li><a href="#"><i class="fa fa-facebook"></i></a>
+                        </li>
+                        <li><a href="#"><i class="fa fa-linkedin"></i></a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-sm-4">
+                <div class="team-member">
+                    <img src="<?=base_url() ?>landing2/img/team/2.jpg" class="img-responsive img-circle" alt="">
+                    <h4>Larry Parker</h4>
+                    <p class="text-muted">Lead Marketer</p>
+                    <ul class="list-inline social-buttons">
+                        <li><a href="#"><i class="fa fa-twitter"></i></a>
+                        </li>
+                        <li><a href="#"><i class="fa fa-facebook"></i></a>
+                        </li>
+                        <li><a href="#"><i class="fa fa-linkedin"></i></a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-sm-4">
+                <div class="team-member">
+                    <img src="<?=base_url() ?>landing2/img/team/3.jpg" class="img-responsive img-circle" alt="">
+                    <h4>Diana Pertersen</h4>
+                    <p class="text-muted">Lead Developer</p>
+                    <ul class="list-inline social-buttons">
+                        <li><a href="#"><i class="fa fa-twitter"></i></a>
+                        </li>
+                        <li><a href="#"><i class="fa fa-facebook"></i></a>
+                        </li>
+                        <li><a href="#"><i class="fa fa-linkedin"></i></a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 text-center">
+                <p class="large text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aut eaque, laboriosam veritatis, quos non quis ad perspiciatis, totam corporis ea, alias ut unde.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Clients Aside -->
+<aside class="clients">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-3 col-sm-6">
+                <a href="#">
+                    <img src="<?=base_url() ?>landing2/img/logos/envato.jpg" class="img-responsive img-centered" alt="">
+                </a>
+            </div>
+            <div class="col-md-3 col-sm-6">
+                <a href="#">
+                    <img src="<?=base_url() ?>landing2/img/logos/designmodo.jpg" class="img-responsive img-centered" alt="">
+                </a>
+            </div>
+            <div class="col-md-3 col-sm-6">
+                <a href="#">
+                    <img src="<?=base_url() ?>landing2/img/logos/themeforest.jpg" class="img-responsive img-centered" alt="">
+                </a>
+            </div>
+            <div class="col-md-3 col-sm-6">
+                <a href="#">
+                    <img src="<?=base_url() ?>landing2/img/logos/creative-market.jpg" class="img-responsive img-centered" alt="">
+                </a>
+            </div>
+        </div>
+    </div>
+</aside>
+
+<!-- Contact Section -->
+<section id="contact">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 text-center">
+                <h2 class="section-heading">Contact Us</h2>
+                <h3 class="section-subheading text-muted">Lorem ipsum dolor sit amet consectetur.</h3>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-12">
+                <form name="sentMessage" id="contactForm" novalidate>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <input type="text" class="form-control" placeholder="Your Name *" id="name" required data-validation-required-message="Please enter your name.">
+                                <p class="help-block text-danger"></p>
+                            </div>
+                            <div class="form-group">
+                                <input type="email" class="form-control" placeholder="Your Email *" id="email" required data-validation-required-message="Please enter your email address.">
+                                <p class="help-block text-danger"></p>
+                            </div>
+                            <div class="form-group">
+                                <input type="tel" class="form-control" placeholder="Your Phone *" id="phone" required data-validation-required-message="Please enter your phone number.">
+                                <p class="help-block text-danger"></p>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <textarea class="form-control" placeholder="Your Message *" id="message" required data-validation-required-message="Please enter a message."></textarea>
+                                <p class="help-block text-danger"></p>
+                            </div>
+                        </div>
+                        <div class="clearfix"></div>
+                        <div class="col-lg-12 text-center">
+                            <div id="success"></div>
+                            <button type="submit" class="btn btn-xl">Send Message</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4">
+                <span class="copyright">Copyright &copy; Your Website 2014</span>
+            </div>
+            <div class="col-md-4">
+                <ul class="list-inline social-buttons">
+                    <li><a href="#"><i class="fa fa-twitter"></i></a>
+                    </li>
+                    <li><a href="#"><i class="fa fa-facebook"></i></a>
+                    </li>
+                    <li><a href="#"><i class="fa fa-linkedin"></i></a>
+                    </li>
+                </ul>
+            </div>
+            <div class="col-md-4">
+                <ul class="list-inline quicklinks">
+                    <li><a href="#">Privacy Policy</a>
+                    </li>
+                    <li><a href="#">Terms of Use</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- Portfolio Modals -->
+<!-- Use the modals below to showcase details about your portfolio projects! -->
+
+<!-- Portfolio Modal 1 -->
+<div class="portfolio-modal modal fade" id="portfolioModal1" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-content">
+        <div class="close-modal" data-dismiss="modal">
+            <div class="lr">
+                <div class="rl">
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2">
+                    <div class="modal-body">
+                        <!-- Project Details Go Here -->
+                        <h2>Project Name</h2>
+                        <p class="item-intro text-muted">Lorem ipsum dolor sit amet consectetur.</p>
+                        <img class="img-responsive img-centered" src="<?=base_url() ?>landing2/img/portfolio/roundicons-free.png" alt="">
+                        <p>Use this area to describe your project. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Est blanditiis dolorem culpa incidunt minus dignissimos deserunt repellat aperiam quasi sunt officia expedita beatae cupiditate, maiores repudiandae, nostrum, reiciendis facere nemo!</p>
+                        <p>
+                            <strong>Want these icons in this portfolio item sample?</strong>You can download 60 of them for free, courtesy of <a href="https://getdpd.com/cart/hoplink/18076?referrer=bvbo4kax5k8ogc">RoundIcons.com</a>, or you can purchase the 1500 icon set <a href="https://getdpd.com/cart/hoplink/18076?referrer=bvbo4kax5k8ogc">here</a>.</p>
+                        <ul class="list-inline">
+                            <li>Date: July 2014</li>
+                            <li>Client: Round Icons</li>
+                            <li>Category: Graphic Design</li>
+                        </ul>
+                        <button type="button" class="btn btn-primary" data-dismiss="modal"><i class="fa fa-times"></i> Close Project</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Portfolio Modal 2 -->
+<div class="portfolio-modal modal fade" id="portfolioModal2" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-content">
+        <div class="close-modal" data-dismiss="modal">
+            <div class="lr">
+                <div class="rl">
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2">
+                    <div class="modal-body">
+                        <h2>Project Heading</h2>
+                        <p class="item-intro text-muted">Lorem ipsum dolor sit amet consectetur.</p>
+                        <img class="img-responsive img-centered" src="<?=base_url() ?>landing2/img/portfolio/startup-framework-preview.png" alt="">
+                        <p><a href="http://designmodo.com/startup/?u=787">Startup Framework</a> is a website builder for professionals. Startup Framework contains components and complex blocks (PSD+HTML Bootstrap themes and templates) which can easily be integrated into almost any design. All of these components are made in the same style, and can easily be integrated into projects, allowing you to create hundreds of solutions for your future projects.</p>
+                        <p>You can preview Startup Framework <a href="http://designmodo.com/startup/?u=787">here</a>.</p>
+                        <button type="button" class="btn btn-primary" data-dismiss="modal"><i class="fa fa-times"></i> Close Project</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Portfolio Modal 3 -->
+<div class="portfolio-modal modal fade" id="portfolioModal3" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-content">
+        <div class="close-modal" data-dismiss="modal">
+            <div class="lr">
+                <div class="rl">
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2">
+                    <div class="modal-body">
+                        <!-- Project Details Go Here -->
+                        <h2>Project Name</h2>
+                        <p class="item-intro text-muted">Lorem ipsum dolor sit amet consectetur.</p>
+                        <img class="img-responsive img-centered" src="<?=base_url() ?>landing2/img/portfolio/treehouse-preview.png" alt="">
+                        <p>Treehouse is a free PSD web template built by <a href="https://www.behance.net/MathavanJaya">Mathavan Jaya</a>. This is bright and spacious design perfect for people or startup companies looking to showcase their apps or other projects.</p>
+                        <p>You can download the PSD template in this portfolio sample item at <a href="http://freebiesxpress.com/gallery/treehouse-free-psd-web-template/">FreebiesXpress.com</a>.</p>
+                        <button type="button" class="btn btn-primary" data-dismiss="modal"><i class="fa fa-times"></i> Close Project</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Portfolio Modal 4 -->
+<div class="portfolio-modal modal fade" id="portfolioModal4" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-content">
+        <div class="close-modal" data-dismiss="modal">
+            <div class="lr">
+                <div class="rl">
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2">
+                    <div class="modal-body">
+                        <!-- Project Details Go Here -->
+                        <h2>Project Name</h2>
+                        <p class="item-intro text-muted">Lorem ipsum dolor sit amet consectetur.</p>
+                        <img class="img-responsive img-centered" src="<?=base_url() ?>landing2/img/portfolio/golden-preview.png" alt="">
+                        <p>Start Bootstrap's Agency theme is based on Golden, a free PSD website template built by <a href="https://www.behance.net/MathavanJaya">Mathavan Jaya</a>. Golden is a modern and clean one page web template that was made exclusively for Best PSD Freebies. This template has a great portfolio, timeline, and meet your team sections that can be easily modified to fit your needs.</p>
+                        <p>You can download the PSD template in this portfolio sample item at <a href="http://freebiesxpress.com/gallery/golden-free-one-page-web-template/">FreebiesXpress.com</a>.</p>
+                        <button type="button" class="btn btn-primary" data-dismiss="modal"><i class="fa fa-times"></i> Close Project</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Portfolio Modal 5 -->
+<div class="portfolio-modal modal fade" id="portfolioModal5" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-content">
+        <div class="close-modal" data-dismiss="modal">
+            <div class="lr">
+                <div class="rl">
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2">
+                    <div class="modal-body">
+                        <!-- Project Details Go Here -->
+                        <h2>Project Name</h2>
+                        <p class="item-intro text-muted">Lorem ipsum dolor sit amet consectetur.</p>
+                        <img class="img-responsive img-centered" src="<?=base_url() ?>landing2/img/portfolio/escape-preview.png" alt="">
+                        <p>Escape is a free PSD web template built by <a href="https://www.behance.net/MathavanJaya">Mathavan Jaya</a>. Escape is a one page web template that was designed with agencies in mind. This template is ideal for those looking for a simple one page solution to describe your business and offer your services.</p>
+                        <p>You can download the PSD template in this portfolio sample item at <a href="http://freebiesxpress.com/gallery/escape-one-page-psd-web-template/">FreebiesXpress.com</a>.</p>
+                        <button type="button" class="btn btn-primary" data-dismiss="modal"><i class="fa fa-times"></i> Close Project</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Portfolio Modal 6 -->
+<div class="portfolio-modal modal fade" id="portfolioModal6" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-content">
+        <div class="close-modal" data-dismiss="modal">
+            <div class="lr">
+                <div class="rl">
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2">
+                    <div class="modal-body">
+                        <!-- Project Details Go Here -->
+                        <h2>Project Name</h2>
+                        <p class="item-intro text-muted">Lorem ipsum dolor sit amet consectetur.</p>
+                        <img class="img-responsive img-centered" src="<?=base_url() ?>landing2/img/portfolio/dreams-preview.png" alt="">
+                        <p>Dreams is a free PSD web template built by <a href="https://www.behance.net/MathavanJaya">Mathavan Jaya</a>. Dreams is a modern one page web template designed for almost any purpose. It’s a beautiful template that’s designed with the Bootstrap framework in mind.</p>
+                        <p>You can download the PSD template in this portfolio sample item at <a href="http://freebiesxpress.com/gallery/dreams-free-one-page-web-template/">FreebiesXpress.com</a>.</p>
+                        <button type="button" class="btn btn-primary" data-dismiss="modal"><i class="fa fa-times"></i> Close Project</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- jQuery -->
+<script src="<?=base_url() ?>landing2/js/jquery.js"></script>
+
+<!-- Bootstrap Core JavaScript -->
+<script src="<?=base_url() ?>landing2/js/bootstrap.min.js"></script>
+
+<!-- Plugin JavaScript -->
+<script src="http://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script>
+<script src="<?=base_url() ?>landing2/js/classie.js"></script>
+<script src="<?=base_url() ?>landing2/js/cbpAnimatedHeader.js"></script>
+
+<!-- Contact Form JavaScript -->
+<script src="<?=base_url() ?>landing2/js/jqBootstrapValidation.js"></script>
+<script src="<?=base_url() ?>landing2/js/contact_me.js"></script>
+
+<!-- Custom Theme JavaScript -->
+<script src="<?=base_url() ?>landing2/js/agency.js"></script>
+
 </body>
+
 </html>
