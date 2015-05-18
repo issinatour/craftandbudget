@@ -8,11 +8,11 @@
 
     <title>title</title>
 
-    <link href="<?=base_url()?>css/bootstrap.min.css" rel="stylesheet">
-    <link href="<?=base_url()?>font-awesome/css/font-awesome.css" rel="stylesheet">
+    <link href="<?=base_url()?>assets/backtheme/css/bootstrap.min.css" rel="stylesheet">
+    <link href="<?=base_url()?>assets/backtheme/font-awesome/css/font-awesome.css" rel="stylesheet">
 
 
-    <link href="<?=base_url()?>css/animate.css" rel="stylesheet">
-    <link href="<?=base_url()?>css/style.css" rel="stylesheet">
+    <link href="<?=base_url()?>assets/backtheme/css/animate.css" rel="stylesheet">
+    <link href="<?=base_url()?>assets/backtheme/css/style.css" rel="stylesheet">
 
 </head>
