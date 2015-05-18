@@ -9,5 +9,5 @@
 
 $this->load->view('templates/header_backoffice',$header);
 $this->load->view('menu',$user);
-$this->load->view($main_content);
+$this->load->view($main_content_view);
 $this->load->view('footer',$footer);
