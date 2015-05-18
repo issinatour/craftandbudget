@@ -29,7 +29,7 @@ class Dashboard extends CI_Controller {
         parent::__construct();
 
         if (!$this->session->userdata("logged_in")){
-            redirect("usuarios");
+           redirect("usuarios");
         }
 
 
@@ -64,7 +64,7 @@ class Dashboard extends CI_Controller {
                 "js/datatable.js"
             )
         );
-        $this->load->view('templates/plantilladashboard',$data);
+        $this->load->view('templates/dashboardtemplate',$data);
 
     }
 

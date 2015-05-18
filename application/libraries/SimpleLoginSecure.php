@@ -3,7 +3,7 @@
 class SimpleLoginSecure
 {
 	var $CI;
-	var $user_table = 'professionals';	
+	var $user_table = 'user';
 
 	/**
 	 * Login and sets session variables
@@ -15,6 +15,8 @@ class SimpleLoginSecure
 	 */
 	function login($user_email = '', $user_pass = '') 
 	{
+
+
 
 		$this->CI =& get_instance();
 
@@ -36,13 +38,12 @@ class SimpleLoginSecure
 		}
 
 		//Check against user table
-		$this->CI->db->where('email', $user_email);
-		$this->CI->db->where('active', "1");
+		$this->CI->db->where('name', $user_email);
 		$query = $this->CI->db->get_where($this->user_table);
 
 		if ($query->num_rows() > 0) 
 		{
-			$user_data = $query->row_array(); 
+			$row_data = $query->row_array();
 
 			//$hasher = new PasswordHash(PHPASS_HASH_STRENGTH, PHPASS_HASH_PORTABLE);
 			
@@ -50,21 +51,16 @@ class SimpleLoginSecure
 
 			$enc = md5($password);
 
-			if (!($enc==$user_data["password"])){
+			if (!($enc==$row_data["password"])){
 				return false;
+
 			}
+		//	$this->CI->db->simple_query('UPDATE ' . $this->user_table  . ' SET last_login = "' . date('c') . '" WHERE id_professional = ' . $user_data['id_professional']);
 
-			//Destroy old session
-			$this->CI->session->sess_destroy();
-			
-			//Create a fresh, brand new session
-			$this->CI->session->sess_create();
-
-			$this->CI->db->simple_query('UPDATE ' . $this->user_table  . ' SET last_login = "' . date('c') . '" WHERE id_professional = ' . $user_data['id_professional']);
 
 			//Set session data
-			unset($user_data['empleado_password']);
-			$user_data['user'] = $user_data['email']; // for compatibility with Simplelogin
+            $user_data['id'] = $row_data['id_user'];
+			$user_data['user'] = $row_data['name']; // for compatibility with Simplelogin
 			$user_data['logged_in'] = true;
 			$user_data['usertype'] = "user";
 			$this->CI->session->set_userdata($user_data);
