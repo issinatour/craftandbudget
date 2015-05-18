@@ -53,7 +53,7 @@ class Dashboard extends CI_Controller {
 
             )
         );
-        $data['main_content'] = 'dashboard';
+        $data['main_content_view'] = 'dashboard';
         $data['footer']= array(
             "script" => array(
                 "js/plugins/jeditable/jquery.jeditable.js",
