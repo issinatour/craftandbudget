@@ -35,7 +35,12 @@
                     <li><a href="graph_sparkline.html">Sparkline Charts</a></li>
                 </ul>
             </li>
-
+            <li>
+                <a href="#"><i class="fa fa-bar-chart-o"></i> <span class="nav-label">Productos</span><span class="fa arrow"></span></a>
+                <ul class="nav nav-second-level">
+                    <li><a href="producto">Mis productos</a></li>
+                </ul>
+            </li>
         </ul>
 
     </div>

@@ -28,9 +28,7 @@ class Dashboard extends CI_Controller {
     {
         parent::__construct();
 
-        if (!$this->session->userdata("logged_in")){
-           redirect("usuarios");
-        }
+
 
 
     }
@@ -39,11 +37,14 @@ class Dashboard extends CI_Controller {
     {
 
 
+
         $data['user'] = array(
             "name" => $this->session->userdata('user'),
-            "email" =>  $this->session->userdata('email')
-
+            "email" =>  $this->session->userdata('email'),
+            "logged_in" => $this->session->userdata('logged_in')
         );
+
+        print_r($data['user']);
         $data['header'] = array(
             "title" => "panel dashboard",
             "css"  => array(
@@ -54,6 +55,7 @@ class Dashboard extends CI_Controller {
             )
         );
         $data['main_content_view'] = 'dashboard';
+        $data['data_view']=array();
         $data['footer']= array(
             "script" => array(
                 "js/plugins/jeditable/jquery.jeditable.js",

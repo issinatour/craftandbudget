@@ -108,9 +108,21 @@ CREATE TABLE IF NOT EXISTS `product` (
   CONSTRAINT `fk_user` FOREIGN KEY (`id_user`) REFERENCES `user` (`id_user`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+CREATE TABLE IF NOT EXISTS `product_media` (
+  `id_media` int(11) NOT NULL AUTO_INCREMENT,
+  is_default int(1),
+  file VARCHAR (140),
+  PRIMARY KEY (`id_media`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
-
-
+CREATE TABLE IF NOT EXISTS `product_media_product` (
+  `id_product_media_product` int(11) NOT NULL AUTO_INCREMENT,
+  `id_product` int(11) NOT NULL,
+  `id_media` int(11) NOT NULL,
+  CONSTRAINT `fk_id_product_media` FOREIGN KEY (`id_product`) REFERENCES `product` (`id_product`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `fk_id_media_media` FOREIGN KEY (`id_media`) REFERENCES `product_media` (`id_media`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  PRIMARY KEY (`id_product_media_product`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 CREATE TABLE IF NOT EXISTS `product_language` (
   `id_product` int(11) NOT NULL,
@@ -141,7 +153,7 @@ CREATE TABLE IF NOT EXISTS `combination` (
 
 
 CREATE TABLE IF NOT EXISTS `attribute_group` (
-  `id_attribute_group` int(11) NOT NULL,
+  `id_attribute_group` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(255) DEFAULT NULL,
   `is_color` int(1) NOT NULL,
   PRIMARY KEY (`id_attribute_group`)
@@ -153,7 +165,7 @@ CREATE TABLE IF NOT EXISTS `attribute_group` (
 
 
 CREATE TABLE IF NOT EXISTS `attribute` (
-  `id_attribute` int(11) NOT NULL,
+  `id_attribute` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(255) DEFAULT NULL,
   `id_group` int(11) NOT NULL,
   PRIMARY KEY (`id_attribute`),
@@ -188,7 +200,7 @@ CREATE TABLE IF NOT EXISTS `material_combination` (
 INSERT INTO `craftandbudget`.`user` (`id_user`, `name`, `password`, `email`, `register_date`, `shop_name`, `id_shop`) VALUES (NULL, 'Issam Natour', 'issam', 'issamnatour90@gmail.com', '2015-05-14 00:00:00', 'BuhoPlace', '21');
 INSERT INTO `craftandbudget`.`user` (`id_user`, `name`, `password`, `email`, `register_date`, `shop_name`, `id_shop`) VALUES (NULL, 'Nicolas Alphonse', 'nicolas', 'nicoalphose@gmail.com', '2015-05-14 00:00:00', 'Supreme', '23');
 
-INSERT INTO `craftandbudget`.`supplier` (`id_supplier`, `name`, `street`, `city`, `country`, `telephone`) VALUES (NULL, 'Telas Benítez', 'Al lado de casa', 'madrid', 'spain', '912423311');
+INSERT INTO `craftandbudget`.`supplier` (`id_supplier`, `name`, `street`, `city`, `country`, `telephone`) VALUES (NULL, 'Telas Benï¿½tez', 'Al lado de casa', 'madrid', 'spain', '912423311');
 INSERT INTO `craftandbudget`.`supplier` (`id_supplier`, `name`, `street`, `city`, `country`, `telephone`) VALUES (NULL, 'Cojines Cojones', 'Almendra', 'Alcobedas', 'spain', '919123344');
 INSERT INTO `craftandbudget`.`supplier` (`id_supplier`, `name`, `street`, `city`, `country`, `telephone`) VALUES (NULL, 'Maderas madeira', 'Severo Ochoa 29', 'Alcobedas', 'spain', '91112233');
 
@@ -197,6 +209,6 @@ INSERT INTO `craftandbudget`.`user_supplier` (`id_user`, `id_supplier`) VALUES (
 
 INSERT INTO `craftandbudget`.`product` (`id_product`, `id_product_prestashop`, `id_user`) VALUES (NULL, '22', '2'),(NULL, '12', '1');
 
-INSERT INTO `craftandbudget`.`lang` (`id_lang`, `name`, `iso_code`, `lang_code`) VALUES (NULL, 'español', 'es-es', 'spa');
+INSERT INTO `craftandbudget`.`lang` (`id_lang`, `name`, `iso_code`, `lang_code`) VALUES (NULL, 'espaï¿½ol', 'es-es', 'spa');
 
 INSERT INTO `craftandbudget`.`product_language` (`id_product`, `id_lang`, `description`, `name`, `id_language_ps`) VALUES ('1', '1', 'collar para perro morado para galgos', 'collar para perro', '23');

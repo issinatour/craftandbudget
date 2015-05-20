@@ -23,33 +23,35 @@ class Producto extends CI_Controller{
 
     public function index()
     {
+        $this->load->library('product_lib');
 
 
-        $data['user'] = array(
-            "name" => $this->session->userdata('user'),
-            "email" =>  $this->session->userdata('email')
-
-        );
         $data['header'] = array(
             "title" => "panel dashboard",
             "css"  => array(
-                "css/plugins/dataTables/dataTables.bootstrap.css",
-                "css/plugins/dataTables/dataTables.responsive.css",
-                "css/plugins/dataTables/dataTables.tableTools.min.css"
+            )
+        );
+        $data['main_content_view'] = 'productos/productos_view_data';
+        $data['footer']= array(
+            "script" => array(
 
             )
         );
-        $data['main_content'] = 'dashboard';
-        $data['footer']= array(
-            "script" => array(
-                "js/plugins/jeditable/jquery.jeditable.js",
-                "js/plugins/dataTables/jquery.dataTables.js",
-                "js/plugins/dataTables/dataTables.bootstrap.js",
-                "js/plugins/dataTables/dataTables.responsive.js",
-                "js/plugins/dataTables/dataTables.tableTools.min.js",
-                "js/datatable.js"
-            )
+
+        $id=$this->session->userdata('id');
+        $myproducts = $this->product_lib->get_all_products($id);
+
+        $data['user'] = array(
+            "name" => $this->session->userdata('user'),
+            "email" =>  $this->session->userdata('email'),
+            "logged_in" => $this->session->userdata('logged_in')
         );
+        $data['data_view']= array(
+             "myproducts" => $myproducts
+
+        );
+
+        print_r($this->session->userdata("user"));
         $this->load->view('templates/dashboardtemplate',$data);
 
     }
