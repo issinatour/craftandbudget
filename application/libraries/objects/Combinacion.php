@@ -7,42 +7,53 @@
  */
 
 
-    class Combination{
+    class Combinacion{
 
        private  $id_comb;
         private $price;
+        private $stock;
         private $_attributes;
 
 
+        public function setstock($value) {
+            $v = trim($value);
+            $this->stock = empty($v) ? null : $v;
+            return $this;
+        }
+
+        public function getstock() {
+            return $this->stock;
+        }
+
         public function setcombid($value) {
             $v = trim($value);
-            $this->$id_comb = empty($v) ? null : $v;
+            $this->id_comb = empty($v) ? null : $v;
             return $this;
         }
 
         public function getproductid() {
-            return $this->$id_comb;
+            return $this->id_comb;
         }
 
         public function setprice($value) {
             $v = trim($value);
-            $this->$price = empty($v) ? null : $v;
+            $this->price = empty($v) ? null : $v;
             return $this;
         }
 
         public function getprice() {
-            return $this->$price;
+            return $this->price;
         }
 
 
         public function setattributes($value) {
             $v = trim($value);
-            $this->$_attributes = empty($v) ? null : $v;
+            $this->_attributes = empty($v) ? null : $v;
             return $this;
         }
 
         public function getattributes() {
-            return $this->$_attributes;
+            return $this->_attributes;
         }
 
 
