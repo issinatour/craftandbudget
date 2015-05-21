@@ -10,6 +10,43 @@ PRIMARY KEY (id_user)
 )ENGINE=InnoDB ;
 
 
+
+CREATE TABLE IF NOT EXISTS user_rol(
+    id_rol int not null auto_increment,
+    name varchar(70),
+    type int,
+    PRIMARY KEY(id_rol)
+)ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+
+
+
+
+CREATE TABLE IF NOT EXISTS shop (
+id_shop int not null auto_increment,
+name varchar(80),
+image varchar(120),
+type  varchar(100),
+PRIMARY KEY (id_shop)
+
+);
+
+
+CREATE TABLE IF NOT EXISTS shop_user(
+id_shop_user int not null auto_increment,
+id_shop int,
+id_user int,
+key_api_shop VARCHAR(240),
+PRIMARY KEY (id_shop_user),
+ CONSTRAINT `fk_id_shop_user` FOREIGN KEY (`id_shop`) REFERENCES `shop` (`id_shop`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+ CONSTRAINT `fk_id_user_shop_user` FOREIGN KEY (`id_user`) REFERENCES `user` (`id_user`) ON DELETE NO ACTION ON UPDATE NO ACTION
+
+);
+
+
+
+
+
 CREATE TABLE IF NOT EXISTS lang(
 id_lang int(10) NOT NULL AUTO_INCREMENT,
 name varchar(40) NOT NULL ,
@@ -60,6 +97,27 @@ CONSTRAINT `fk_id_categoryuser_category` FOREIGN KEY (id_category) REFERENCES ca
 PRIMARY KEY(id_category, id_user)
 )ENGINE=InnoDB;
 
+
+CREATE TABLE IF NOT EXISTS craftshop(
+    id_craftshop int not null auto_increment,
+    name varchar(70),
+    description varchar(255),
+    PRIMARY KEY(id_craftshop)
+)ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+
+
+CREATE TABLE IF NOT EXISTS craftshop_users(
+    id_craftshop_users int not null auto_increment,
+    id_user int(11),
+    id_craftshop int(11) ,
+    id_rol int(11),
+    PRIMARY KEY(id_craftshop_users),
+ CONSTRAINT `fk_id_user_craftshopuser` FOREIGN KEY (`id_user`) REFERENCES `user` (`id_user`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+ CONSTRAINT `fk_id_craftsho_craftshopuser` FOREIGN KEY (`id_craftshop`) REFERENCES `craftshop` (`id_craftshop`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+ CONSTRAINT `fk_id_rol_craftshopuser` FOREIGN KEY (`id_rol`) REFERENCES `user_rol` (`id_rol`) ON DELETE NO ACTION ON UPDATE NO ACTION
+
+)ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 CREATE TABLE IF NOT EXISTS material (
 id_material int(10) NOT NULL AUTO_INCREMENT,
@@ -123,6 +181,17 @@ CREATE TABLE IF NOT EXISTS `product_media_product` (
   CONSTRAINT `fk_id_media_media` FOREIGN KEY (`id_media`) REFERENCES `product_media` (`id_media`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   PRIMARY KEY (`id_product_media_product`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+
+CREATE TABLE IF NOT EXISTS shop_product(
+id_shop_product int not null auto_increment,
+id_shop int,
+id_product int,
+PRIMARY KEY (id_shop_product),
+ CONSTRAINT `fk_id_shops_product_shop` FOREIGN KEY (`id_shop`) REFERENCES `shop` (`id_shop`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+ CONSTRAINT `fk_id_products_shop_product` FOREIGN KEY (`id_product`) REFERENCES `product` (`id_product`) ON DELETE NO ACTION ON UPDATE NO ACTION
+
+);
 
 CREATE TABLE IF NOT EXISTS `product_language` (
   `id_product` int(11) NOT NULL,
@@ -197,18 +266,4 @@ CREATE TABLE IF NOT EXISTS `material_combination` (
   PRIMARY KEY (`id_combination`,`id_material`)
   ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
-INSERT INTO `craftandbudget`.`user` (`id_user`, `name`, `password`, `email`, `register_date`, `shop_name`, `id_shop`) VALUES (NULL, 'Issam Natour', 'issam', 'issamnatour90@gmail.com', '2015-05-14 00:00:00', 'BuhoPlace', '21');
-INSERT INTO `craftandbudget`.`user` (`id_user`, `name`, `password`, `email`, `register_date`, `shop_name`, `id_shop`) VALUES (NULL, 'Nicolas Alphonse', 'nicolas', 'nicoalphose@gmail.com', '2015-05-14 00:00:00', 'Supreme', '23');
 
-INSERT INTO `craftandbudget`.`supplier` (`id_supplier`, `name`, `street`, `city`, `country`, `telephone`) VALUES (NULL, 'Telas Ben�tez', 'Al lado de casa', 'madrid', 'spain', '912423311');
-INSERT INTO `craftandbudget`.`supplier` (`id_supplier`, `name`, `street`, `city`, `country`, `telephone`) VALUES (NULL, 'Cojines Cojones', 'Almendra', 'Alcobedas', 'spain', '919123344');
-INSERT INTO `craftandbudget`.`supplier` (`id_supplier`, `name`, `street`, `city`, `country`, `telephone`) VALUES (NULL, 'Maderas madeira', 'Severo Ochoa 29', 'Alcobedas', 'spain', '91112233');
-
-INSERT INTO `craftandbudget`.`user_supplier` (`id_user`, `id_supplier`) VALUES ('1', '2'), ('1', '1');
-INSERT INTO `craftandbudget`.`user_supplier` (`id_user`, `id_supplier`) VALUES ('2', '2'), ('2', '3');
-
-INSERT INTO `craftandbudget`.`product` (`id_product`, `id_product_prestashop`, `id_user`) VALUES (NULL, '22', '2'),(NULL, '12', '1');
-
-INSERT INTO `craftandbudget`.`lang` (`id_lang`, `name`, `iso_code`, `lang_code`) VALUES (NULL, 'espa�ol', 'es-es', 'spa');
-
-INSERT INTO `craftandbudget`.`product_language` (`id_product`, `id_lang`, `description`, `name`, `id_language_ps`) VALUES ('1', '1', 'collar para perro morado para galgos', 'collar para perro', '23');
