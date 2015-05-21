@@ -161,13 +161,22 @@ CREATE TABLE IF NOT EXISTS `lang_users` (
 -- Estructura de tabla para la tabla `material`
 --
 
+CREATE TABLE IF NOT EXISTS craftshop(
+    id_craftshop int not null auto_increment,
+    name varchar(70),
+    description varchar(255),
+    PRIMARY KEY(id_craftshop)
+)ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
 CREATE TABLE IF NOT EXISTS `material` (
 `id_material` int(10) NOT NULL,
-  `id_user` int(10) DEFAULT NULL,
+  `id_craftshop` int(10) DEFAULT NULL,
   `name` varchar(50) DEFAULT NULL,
   `id_category` int(10) NOT NULL,
   `id_measurement` int(10) DEFAULT NULL,
-  `price` double DEFAULT NULL
+  `price` double DEFAULT NULL,
+   CONSTRAINT `fk_id_craftshop_material` FOREIGN KEY (`id_craftshop`) REFERENCES `craftshop` (`id_craftshop`) ON DELETE NO ACTION ON UPDATE NO ACTION
+
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -214,16 +223,13 @@ CREATE TABLE IF NOT EXISTS `measurement` (
 CREATE TABLE IF NOT EXISTS `product` (
 `id_product` int(11) NOT NULL,
   `id_product_prestashop` int(11) NOT NULL,
-  `id_user` int(11) NOT NULL
+  `id_craft_shop` int(11) NOT NULL,
+  CONSTRAINT `fk_shop_id_product` FOREIGN KEY (`id_craft_shop`) REFERENCES `craftshop` (`id_craftshop`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
 
 --
 -- Volcado de datos para la tabla `product`
 --
-
-INSERT INTO `product` (`id_product`, `id_product_prestashop`, `id_user`) VALUES
-(1, 22, 2),
-(2, 12, 4);
 
 -- --------------------------------------------------------
 
@@ -338,12 +344,7 @@ CREATE TABLE IF NOT EXISTS `user` (
   `id_shop` int(10) DEFAULT NULL
 ) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
 
-CREATE TABLE IF NOT EXISTS craftshop(
-    id_craftshop int not null auto_increment,
-    name varchar(70),
-    description varchar(255),
-    PRIMARY KEY(id_craftshop)
-)ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
 
 
 CREATE TABLE IF NOT EXISTS user_rol(
@@ -358,7 +359,7 @@ CREATE TABLE IF NOT EXISTS craftshop_users(
     id_craftshop_users int not null auto_increment,
     id_user int,
     id_craftshop int,
-    id_rol in,
+    id_rol int,
     PRIMARY KEY(id_craftshop_users),
  CONSTRAINT `fk_id_user_craftshopuser` FOREIGN KEY (`id_user`) REFERENCES `user` (`id_user`) ON DELETE NO ACTION ON UPDATE NO ACTION,
  CONSTRAINT `fk_id_craftsho_craftshopuser` FOREIGN KEY (`id_craftshop`) REFERENCES `craftshop` (`id_craftshop`) ON DELETE NO ACTION ON UPDATE NO ACTION,
@@ -682,7 +683,6 @@ ADD CONSTRAINT `fk_id_user_users` FOREIGN KEY (`id_user`) REFERENCES `user` (`id
 ALTER TABLE `material`
 ADD CONSTRAINT `fk_id_category_material` FOREIGN KEY (`id_category`) REFERENCES `category` (`id_category`) ON DELETE NO ACTION ON UPDATE NO ACTION,
 ADD CONSTRAINT `fk_id_measurement_material` FOREIGN KEY (`id_measurement`) REFERENCES `measurement` (`id_measurement`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-ADD CONSTRAINT `fk_id_user_user` FOREIGN KEY (`id_user`) REFERENCES `user` (`id_user`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
 -- Filtros para la tabla `material_combination`
@@ -701,8 +701,7 @@ ADD CONSTRAINT `fk_id_supplier_material_supplier` FOREIGN KEY (`id_supplier`) RE
 --
 -- Filtros para la tabla `product`
 --
-ALTER TABLE `product`
-ADD CONSTRAINT `fk_user` FOREIGN KEY (`id_user`) REFERENCES `user` (`id_user`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+
 
 --
 -- Filtros para la tabla `product_language`
