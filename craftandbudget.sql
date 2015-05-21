@@ -338,6 +338,68 @@ CREATE TABLE IF NOT EXISTS `user` (
   `id_shop` int(10) DEFAULT NULL
 ) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
 
+CREATE TABLE IF NOT EXISTS craftshop(
+    id_craftshop int not null auto_increment,
+    name varchar(70),
+    description varchar(255),
+    PRIMARY KEY(id_craftshop)
+)ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+
+CREATE TABLE IF NOT EXISTS user_rol(
+    id_rol int not null auto_increment,
+    name varchar(70),
+    type int,
+    PRIMARY KEY(id_rol)
+)ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+
+CREATE TABLE IF NOT EXISTS craftshop_users(
+    id_craftshop_users int not null auto_increment,
+    id_user int,
+    id_craftshop int,
+    id_rol in,
+    PRIMARY KEY(id_craftshop_users),
+ CONSTRAINT `fk_id_user_craftshopuser` FOREIGN KEY (`id_user`) REFERENCES `user` (`id_user`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+ CONSTRAINT `fk_id_craftsho_craftshopuser` FOREIGN KEY (`id_craftshop`) REFERENCES `craftshop` (`id_craftshop`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+ CONSTRAINT `fk_id_rol_craftshopuser` FOREIGN KEY (`id_rol`) REFERENCES `user_rol` (`id_rol`) ON DELETE NO ACTION ON UPDATE NO ACTION
+
+)ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+
+
+CREATE TABLE IF NOT EXISTS shop (
+id_shop int not null auto_increment,
+name varchar(80),
+image varchar(120),
+type  varchar(100),
+PRIMARY KEY (id_shop)
+
+);
+
+
+CREATE TABLE IF NOT EXISTS shop_user(
+id_shop_user int not null auto_increment,
+id_shop int,
+id_user int,
+PRIMARY KEY (id_shop_user),
+ CONSTRAINT `fk_id_shop_user` FOREIGN KEY (`id_shop`) REFERENCES `shop` (`id_shop`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+ CONSTRAINT `fk_id_user_shop_user` FOREIGN KEY (`id_user`) REFERENCES `user` (`id_user`) ON DELETE NO ACTION ON UPDATE NO ACTION
+
+);
+
+alter table shop_user add column key_api_shop varchar(240);
+
+CREATE TABLE IF NOT EXISTS shop_product(
+id_shop_product int not null auto_increment,
+id_shop int,
+id_product int,
+PRIMARY KEY (id_shop_product),
+ CONSTRAINT `fk_id_shops_product_shop` FOREIGN KEY (`id_shop`) REFERENCES `shop` (`id_shop`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+ CONSTRAINT `fk_id_products_shop_product` FOREIGN KEY (`id_product`) REFERENCES `product` (`id_product`) ON DELETE NO ACTION ON UPDATE NO ACTION
+
+);
+
 --
 -- Volcado de datos para la tabla `user`
 --
