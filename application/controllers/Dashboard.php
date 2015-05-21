@@ -59,7 +59,7 @@ class Dashboard extends CI_Controller {
             )
         );
         $this->load->view('templates/dashboardtemplate',$data);
-
+		
     }
 
     public function landing()

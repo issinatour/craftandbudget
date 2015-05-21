@@ -21,17 +21,16 @@ print_r($logged_in);
                              </span>
                     <a data-toggle="dropdown" class="dropdown-toggle" href="#">
                             <span class="clear"> <span class="block m-t-xs"> <strong class="font-bold"><?=$name?></strong>
-                             </span> <span class="text-muted text-xs block">Art Director <b class="caret"></b></span> </span> </a>
+                             </span> <span class="text-muted text-xs block">Settings <b class="caret"></b></span> </span> </a>
                     <ul class="dropdown-menu animated fadeInRight m-t-xs">
                         <li><a href="profile.html">Profile</a></li>
-                        <li><a href="contacts.html">Contacts</a></li>
-                        <li><a href="mailbox.html">Mailbox</a></li>
+                        <li><a href="mailbox.html">Prestashop Settings</a></li>
                         <li class="divider"></li>
                         <li><a href="<?=base_url()?>Usuarios/logout">Logout</a></li>
                     </ul>
                 </div>
                 <div class="logo-element">
-                    IN+
+                    C&B
                 </div>
             </li>
 
@@ -43,6 +42,12 @@ print_r($logged_in);
                 <a href="#"><i class="fa fa-bar-chart-o"></i> <span class="nav-label">Productos</span><span class="fa arrow"></span></a>
                 <ul class="nav nav-second-level">
                     <li><a href="<?=base_url()?>producto">Mis productos</a></li>
+                </ul>
+            </li>
+             <li>
+                <a href="#"><i class="fa fa-bar-chart-o"></i> <span class="nav-label">Materiales</span><span class="fa arrow"></span></a>
+                <ul class="nav nav-second-level">
+                    <li><a href="<?=base_url()?>material">Mis materiales</a></li>
                 </ul>
             </li>
         </ul>

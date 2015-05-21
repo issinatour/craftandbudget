@@ -19,7 +19,10 @@ class Materiales extends CI_Controller {
 	}
 	public function materiales(){
 
-		
+	  	$this->load->library('product_lib');
+	  	
+	  	$data['main_content_view'] = 'materiales/materiales_view_data';
+	  	$data['data_view'] = 
 		$data['user'] = array(
 				"name" => $this->session->userdata('user'),
 				"email" =>  $this->session->userdata('email')
@@ -34,6 +37,7 @@ class Materiales extends CI_Controller {
 						"css/plugins/dataTables/dataTables.tableTools.min.css"
 						)
 		);
+		
 		$data['main_content_view'] = 'materiales';
 		
 		$data['footer']= array(
