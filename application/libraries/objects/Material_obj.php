@@ -8,70 +8,36 @@
 
 class Producto_obj{
 
-    public $idmaterial;
+    public $id_material;
     public $id_user;
     public $name;
-    public $_title;
-    public $_product_file;
-    public $_combination;
+    public $measurement_type;
+    public $price;
+    public $quantity;
 
-    public function setproductid($value) {
-        $this->idproduct = (int) $value;
+    public function __construct($data=0)
+    {
+    	$this->instance = &get_instance();
+    	if($data != 0){
+    		$this->$idmaterial = $data['id_material'];
+    		$this->$id_user = $data['$id_user'];
+    		$this->$name = $data['$name'];
+    		$this->$measurement_type = $data['$measurement_type'];
+    		$this->$price = $data['$price'];
+    		$this->$quantity = $data['$quantity'];
+    	
+    	}
     }
+    
 
-    public function getproductid() {
-        return $this->idproduct;
+    public function set_material($data){
+    	$this->$idmaterial = $data['id_material'];
+    	$this->$id_user = $data['$id_user'];
+    	$this->$name = $data['$name'];
+    	$this->$category = $data['$category'];
+    	$this->$measurement_type = $data['$measurement_type'];
+    	$this->$measurement = $data['$measurement'];
+    	$this->$price = $data['$price'];
     }
-
-    public function setuserid($value) {
-        $this->id_user = (int) $value;
-    }
-
-    public function getuserid() {
-        return $this->id_user;
-    }
-
-    public function setproductdescription($value) {
-        $v = trim($value);
-        $this->_description =  $v;
-    }
-
-    public function getproductdescription() {
-        return $this->_description;
-    }
-
-    public function setproducttitle($value) {
-        $v = trim($value);
-        $this->_title = $value;
-    }
-
-    public function getproducttitle() {
-        return $this->_title;
-    }
-
-    public function setproductfile($value) {
-        $v = trim($value);
-        $this->_product_file =  $v;
-    }
-
-    public function getproductfile() {
-        return $this->_product_file;
-    }
-
-    public function setproductcombination($value){
-
-        $this->_combination =  $value;
-
-    }
-
-    public function getproductcombination(){
-        return $this->_combination;
-    }
-
-
-    public function save_product(){
-
-    }
-
 
 }

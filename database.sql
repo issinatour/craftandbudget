@@ -137,6 +137,7 @@ CONSTRAINT `fk_id_category_material` FOREIGN KEY (id_category) REFERENCES catego
 CREATE TABLE IF NOT EXISTS stock_material(
 id_stock_material int(10) NOT NULL AUTO_INCREMENT,
 id_material int(10),
+quantity int,
 PRIMARY KEY (id_stock_material),
 CONSTRAINT `fk_id_material_stock_material` FOREIGN KEY (id_material) REFERENCES material (id_material) ON DELETE NO ACTION ON UPDATE NO ACTION
 )ENGINE=InnoDB;
