@@ -8,7 +8,7 @@
 
 
 $this->load->view('templates/header_backoffice',$header);
-$this->load->view('menu',$user);
+$this->load->view('menu');
 
 if(isset($data_view)) {
     $this->load->view($main_content_view, $data_view);

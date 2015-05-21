@@ -1,5 +1,12 @@
 
 <body>
+
+<?php
+    $name= $this->session->userdata('user');
+    $email = $this->session->userdata('email');
+    $logged_in= $this->session->userdata('logged_in');
+?>
+
 <div id="wrapper">
 <nav class="navbar-default navbar-static-side" role="navigation">
     <div class="sidebar-collapse">
@@ -24,15 +31,8 @@
             </li>
 
             <li>
-                <a href="#"><i class="fa fa-bar-chart-o"></i> <span class="nav-label">Graphs</span><span class="fa arrow"></span></a>
-                <ul class="nav nav-second-level">
-                    <li><a href="graph_flot.html">Flot Charts</a></li>
-                    <li><a href="graph_morris.html">Morris.js Charts</a></li>
-                    <li><a href="graph_rickshaw.html">Rickshaw Charts</a></li>
-                    <li><a href="graph_chartjs.html">Chart.js</a></li>
-                    <li><a href="graph_peity.html">Peity Charts</a></li>
-                    <li><a href="graph_sparkline.html">Sparkline Charts</a></li>
-                </ul>
+                <a href="<?=base_url()?>dashboard"><i class="fa fa-bar-chart-o"></i> <span class="nav-label">Dashboard</span></span></a>
+
             </li>
             <li>
                 <a href="#"><i class="fa fa-bar-chart-o"></i> <span class="nav-label">Productos</span><span class="fa arrow"></span></a>

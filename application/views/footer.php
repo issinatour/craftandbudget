@@ -44,9 +44,24 @@ if(isset($script)) {
 <script src="<?=base_url()?>assets/backtheme/js/plugins/metisMenu/jquery.metisMenu.js"></script>
 <script src="<?=base_url()?>assets/backtheme/js/plugins/slimscroll/jquery.slimscroll.min.js"></script>
 
-<script>
+<!-- editor text-->
+<script src="<?=base_url()?>js/plugins/summernote/summernote.min.js"></script>
 
+<script>
+    $(document).ready(function(){
+
+        $('.summernote').summernote();
+
+    });
+    var edit = function() {
+        $('.click2edit').summernote({focus: true});
+    };
+    var save = function() {
+        var aHTML = $('.click2edit').code(); //save HTML If you need(aHTML: array).
+        $('.click2edit').destroy();
+    };
 </script>
+
 
 <style>
     body.DTTT_Print {
