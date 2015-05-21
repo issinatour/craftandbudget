@@ -221,9 +221,10 @@ CREATE TABLE IF NOT EXISTS `measurement` (
 --
 
 CREATE TABLE IF NOT EXISTS `product` (
-`id_product` int(11) NOT NULL,
+`id_product` int(11) NOT NULL AUTO_INCREMENT,
   `id_product_prestashop` int(11) NOT NULL,
   `id_craft_shop` int(11) NOT NULL,
+  PRIMARY KEY(id_product),
   CONSTRAINT `fk_shop_id_product` FOREIGN KEY (`id_craft_shop`) REFERENCES `craftshop` (`id_craftshop`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
 
@@ -335,13 +336,14 @@ INSERT INTO `supplier` (`id_supplier`, `name`, `street`, `city`, `country`, `tel
 --
 
 CREATE TABLE IF NOT EXISTS `user` (
-`id_user` int(11) NOT NULL,
+ `id_user` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(60) NOT NULL,
   `password` varchar(255) NOT NULL,
   `email` varchar(60) NOT NULL,
   `register_date` datetime NOT NULL,
   `shop_name` varchar(60) DEFAULT NULL,
-  `id_shop` int(10) DEFAULT NULL
+  `id_shop` int(10) DEFAULT NULL,
+  PRIMARY KEY(id_user)
 ) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
 
 
@@ -357,9 +359,9 @@ CREATE TABLE IF NOT EXISTS user_rol(
 
 CREATE TABLE IF NOT EXISTS craftshop_users(
     id_craftshop_users int not null auto_increment,
-    id_user int,
-    id_craftshop int,
-    id_rol int,
+    id_user int(11),
+    id_craftshop int(11) ,
+    id_rol int(11),
     PRIMARY KEY(id_craftshop_users),
  CONSTRAINT `fk_id_user_craftshopuser` FOREIGN KEY (`id_user`) REFERENCES `user` (`id_user`) ON DELETE NO ACTION ON UPDATE NO ACTION,
  CONSTRAINT `fk_id_craftsho_craftshopuser` FOREIGN KEY (`id_craftshop`) REFERENCES `craftshop` (`id_craftshop`) ON DELETE NO ACTION ON UPDATE NO ACTION,
@@ -383,13 +385,13 @@ CREATE TABLE IF NOT EXISTS shop_user(
 id_shop_user int not null auto_increment,
 id_shop int,
 id_user int,
+key_api_shop VARCHAR(240),
 PRIMARY KEY (id_shop_user),
  CONSTRAINT `fk_id_shop_user` FOREIGN KEY (`id_shop`) REFERENCES `shop` (`id_shop`) ON DELETE NO ACTION ON UPDATE NO ACTION,
  CONSTRAINT `fk_id_user_shop_user` FOREIGN KEY (`id_user`) REFERENCES `user` (`id_user`) ON DELETE NO ACTION ON UPDATE NO ACTION
 
 );
 
-alter table shop_user add column key_api_shop varchar(240);
 
 CREATE TABLE IF NOT EXISTS shop_product(
 id_shop_product int not null auto_increment,
