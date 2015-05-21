@@ -51,8 +51,8 @@ class Usuarios extends CI_Controller {
     public function do_login()
     {
         $login = $this->simpleloginsecure->login($this->input->post("user"), $this->input->post("pass"));
-
-        if($login) {
+   
+       if($login) {
             redirect("dashboard");
         }else{
             redirect("usuarios");
