@@ -36,7 +36,7 @@ $this->load->view('menu');
                     <div class="tab-content">
                         <div id="tab-4" class="tab-pane active">
 
-                            <?php $this->load->view('productos/mi_producto_view');?>
+                            <?php $this->load->view('productos/mi_producto_view',$productdata);?>
                         </div>
 
                         <div id="tab-5" class="tab-pane">

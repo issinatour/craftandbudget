@@ -121,13 +121,13 @@ CREATE TABLE IF NOT EXISTS craftshop_users(
 
 CREATE TABLE IF NOT EXISTS material (
 id_material int(10) NOT NULL AUTO_INCREMENT,
-id_user int(10),
+id_craftshop int(10),
 name varchar(50),
 id_category int(10) NOT NULL,
 id_measurement int(10),
 price float(30),
 PRIMARY KEY (id_material),
-CONSTRAINT `fk_id_user_user` FOREIGN KEY (id_user) REFERENCES user (id_user) ON DELETE NO ACTION ON UPDATE NO ACTION,
+CONSTRAINT `fk_id_craftshopmaterial` FOREIGN KEY (id_craftshop) REFERENCES craftshop (id_craftshop) ON DELETE NO ACTION ON UPDATE NO ACTION,
 CONSTRAINT `fk_id_measurement_material` FOREIGN KEY (id_measurement) REFERENCES measurement (id_measurement) ON DELETE NO ACTION ON UPDATE NO ACTION,
 CONSTRAINT `fk_id_category_material` FOREIGN KEY (id_category) REFERENCES category (id_category) ON DELETE NO ACTION ON UPDATE NO ACTION
 )ENGINE=InnoDB;
@@ -161,9 +161,10 @@ CONSTRAINT `fk_id_supplier_user_supplier` FOREIGN KEY (id_supplier) REFERENCES s
 CREATE TABLE IF NOT EXISTS `product` (
   `id_product` int(11) NOT NULL AUTO_INCREMENT,
   `id_product_prestashop` int(11) NOT NULL,
-  `id_user` int(11) NOT NULL,
+  `id_craftshop` int(11) NOT NULL,
+  price float,
   PRIMARY KEY (`id_product`),
-  CONSTRAINT `fk_user` FOREIGN KEY (`id_user`) REFERENCES `user` (`id_user`) ON DELETE NO ACTION ON UPDATE NO ACTION
+  CONSTRAINT `fk_craftshop_product` FOREIGN KEY (`id_craftshop`) REFERENCES `craftshop` (`id_craftshop`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 CREATE TABLE IF NOT EXISTS `product_media` (
@@ -213,10 +214,10 @@ CREATE TABLE IF NOT EXISTS `combination` (
   `id_product` int(11) NOT NULL,
   `price` float NOT NULL,
   `stock` int(11) NOT NULL,
+  is_default int,
   PRIMARY KEY (`id_combination`),
   CONSTRAINT `fk_product_combination` FOREIGN KEY (`id_product`) REFERENCES `product` (`id_product`) ON DELETE NO ACTION ON UPDATE NO ACTION
   ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
 
 
 

@@ -9,11 +9,22 @@
 class Producto_obj{
 
     public $idproduct;
-    public $id_user;
+    public $id_craftshop;
     public $_description;
+    public $_price;
     public $_title;
     public $_product_file;
     public $_combination;
+
+
+    public function setproductprice($value) {
+        $this->_price = (float) $value;
+    }
+
+    public function getproductprice() {
+        return $this->_price;
+    }
+
 
     public function setproductid($value) {
         $this->idproduct = (int) $value;
@@ -23,12 +34,12 @@ class Producto_obj{
         return $this->idproduct;
     }
 
-    public function setuserid($value) {
-        $this->id_user = (int) $value;
+    public function setcraftshopid($value) {
+        $this->id_craftshop = (int) $value;
     }
 
-    public function getuserid() {
-        return $this->id_user;
+    public function getcraftshopid() {
+        return $this->id_craftshop;
     }
 
     public function setproductdescription($value) {

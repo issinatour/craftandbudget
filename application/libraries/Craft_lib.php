@@ -34,6 +34,25 @@ class Craft_lib {
 
     }
 
+
+    function register_craft_shop($datauser,$datacraftshop){
+
+        $this->instance->load->model('craft_mod');
+
+        $datauser['id_rol']=1;
+
+        if ($datauser['id_craftshop'] = $this->instance->craft_mod->create_craft_shop($datacraftshop)) {
+
+            $this->instance->craft_mod->create_relation_shop_user($datauser);
+
+            return true;
+        } else {
+
+            return false;
+        }
+
+    }
+
 }
 
 

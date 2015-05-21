@@ -41,10 +41,23 @@ class Usuarios extends CI_Controller {
             "password" => md5($this->input->post("pass")),
             "email" => $this->input->post("email")
         );
-
         $id_professional = $this->craft_lib->register_user($professional);
 
-        redirect('usuarios');
+        $craft_shop = array(
+            "name" => $this->input->post("shopname"),
+            "description" => $this->input->post("descriptionshop")
+
+        );
+
+        $data['id_user']=$id_professional;
+
+        $idshop = $this->craft_lib->register_craft_shop($data,$craft_shop);
+
+
+        print_r($professional);
+        print_r($craft_shop);
+
+      //  redirect('usuarios');
 
 }
 

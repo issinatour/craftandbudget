@@ -16,4 +16,8 @@
     <link href="<?=base_url()?>assets/backtheme/css/style.css" rel="stylesheet">
 
 
+    <link href="<?=base_url()?>assets/backtheme/css/plugins/iCheck/custom.css" rel="stylesheet">
+    <link href="<?=base_url()?>assets/backtheme/css/plugins/steps/jquery.steps.css" rel="stylesheet">
+
+
 </head>

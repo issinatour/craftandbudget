@@ -5,6 +5,10 @@
     $name= $this->session->userdata('user');
     $email = $this->session->userdata('email');
     $logged_in= $this->session->userdata('logged_in');
+    $myshop= $this->session->userdata('id_craftshop');
+
+print_r($myshop);
+print_r($logged_in);
 ?>
 
 <div id="wrapper">

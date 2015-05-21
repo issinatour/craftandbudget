@@ -16,10 +16,8 @@ class SimpleLoginSecure
 	function login($user_email = '', $user_pass = '') 
 	{
 
-
-
 		$this->CI =& get_instance();
-
+        $this->CI->load->library('product_lib');
 		if($user_email == '' OR $user_pass == '')
 			return false;
 
@@ -41,6 +39,7 @@ class SimpleLoginSecure
 		$this->CI->db->where('name', $user_email);
 		$query = $this->CI->db->get_where($this->user_table);
 
+
 		if ($query->num_rows() > 0) 
 		{
 			$row_data = $query->row_array();
@@ -57,9 +56,10 @@ class SimpleLoginSecure
 			}
 		//	$this->CI->db->simple_query('UPDATE ' . $this->user_table  . ' SET last_login = "' . date('c') . '" WHERE id_professional = ' . $user_data['id_professional']);
 
-
+            $usershop=  $this->CI->product_lib->get_user_shops($row_data['id_user']);
 			//Set session data
             $user_data['id'] = $row_data['id_user'];
+            $user_data['id_craftshop'] = $usershop['id_craftshop'];
 			$user_data['user'] = $row_data['name']; // for compatibility with Simplelogin
 			$user_data['logged_in'] = true;
 			$user_data['usertype'] = "user";

@@ -40,7 +40,7 @@
 <tr class="gradeX">
     <td><?=$product->getproductid();?></td>
 
- <td> <img width="120"  height="120" <?php $mfile='uploads/'.$product->getuserid().'/p/'.$product->getproductfile();
+ <td> <img width="120"  height="120" <?php $mfile='uploads/'.$product->getcraftshopid().'/p/'.$product->getproductfile();
 
      if(file_exists($mfile)) {?>
          src="<?=base_url().$mfile?>"
