@@ -28,16 +28,31 @@
 <thead>
 <tr>
     <th>product id</th>
-    <th>product name</th>
     <th>image</th>
+    <th>product name</th>
+    <th>Price</th>
+    <th>Stock</th>
+    <th>Edit</th>
 </tr>
 </thead>
 <tbody>
-<?php foreach( $myproducts as $product) ?>
+<?php foreach( $myproducts as $product): ?>
 <tr class="gradeX">
     <td><?=$product->getproductid();?></td>
+
+ <td> <img width="120"  height="120" <?php $mfile='uploads/'.$product->getuserid().'/p/'.$product->getproductfile();
+
+     if(file_exists($mfile)) {?>
+         src="<?=base_url().$mfile?>"
+<?php } else { ?>
+         src="<?=base_url().'uploads/default/avatar.png'?>"
+     <?php } ?>
+         />
+
+ </td>
     <td><?=$product->getproducttitle();?></td>
-    <td><?=$product->getproductfile();?></td>
+    <td><?=$product->getproductcombination()->getprice();?></td>
+    <td><?=$product->getproductcombination()->getstock();?></td>
     <td><div class="btn-group">
             <button data-toggle="dropdown" class="btn btn-warning btn-sm dropdown-toggle">Action <span class="caret"></span></button>
             <ul class="dropdown-menu">
@@ -51,77 +66,23 @@
     </td>
 
 </tr>
-<?php ?>
+<?php endforeach; ?>
 </tbody>
-<tfoot>
-
-</tfoot>
+    <tfoot>
+    <tr>
+        <th>product id</th>
+        <th>image</th>
+        <th>product name</th>
+        <th>Price</th>
+        <th>Stock</th>
+        <th>Edit</th>
+    </tr>
+    </tfoot>
 </table>
 
 </div>
 </div>
 </div>
 </div>
-<div class="row">
-<div class="col-lg-12">
-<div class="ibox float-e-margins">
-<div class="ibox-title">
-    <h5>Editable Table in- combination with jEditable</h5>
-    <div class="ibox-tools">
-        <a class="collapse-link">
-            <i class="fa fa-chevron-up"></i>
-        </a>
-        <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-            <i class="fa fa-wrench"></i>
-        </a>
-        <ul class="dropdown-menu dropdown-user">
-            <li><a href="#">Config option 1</a>
-            </li>
-            <li><a href="#">Config option 2</a>
-            </li>
-        </ul>
-        <a class="close-link">
-            <i class="fa fa-times"></i>
-        </a>
-    </div>
-</div>
-<div class="ibox-content">
-<div class="">
-    <a onclick="fnClickAddRow();" href="javascript:void(0);" class="btn btn-primary ">Add a new row</a>
-</div>
-<table class="table table-striped table-bordered table-hover " id="editable" >
-<thead>
-<tr>
-    <th>product id</th>
-    <th>product name</th>
-    <th>image</th>
-</tr>
-</thead>
-<tbody>
-<tr class="gradeX">
-    <td>Trident</td>
-    <td>Internet
-        Explorer 4.0
-    </td>
-    <td>Win 95+</td>
-    <td class="center">4</td>
-    <td class="center">X</td>
-</tr>
 
-</tbody>
-<tfoot>
-<tr>
-    <th>Rendering engine</th>
-    <th>Browser</th>
-    <th>Platform(s)</th>
-    <th>Engine version</th>
-    <th>CSS grade</th>
-</tr>
-</tfoot>
-</table>
-
-</div>
-</div>
-</div>
-</div>
 </div>

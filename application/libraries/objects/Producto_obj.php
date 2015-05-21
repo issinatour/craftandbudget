@@ -9,6 +9,7 @@
 class Producto_obj{
 
     public $idproduct;
+    public $id_user;
     public $_description;
     public $_title;
     public $_product_file;
@@ -20,6 +21,14 @@ class Producto_obj{
 
     public function getproductid() {
         return $this->idproduct;
+    }
+
+    public function setuserid($value) {
+        $this->id_user = (int) $value;
+    }
+
+    public function getuserid() {
+        return $this->id_user;
     }
 
     public function setproductdescription($value) {
@@ -50,8 +59,8 @@ class Producto_obj{
     }
 
     public function setproductcombination($value){
-        $v = trim($value);
-        $this->_combination =  $v;
+
+        $this->_combination =  $value;
 
     }
 

@@ -18,11 +18,19 @@ class Producto extends CI_Controller{
         }
 
 
+
+
     }
 
 
     public function index()
     {
+
+        redirect('producto/misproductos');
+    }
+
+    public function misproductos(){
+
         $this->load->library('product_lib');
 
 
@@ -47,13 +55,53 @@ class Producto extends CI_Controller{
             "logged_in" => $this->session->userdata('logged_in')
         );
         $data['data_view']= array(
-             "myproducts" => $myproducts
+            "myproducts" => $myproducts
 
         );
 
-        print_r($this->session->userdata("user"));
-        $this->load->view('templates/dashboardtemplate',$data);
 
+        $this->load->view('templates/dashboardtemplate',$data);
+    }
+
+
+    public function miproducto($id_product){
+        $this->load->library('product_lib');
+
+        $id_user_logged= $this->session->userdata('id');
+        if($this->product_lib->verify_product_user($id_product,$id_user_logged)) {
+
+
+
+            $data['header'] = array(
+                "title" => "panel dashboard",
+                "css" => array()
+            );
+            $data['main_content_view'] = 'productos/productos_view_data';
+            $data['footer'] = array(
+                "script" => array()
+            );
+
+
+            $myproducts = $this->product_lib->get_all_products($id_user_logged);
+
+            $data['user'] = array(
+                "name" => $this->session->userdata('user'),
+                "email" => $this->session->userdata('email'),
+                "logged_in" => $this->session->userdata('logged_in')
+            );
+            $data['data_view'] = array(
+                "myproducts" => $myproducts
+
+            );
+
+
+            $this->load->view('templates/dashboardtemplate', $data);
+
+        }else{
+
+            redirect('producto');
+
+        }
     }
 
 
