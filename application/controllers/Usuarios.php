@@ -54,10 +54,7 @@ class Usuarios extends CI_Controller {
         $idshop = $this->craft_lib->register_craft_shop($data,$craft_shop);
 
 
-        print_r($professional);
-        print_r($craft_shop);
-
-      //  redirect('usuarios');
+      redirect('usuarios');
 
 }
 

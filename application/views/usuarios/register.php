@@ -24,22 +24,22 @@
                             <div class="row">
                                 <div class="col-lg-6">
                                     <div class="form-group">
-                                        <label>Username *</label>
+                                        <label>Usuario *</label>
                                         <input id="userName" name="user" type="text" class="form-control required">
                                     </div>
                                     <div class="form-group">
-                                        <label>email *</label>
+                                        <label>Email *</label>
                                         <input id="userName" name="email" type="email" class="form-control required">
                                     </div>
 
                                 </div>
-                                <div class="col-lg-6">
+                                <div class="col-lg-12">
                                 <div class="form-group">
-                                    <label>Password *</label>
+                                    <label>Contraseña *</label>
                                     <input id="password" name="pass" type="password" class="form-control required">
                                 </div>
                                 <div class="form-group">
-                                    <label>Confirm Password *</label>
+                                    <label>Confirmar Contraseña *</label>
                                     <input id="confirm" name="confirm" type="password" class="form-control required">
                                 </div>
                                     </div>
@@ -53,7 +53,7 @@
                             </div>
 
                         </fieldset>
-                        <h1>Profile</h1>
+                        <h1>Mi craftshop</h1>
                         <fieldset>
                             <h2>Mi tienda</h2>
                             <div class="row">
@@ -74,10 +74,10 @@
 
 
 
-                        <h1>Finish</h1>
+                        <h1>Fin</h1>
                         <fieldset>
-                            <h2>Terms and Conditions</h2>
-                            <input id="acceptTerms" name="acceptTerms" type="checkbox" class="required"> <label for="acceptTerms">I agree with the Terms and Conditions.</label>
+                            <h2>Terminos y condiciones</h2>
+                            <input id="acceptTerms" name="acceptTerms" type="checkbox" class="required"> <label for="acceptTerms">Acepto los terminos y condiciones</label>
                         </fieldset>
                     </form>
                 </div>
@@ -142,13 +142,13 @@
                 // Suppress (skip) "Warning" step if the user is old enough.
                 if (currentIndex === 2 && Number($("#age").val()) >= 18)
                 {
-                    $(this).steps("next");
+                    $(this).steps("siguiente");
                 }
 
                 // Suppress (skip) "Warning" step if the user is old enough and wants to the previous step.
                 if (currentIndex === 2 && priorIndex === 3)
                 {
-                    $(this).steps("previous");
+                    $(this).steps("anterior");
                 }
             },
             onFinishing: function (event, currentIndex)

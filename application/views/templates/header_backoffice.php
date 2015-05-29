@@ -26,7 +26,7 @@
         }
     }
     ?>
-
+    <link href="<?=base_url()?>assets/backtheme/css/plugins/fileinput/fileinput.css" rel="stylesheet"  />
     <link href="<?=base_url()?>assets/backtheme/css/animate.css" rel="stylesheet">
     <link href="<?=base_url()?>assets/backtheme/css/style.css" rel="stylesheet">
 

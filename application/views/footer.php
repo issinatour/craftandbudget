@@ -1,10 +1,10 @@
 
 <div class="footer">
     <div class="pull-right">
-        10GB of <strong>250GB</strong> Free.
+      Cuenta <strong>Gratuita</strong>
     </div>
     <div>
-        <strong>Copyright</strong> Example Company &copy; 2014-2015
+        <strong>Copyright</strong> Craftandbudget &copy; 2014-2015
     </div>
 </div>
 </div>
@@ -13,6 +13,14 @@
 <script src="<?=base_url()?>assets/backtheme/js/jquery-2.1.1.js"></script>
 <script src="<?=base_url()?>assets/backtheme/js/bootstrap.min.js"></script>
 <script src="<?=base_url()?>assets/backtheme/js/plugins/pace/pace.min.js"></script>
+
+<script src="<?=base_url()?>assets/backtheme/js/plugins/fileinput/fileinput.min.js"></script>
+<script src="<?=base_url()?>assets/backtheme/js/plugins/fileinput/fileinput_locale_en.js"></script>
+
+
+<script src="<?=base_url()?>assets/backtheme/js/inspinia.js"></script>
+<script src="<?=base_url()?>assets/backtheme/js/plugins/metisMenu/jquery.metisMenu.js"></script>
+<script src="<?=base_url()?>assets/backtheme/js/plugins/slimscroll/jquery.slimscroll.min.js"></script>
 
 
 <?php
@@ -26,12 +34,37 @@ if(isset($script)) {
 }
 ?>
 
-<script src="<?=base_url()?>assets/backtheme/js/inspinia.js"></script>
-<script src="<?=base_url()?>assets/backtheme/js/plugins/metisMenu/jquery.metisMenu.js"></script>
-<script src="<?=base_url()?>assets/backtheme/js/plugins/slimscroll/jquery.slimscroll.min.js"></script>
+<script>
+    function myFunction() {
+        var mysave = $('.note-editable').html();
+        $('#hiddeninput').val(mysave);
+        console.log( document.getElementById("hiddeninput").value);
+        document.getElementById("hiddeninput").value("");
+        return true;
+    }
+</script>
+
+<script>
+    $(document).ready(function () {
 
 
 
+        $("#input-id").fileinput({
+            uploadAsync: false,
+            showUpload: false,
+            showPreview: true,
+            showRemove: false,
+            previewClass: "professional-foto",
+            overwriteInitial: false,
+            allowedFileExtensions: ["jpg", "gif", "png"]
+        }).on('fileloaded', function(event, file, previewId, index, reader) {
+            $(".img-circle").hide();
+        });
+
+
+
+    });
+</script>
 <style>
     body.DTTT_Print {
         background: #fff;

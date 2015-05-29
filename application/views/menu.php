@@ -7,8 +7,9 @@
     $logged_in= $this->session->userdata('logged_in');
     $myshop= $this->session->userdata('id_craftshop');
 
-print_r($myshop);
-print_r($logged_in);
+print_r($name);
+print_r($email);print_r($logged_in);print_r($myshop);
+print_r('asdasd');
 ?>
 
 <div id="wrapper">
@@ -21,12 +22,12 @@ print_r($logged_in);
                              </span>
                     <a data-toggle="dropdown" class="dropdown-toggle" href="#">
                             <span class="clear"> <span class="block m-t-xs"> <strong class="font-bold"><?=$name?></strong>
-                             </span> <span class="text-muted text-xs block">Settings <b class="caret"></b></span> </span> </a>
+                             </span> <span class="text-muted text-xs block">Opciones <b class="caret"></b></span> </span> </a>
                     <ul class="dropdown-menu animated fadeInRight m-t-xs">
-                        <li><a href="profile.html">Profile</a></li>
-                        <li><a href="mailbox.html">Prestashop Settings</a></li>
+                        <li><a href="profile.html">Perfil</a></li>
+                        <li><a href="mailbox.html">Opciones de prestashop</a></li>
                         <li class="divider"></li>
-                        <li><a href="<?=base_url()?>Usuarios/logout">Logout</a></li>
+                        <li><a href="<?=base_url()?>Usuarios/logout">Desconectarse</a></li>
                     </ul>
                 </div>
                 <div class="logo-element">
@@ -62,14 +63,12 @@ print_r($logged_in);
             <div class="navbar-header">
                 <a class="navbar-minimalize minimalize-styl-2 btn btn-primary " href="#"><i class="fa fa-bars"></i> </a>
                 <form role="search" class="navbar-form-custom" action="search_results.html">
-                    <div class="form-group">
-                        <input type="text" placeholder="Search for something..." class="form-control" name="top-search" id="top-search">
-                    </div>
+
                 </form>
             </div>
             <ul class="nav navbar-top-links navbar-right">
                 <li>
-                    <span class="m-r-sm text-muted welcome-message">Welcome to INSPINIA+ Admin Theme.</span>
+
                 </li>
                 <li class="dropdown">
                     <a class="dropdown-toggle count-info" data-toggle="dropdown" href="#">
@@ -170,7 +169,7 @@ print_r($logged_in);
 
                 <li>
                     <a href="<?=base_url()?>Usuarios/logout">
-                        <i class="fa fa-sign-out"></i> Log out
+                        <i class="fa fa-sign-out"></i> Desconectarse
                     </a>
                 </li>
                 <li>

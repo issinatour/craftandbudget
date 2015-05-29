@@ -71,12 +71,31 @@ class Producto extends CI_Controller{
     }
 
 
-    public function miproducto($id_product){
+    public function miproducto($id_product=0){
         $this->load->library('product_lib');
 
-        $id_craftshop_of_user = $this->session->userdata('id_craftshop');
-        if($this->product_lib->verify_product_craftshop($id_product,$id_craftshop_of_user)) {
+        if($id_product==0){
 
+            $data['header'] = array(
+                "title" => "Mi producto",
+                "css" => array(
+                    "css/plugins/summernote/summernote.css",
+                    "css/plugins/summernote/summernote-bs3.css"
+                )
+            );
+            $data['footer'] = array(
+                "script" => array(
+                    "js/plugins/summernote/summernote.min.js",
+                    "js/custom/customsummernote.js"
+                )
+            );
+
+            $data['productdata'] = $this->product_lib->get_empty_product();
+        }else {
+
+            $id_craftshop_of_user = $this->session->userdata('id_craftshop');
+
+            if($this->product_lib->verify_product_craftshop($id_product,$id_craftshop_of_user)) {
 
 
             $data['header'] = array(
@@ -94,19 +113,99 @@ class Producto extends CI_Controller{
             );
 
 
-            $data['productdata'] = $this->product_lib->get_product_data($id_craftshop_of_user,$id_product);
-
-
-
-
-          $this->load->view('templates/miproductotemplate', $data);
-
+            $data['productdata'] = $this->product_lib->get_product_data($id_craftshop_of_user, $id_product);
         }else{
 
-            redirect('producto');
-
         }
+
+
+
+      //
+
+         //s   redirect('producto');
+
+     //
+    }
+        $this->load->view('templates/miproductotemplate', $data);
     }
 
+    function register_save(){
+        $this->load->library('Product_lib');
+
+        $product = array(
+            "id_product" => $this->input->post("id_product"),
+            "id_craftshop" => $this->session->userdata('id_craftshop')
+        );
+
+        $product_lang=array(
+            "name" => $this->input->post("title"),
+            "description" => $this->input->post("hiddeninput"),
+            "id_product" => $this->input->post("id_product")
+        );
+
+$arr =array();
+      $myuserid=$this->session->userdata('id');
+       $urld='uploads/' . $myuserid . '/p/';
+
+    $config['upload_path'] = 'uploads/' . $myuserid . '/p';
+    $config['allowed_types'] = 'gif|jpg|png';
+    $config['max_size'] = '1000';
+    $config['max_width'] = '1024';
+    $config['max_height'] = '768';
+        
+
+
+    $this->load->library('upload');
+
+    $this->upload->initialize($config);
+
+    if (!$this->upload->do_upload("fichero")) {
+        //$error = array('error' => $this->upload->display_errors());
+        //var_dump($error);
+    } else {
+        $data = $this->upload->data();
+
+        $arr = array(
+           // "id_media_type" => 1,
+         //   "name" => $data["raw_name"],
+         //   "name" => $data["raw_name"],
+            "file" => $data["file_name"]
+        );
+      // $id_media = $this->product_mod->create_media($arr);
+
+     //   $professional["avatar"] = $id_media;
+    }
+
+        $product['id_product']= $this->product_lib->save_product($product,$product_lang,$arr);
+
+       redirect('Producto/miproducto/'.$product['id_product']);
+
+    }
+
+
+    function pslib(){
+        $url="buhoplace.es";
+        $api_key='2RE9HIPQVCPP3N3RYLAQW79IW9XR1U34';
+        $debug=false;
+        $this->load->library('Product_lib');
+      //    $this->product_lib->get_products_prestashop($url,$api_key,$debug);
+      //  $this->product_lib->get_combinations_prestashop($url,$api_key,$debug);
+
+      //    $this->product_lib->get_products_options_values_prestashop($url,$api_key,$debug);
+       $product_op_group=  $this->product_lib->get_products_options_group($url,$api_key,$debug);
+
+
+
+        foreach($product_op_group as $product_value){
+          echo $product_value['id'];
+
+            foreach($product_value['name'] as $langp){
+                echo $langp['name'];
+              }
+
+        }
+
+
+    }
 
 }

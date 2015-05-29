@@ -34,12 +34,3 @@ $(document).ready(function() {
 
 });
 
-function fnClickAddRow() {
-    $('#editable').dataTable().fnAddData( [
-        "Custom row",
-        "New row",
-        "New row",
-        "New row",
-        "New row" ] );
-
-}
