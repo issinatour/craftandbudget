@@ -139,132 +139,51 @@ class Product_lib {
     }
 
 
-    public function get_products_prestashop($url,$api,$debug=true){
-        $this->instance->load->library('PS-lib/PrestaShopWebservice');
+    function get_presta_products_full($web,$api,$debug){
+        $this->instance->load->library('ps_api');
+        $psapi= new ps_api($web,$api,$debug);
 
-        $webService = new PrestaShopWebservice($url, $api, $debug);
+        //    $this->product_lib->get_products_prestashop($url,$api_key,$debug);
+        //  $this->product_lib->get_combinations_prestashop($url,$api_key,$debug);
 
-        $opt['resource'] = 'products';
+        //    $this->product_lib->get_products_options_values_prestashop($url,$api_key,$debug);
 
-        $opt['display'] = 'full';
+        $fullproducts=array();
 
-        $xml = $webService->get($opt);
-        $resources = $xml->children()->children();
 
-        echo '<br>';
-        foreach ($resources as  $resource)
-        {
+        $myproducts = $psapi->get_products_prestashop();
+        $mycombinations = $psapi->get_combinations_prestashop();
 
-        echo 'id'.$resource->id.'<br>';
-             $asociations = $resource->associations;
-             $combinations = $asociations->combinations;
-            foreach ($combinations->children() as  $combination)
-            {
-                echo 'combination id de producto'.$combination->id.'<br>';
-            }
-            echo 'siguiente producto'.'<br>';
-        }
+     //   $product_op_group=  $psapi->get_products_options_group();
+        $product_op_value=  $psapi->get_products_options_values_prestashop();
+
+
+
+      foreach($myproducts as &$miproducto){
+        //  echo 'id producto'.$miproducto['id'].'<br>';
+
+          if(sizeof($miproducto['combinations']>0)) {
+              foreach ($miproducto['combinations'] as &$product_combination) {
+
+                  $product_combination = array_merge($product_combination,$mycombinations[$product_combination['id']]);
+
+                foreach($product_combination['product_option_values'] as &$productoptionvalues){
+
+                    $productoptionvalues=array_merge($productoptionvalues,$product_op_value[$productoptionvalues['id']]);
+
+                  
+                }
+              }
+
+          }
+
+      }
+
+        echo '  <pre>';
+        print_r($myproducts);
+        echo '  </pre>';
     }
 
-    function get_combinations_prestashop($url, $api, $debug){
-        $this->instance->load->library('PS-lib/PrestaShopWebservice');
 
-        $webService = new PrestaShopWebservice($url, $api, $debug);
-
-        $opt['resource'] = 'combinations';
-
-        $opt['display'] = 'full';
-
-        $xml = $webService->get($opt);
-        $combinations = $xml->children()->children();
-
-        echo '<br>';
-        foreach ($combinations as  $combination)
-        {
-
-            echo 'id combinacion'.$combination->id.'<br>';
-            $asociations_comb = $combination->associations;
-
-            $product_options_values = $asociations_comb->product_option_values;
-            foreach ($product_options_values->children() as  $myproduct_options_values)
-            {
-                echo 'combination id de producto'.$myproduct_options_values->id.'<br>';
-            }
-
-            echo 'siguiente combinacion'.'<br>';
-        }
-    }
-
-    function get_products_options_values_prestashop($url, $api, $debug){
-        $this->instance->load->library('PS-lib/PrestaShopWebservice');
-
-        $webService = new PrestaShopWebservice($url, $api, $debug);
-
-        $opt['resource'] = 'product_option_values';
-
-        $opt['display'] = 'full';
-
-        $xml = $webService->get($opt);
-        $product_option_values = $xml->children()->children();
-
-        echo '<br>';
-        foreach ($product_option_values as  $product_option_value)
-        {
-
-            echo 'id product_option_value'.$product_option_value->id.'<br>';
-            $name_language = $product_option_value->name;
-
-
-
-            foreach ($name_language as  $lang)
-            {
-                echo 'product_option_value langid'.$lang->language['id'].'<br>';
-                echo 'product_option_value langname'.$lang->language.'<br>';
-            }
-
-            echo 'siguiente product_option_value'.'<br>';
-        }
-    }
-
-    function get_products_options_group($url, $api, $debug){
-        $product_options_group=array();
-
-        $this->instance->load->library('PS-lib/PrestaShopWebservice');
-
-        $webService = new PrestaShopWebservice($url, $api, $debug);
-
-        $opt['resource'] = 'product_options';
-
-        $opt['display'] = 'full';
-
-        $xml = $webService->get($opt);
-        $product_options = $xml->children()->children();
-
-
-        foreach ($product_options as  $product_option)
-        {
-            $myproduct_options['id']=$product_option->id->__toString();
-            $myproduct_options['is_color_group']=$product_option->is_color_group->__toString();
-            $myproduct_options['group_type']=$product_option->group_type->__toString();
-            $myproduct_options['name']=array();
-
-            $name_language = $product_option->name;
-
-            foreach ($name_language as  $lang)
-            {
-               $langname=array(
-                   "id" => $lang->language['id']->__toString(),
-                   "name" =>$lang->language->__toString()
-               );
-                array_push($myproduct_options['name'],$langname);
-
-            }
-
-            array_push($product_options_group,$myproduct_options);
-
-        }
-
-        return $product_options_group;
-    }
 
 }

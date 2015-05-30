@@ -188,22 +188,9 @@ $arr =array();
         $api_key='2RE9HIPQVCPP3N3RYLAQW79IW9XR1U34';
         $debug=false;
         $this->load->library('Product_lib');
-      //    $this->product_lib->get_products_prestashop($url,$api_key,$debug);
-      //  $this->product_lib->get_combinations_prestashop($url,$api_key,$debug);
 
-      //    $this->product_lib->get_products_options_values_prestashop($url,$api_key,$debug);
-       $product_op_group=  $this->product_lib->get_products_options_group($url,$api_key,$debug);
+        $this->product_lib->get_presta_products_full($url,$api_key,$debug);
 
-
-
-        foreach($product_op_group as $product_value){
-          echo $product_value['id'];
-
-            foreach($product_value['name'] as $langp){
-                echo $langp['name'];
-              }
-
-        }
 
 
     }
