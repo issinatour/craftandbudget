@@ -168,6 +168,22 @@ CREATE TABLE IF NOT EXISTS `product` (
   CONSTRAINT `fk_craftshop_product` FOREIGN KEY (`id_craftshop`) REFERENCES `craftshop` (`id_craftshop`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+
+CREATE TABLE TYPES(
+id_type int NOT NULL AUTO_INCREMENT,
+name VARCHAR(120),
+PRIMARY KEY (id_type)
+)ENGINE=InnoDB;
+
+CREATE TABLE PRODUCT_TYPES(
+id_product_type int NOT NULL AUTO_INCREMENT,
+id_type int,
+id_product int,
+PRIMARY KEY (id_product_type),
+  CONSTRAINT `fk_product_type_` FOREIGN KEY (`id_product`) REFERENCES product (`id_product`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `fk_product_type_type` FOREIGN KEY (`id_type`) REFERENCES `TYPES` (`id_type`) ON DELETE NO ACTION ON UPDATE NO ACTION
+)ENGINE=InnoDB;
+
 CREATE TABLE IF NOT EXISTS `product_media` (
   `id_media` int(11) NOT NULL AUTO_INCREMENT,
   is_default int(1),

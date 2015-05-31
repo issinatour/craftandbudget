@@ -56,6 +56,7 @@ class Producto extends CI_Controller{
         $id=$this->session->userdata('id_craftshop');
         $myproducts = $this->product_lib->get_all_products($id);
 
+
         $data['user'] = array(
             "name" => $this->session->userdata('user'),
             "email" =>  $this->session->userdata('email'),

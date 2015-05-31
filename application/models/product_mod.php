@@ -11,9 +11,7 @@ class Product_mod extends CI_Model
 
     function get_all_products($id_shop)
     {
-
         $this->db->where('product.id_craftshop', $id_shop);
-
         $this->db->join('product_language', 'product.id_product = product_language.id_product');
         $this->db->join('product_media_product', 'product.id_product = product_media_product.id_product','left');
         $this->db->join('product_media', 'product_media_product.id_media = product_media.id_media','left');
@@ -21,10 +19,20 @@ class Product_mod extends CI_Model
         $this->db->select('product.id_product,product.id_craftshop,product_language.name,product_language.description,product_media.file,product_media.is_default,product.price as productprice ');
         $query = $this->db->get("product");
         return $query->result_array();
-
-
     }
 
+
+    function insert_product_data($data){
+        $this->db->insert("product_types",$data);
+        return $this->db->insert_id();
+    }
+
+    function get_product_type($id_product){
+        $this->db->where('id_product', $id_product);
+        $this->db->join('types', 'product_types.id_type = types.id_type');
+        $query = $this->db->get("product_types");
+        return $query->result_array();
+    }
 
     function get_product_data($id_shop,$id_product){
         $this->db->where('product.id_product', $id_product);
@@ -103,8 +111,6 @@ class Product_mod extends CI_Model
         $this->db->where('id_product_prestashop', $id_product);
         $this->db->where('id_craftshop', $id_craftshop);
         $query=  $this->db->update('product', $data);
-
-
     }
 
     function get_product_ps_languaje($id_product){
@@ -121,7 +127,6 @@ class Product_mod extends CI_Model
     function update_product_ps_languaje($data,$id_product){
         $this->db->where('id_product', $id_product);
         $this->db->update('product_language', $data);
-        echo $this->db->last_query();
     }
 
 }

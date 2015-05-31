@@ -15,6 +15,15 @@ class Producto_obj{
     public $_title;
     public $_product_file;
     public $_combination;
+    public $_types;
+
+    public function setproducttype($value) {
+        $this->_types = $value;
+    }
+
+    public function getproducttype() {
+        return $this->_types;
+    }
 
 
     public function setproductprice($value) {

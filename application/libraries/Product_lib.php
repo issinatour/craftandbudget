@@ -32,6 +32,7 @@ class Product_lib {
             $objectproduct->setproducttitle($product['name']);
             $objectproduct->setproductfile($product['file']);
             $objectproduct->setcraftshopid($product['id_craftshop']);
+            $objectproduct->setproducttype($this->instance->product_mod->get_product_type($product['id_product']));
             $objectproduct->setproductprice($product['productprice']);
       //      $objectcomb->setstock($product['stock']);
 
@@ -169,6 +170,7 @@ class Product_lib {
         $this->instance->load->library('ps_api');
         $this->instance->load->model('product_mod');
         $myshop= $this->instance->session->userdata('id_craftshop');
+        $id_user = $this->instance->session->userdata('id');
      //   $psapi= new ps_api($web,$api,$debug);
         $myproductsfull = $this->get_products_ps_full($web,$api,$debug);
 
@@ -180,14 +182,31 @@ class Product_lib {
                     "price" => $miproducto['price']
                 );
                 $this->instance->product_mod->update_product_ps($productdata,$miproducto['id'],$myshop);
-            }else{
 
+                $url = "'http://buhoplace.es/api/images/products/".$miproducto['id']."/".$miproducto['id_default_image'].'&ws_key=2RE9HIPQVCPP3N3RYLAQW79IW9XR1U34';
+
+
+             $fp ='upload/'.$id_user."/p/".$miproducto["id_default_image"];
+
+
+                copy($url, $fp);
+
+                //  $this->instance->product_mod->insert_product_data(array("id_product" => $my_product_get['id_product'], "id_type" => 1));
+
+            }else{
                 $productdata=array(
                     "id_product_prestashop" => $miproducto['id'],
                     "id_craftshop"=> $myshop,
                     "price" => $miproducto['price']
                 );
                 $my_product_get['id_product']=  $this->instance->product_mod->insert_product_ps($productdata);
+                $product_type =$this->instance->product_mod->get_product_type($my_product_get['id_product']);
+
+                copy("http://buhoplace.es/api/images/products/".$miproducto['id_default_image'],"uploads/".$id_user.'/p/'.$miproducto['id_default_image']);
+                if(empty($product_type)){
+                    $this->instance->product_mod->insert_product_data(array("id_product" => $my_product_get['id_product'], "id_type" => 1));
+                }
+
             }
 
 

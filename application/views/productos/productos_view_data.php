@@ -26,15 +26,36 @@ foreach( $myproducts as $product): ?>
 <tr class="gradeX">
     <td><?=$product->getproductid();?></td>
 
- <td> <img width="120"  height="120" <?php $mfile='uploads/'.$product->getcraftshopid().'/p/'.$product->getproductfile();
-
+ <td>
+     <div class="col-lg-9">
+     <img width="100%"  height="80" <?php $mfile='uploads/'.$product->getcraftshopid().'/p/'.$product->getproductfile();
      if(file_exists($mfile)) {?>
          src="<?=base_url().$mfile?>"
 <?php } else { ?>
          src="<?=base_url().'uploads/default/avatar.png'?>"
      <?php } ?>
          />
+</div>
 
+     <div class="col-lg-3">
+    <?php foreach($product->getproducttype() as $type){
+
+        switch($type['id_type']){
+            case(1): ?>
+                <div class="row" style="margin-bottom:5px;">
+                    <img width="25" height="25" src="<?=base_url().'assets/backtheme/img/prestashopicon.png'?>"/>
+                </div>
+              <?php  break;
+            case(2);?>
+                <div class="row" style="margin-bottom:5px;">
+                    <img width="25" height="25" src="<?=base_url().'assets/backtheme/img/fotoiconcb.jpg'?>"/>
+                </div>
+           <?php break;
+        }
+    }
+    ?>
+
+         </div>
  </td>
     <td><?=$product->getproducttitle();?></td>
     <td><?=$product->getproductprice();?></td>
