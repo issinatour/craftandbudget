@@ -36,9 +36,9 @@ class ps_api {
             $myproduct['price']=$resource->price->__toString();
             $myproduct['quantity']=$resource->quantity->__toString();
             $myproduct['id_default_image']=$resource->id_default_image->__toString();
+            $myproduct['id_shop_default']=$resource->id_shop_default->__toString();
             $myproduct['name']=array();
             $myproduct['combinations']=array();
-
 
             $name_language = $resource->name;
 

@@ -189,10 +189,7 @@ $arr =array();
         $debug=false;
         $this->load->library('Product_lib');
 
-        $this->product_lib->get_presta_products_full($url,$api_key,$debug);
-
-
-
+        $this->product_lib->import_presta_products_full($url,$api_key,$debug);
     }
 
 }

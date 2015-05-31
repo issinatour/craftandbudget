@@ -32,8 +32,8 @@ class Product_lib {
             $objectproduct->setproducttitle($product['name']);
             $objectproduct->setproductfile($product['file']);
             $objectproduct->setcraftshopid($product['id_craftshop']);
-            $objectcomb->setprice($product['price']);
-            $objectcomb->setstock($product['stock']);
+            $objectproduct->setproductprice($product['productprice']);
+      //      $objectcomb->setstock($product['stock']);
 
             $objectproduct->setproductcombination($objectcomb);
             array_push($myproducts, $objectproduct);
@@ -138,51 +138,98 @@ class Product_lib {
 
     }
 
-
-    function get_presta_products_full($web,$api,$debug){
-        $this->instance->load->library('ps_api');
+    function get_products_ps_full($web,$api,$debug){
         $psapi= new ps_api($web,$api,$debug);
-
-        //    $this->product_lib->get_products_prestashop($url,$api_key,$debug);
-        //  $this->product_lib->get_combinations_prestashop($url,$api_key,$debug);
-
-        //    $this->product_lib->get_products_options_values_prestashop($url,$api_key,$debug);
-
-        $fullproducts=array();
-
-
         $myproducts = $psapi->get_products_prestashop();
         $mycombinations = $psapi->get_combinations_prestashop();
-
-     //   $product_op_group=  $psapi->get_products_options_group();
+        // $product_op_group=  $psapi->get_products_options_group();
         $product_op_value=  $psapi->get_products_options_values_prestashop();
 
+        foreach($myproducts as &$miproducto){
+            //  echo 'id producto'.$miproducto['id'].'<br>';
+            if(sizeof($miproducto['combinations']>0)) {
+                foreach ($miproducto['combinations'] as &$product_combination) {
 
+                    $product_combination = array_merge($product_combination,$mycombinations[$product_combination['id']]);
 
-      foreach($myproducts as &$miproducto){
-        //  echo 'id producto'.$miproducto['id'].'<br>';
+                    foreach($product_combination['product_option_values'] as &$productoptionvalues){
 
-          if(sizeof($miproducto['combinations']>0)) {
-              foreach ($miproducto['combinations'] as &$product_combination) {
-
-                  $product_combination = array_merge($product_combination,$mycombinations[$product_combination['id']]);
-
-                foreach($product_combination['product_option_values'] as &$productoptionvalues){
-
-                    $productoptionvalues=array_merge($productoptionvalues,$product_op_value[$productoptionvalues['id']]);
-
-                  
+                        $productoptionvalues=array_merge($productoptionvalues,$product_op_value[$productoptionvalues['id']]);
+                    }
                 }
-              }
 
-          }
+            }
 
-      }
+        }
+        return $myproducts;
+    }
+
+
+    function import_presta_products_full($web,$api,$debug){
+        $this->instance->load->library('ps_api');
+        $this->instance->load->model('product_mod');
+        $myshop= $this->instance->session->userdata('id_craftshop');
+     //   $psapi= new ps_api($web,$api,$debug);
+        $myproductsfull = $this->get_products_ps_full($web,$api,$debug);
+
+        foreach($myproductsfull as $miproducto){
+
+                $my_product_get = $this->instance->product_mod->get_product_ps($myshop,$miproducto['id']);
+            if(!empty($my_product_get)){
+                $productdata=array(
+                    "price" => $miproducto['price']
+                );
+                $this->instance->product_mod->update_product_ps($productdata,$miproducto['id'],$myshop);
+            }else{
+
+                $productdata=array(
+                    "id_product_prestashop" => $miproducto['id'],
+                    "id_craftshop"=> $myshop,
+                    "price" => $miproducto['price']
+                );
+                $my_product_get['id_product']=  $this->instance->product_mod->insert_product_ps($productdata);
+            }
+
+
+                foreach ($miproducto['combinations'] as $product_combination) {
+
+                    foreach($product_combination['product_option_values'] as $productoptionvalues){
+
+                    }
+                }
+
+                foreach($miproducto['name'] as $product_name){
+                    $my_product_get_lang = $this->instance->product_mod->get_product_ps_languaje($my_product_get['id_product']);
+
+                    if(!empty($my_product_get_lang)){
+                        $productdatalang=array(
+                            "name" => $product_name['name']
+                        );
+                        $this->instance->product_mod->update_product_ps_languaje($productdatalang,$my_product_get['id_product']);
+                    }else{
+                        $productdatalang=array(
+                            "id_product" =>$my_product_get['id_product'],
+                            "name" => $product_name['name'],
+                            "id_lang" => 1,
+                            "id_language_ps" =>1
+                        );
+                        $this->instance->product_mod->insert_product_ps_languaje($productdatalang);
+                    }
+
+               }
+
+
+
+
+        }
 
         echo '  <pre>';
-        print_r($myproducts);
+        print_r($myproductsfull);
         echo '  </pre>';
+
+
     }
+
 
 
 

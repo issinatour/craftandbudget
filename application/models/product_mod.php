@@ -18,11 +18,10 @@ class Product_mod extends CI_Model
         $this->db->join('product_media_product', 'product.id_product = product_media_product.id_product','left');
         $this->db->join('product_media', 'product_media_product.id_media = product_media.id_media','left');
         $this->db->join('combination', 'product.id_product = combination.id_product','left');
-
-        $this->db->select('product.id_product,product.id_craftshop,product_language.name,product_language.description,product_media.file,product_media.is_default,combination.price,combination.stock,combination.id_combination ');
-
+        $this->db->select('product.id_product,product.id_craftshop,product_language.name,product_language.description,product_media.file,product_media.is_default,product.price as productprice ');
         $query = $this->db->get("product");
         return $query->result_array();
+
 
     }
 
@@ -88,5 +87,41 @@ class Product_mod extends CI_Model
         return $this->db->insert_id();
     }
 
+    function get_product_ps($id_craftshop,$id_product_ps){
+        $this->db->where('product.id_craftshop', $id_craftshop);
+        $this->db->where('product.id_product_prestashop', $id_product_ps);
+        $query = $this->db->get("product");
+        return $query->row_array();;
+    }
+
+    function insert_product_ps($data){
+        $this->db->insert("product",$data);
+        return $this->db->insert_id();
+    }
+
+    function update_product_ps($data,$id_product,$id_craftshop){
+        $this->db->where('id_product_prestashop', $id_product);
+        $this->db->where('id_craftshop', $id_craftshop);
+        $query=  $this->db->update('product', $data);
+
+
+    }
+
+    function get_product_ps_languaje($id_product){
+        $this->db->where('id_product', $id_product);
+        $query = $this->db->get("product_language");
+        return $query->num_rows();
+    }
+
+    function insert_product_ps_languaje($data){
+        $this->db->insert("product_language",$data);
+        return $this->db->insert_id();
+    }
+
+    function update_product_ps_languaje($data,$id_product){
+        $this->db->where('id_product', $id_product);
+        $this->db->update('product_language', $data);
+        echo $this->db->last_query();
+    }
 
 }

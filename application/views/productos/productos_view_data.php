@@ -20,7 +20,9 @@
 </tr>
 </thead>
 <tbody>
-<?php foreach( $myproducts as $product): ?>
+<?php
+echo sizeof($myproducts).'xd';
+foreach( $myproducts as $product): ?>
 <tr class="gradeX">
     <td><?=$product->getproductid();?></td>
 
@@ -35,7 +37,7 @@
 
  </td>
     <td><?=$product->getproducttitle();?></td>
-    <td><?=$product->getproductcombination()->getprice();?></td>
+    <td><?=$product->getproductprice();?></td>
     <td><?=$product->getproductcombination()->getstock();?></td>
     <td><div class="btn-group">
             <button data-toggle="dropdown" class="btn btn-warning btn-sm dropdown-toggle">Action <span class="caret"></span></button>

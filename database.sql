@@ -195,6 +195,17 @@ PRIMARY KEY (id_shop_product),
 
 );
 
+CREATE TABLE IF NOT EXISTS shop_producto(
+id_shop_product int not null auto_increment,
+id_shop_ps int,
+id_product_ps int,
+PRIMARY KEY (id_shop_product),
+ CONSTRAINT `fk_id_shops_product_shop` FOREIGN KEY (`id_shop_ps`) REFERENCES `shop` (`id_shop_ps`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+ CONSTRAINT `fk_id_products_shop_product` FOREIGN KEY (`id_product_ps`) REFERENCES `product` (`id_product_prestashop`) ON DELETE NO ACTION ON UPDATE NO ACTION
+
+);
+
+
 CREATE TABLE IF NOT EXISTS `product_language` (
   `id_product` int(11) NOT NULL,
   `id_lang` int(11) NOT NULL,
