@@ -65,6 +65,8 @@ class Materiales extends CI_Controller
 
     public function mimaterial($id=0)
     {
+
+        $this->load->library('Material_lib');
         if($id==0){
             redirect("Material");
         }else{
@@ -72,7 +74,8 @@ class Materiales extends CI_Controller
                 "title" => "Mi producto",
                 "css" => array(
                     "css/plugins/summernote/summernote.css",
-                    "css/plugins/summernote/summernote-bs3.css"
+                    "css/plugins/summernote/summernote-bs3.css",
+                    "css/plugins/chosen/chosen.css"
                 )
             );
             $data['menu'] = array(
@@ -82,10 +85,14 @@ class Materiales extends CI_Controller
             $data['footer'] = array(
                 "script" => array(
                     "js/plugins/summernote/summernote.min.js",
-                    "js/custom/customsummernote.js"
+                    "js/custom/customsummernote.js",
+                    "js/plugins/chosen/chosen.jquery.js"
                 )
             );
 
+            $data['measurements'] =  $this->material_lib->get_material_measurements_selected($id);
+
+print_r($data['measurements']);
         }
 
         $this->load->view('templates/materialviewtemplate', $data);
