@@ -1,0 +1,729 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<title>craftandbudget</title>
+<!-- 2015-06-01 Mon 17:01 -->
+<meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta  name="generator" content="Org-mode" />
+<meta  name="author" content="Nicolas Alphonse" />
+<style type="text/css">
+ <!--/*--><![CDATA[/*><!--*/
+  .title  { text-align: center; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { color: green; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #ccc;
+    box-shadow: 3px 3px 3px #eee;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: visible;
+    padding-top: 1.2em;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    background-color: white;
+    top: -10px;
+    right: 10px;
+    padding: 3px;
+    border: 1px solid black;
+  }
+  pre.src:hover:before { display: inline;}
+  pre.src-sh:before    { content: 'sh'; }
+  pre.src-bash:before  { content: 'sh'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-R:before     { content: 'R'; }
+  pre.src-perl:before  { content: 'Perl'; }
+  pre.src-java:before  { content: 'Java'; }
+  pre.src-sql:before   { content: 'SQL'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.right  { text-align: center;  }
+  th.left   { text-align: center;   }
+  th.center { text-align: center; }
+  td.right  { text-align: right;  }
+  td.left   { text-align: left;   }
+  td.center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara:nth-child(2) { display: inline; }
+  .footpara { display: block; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  /*]]>*/-->
+</style>
+<script type="text/javascript">
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012-2013 Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+</head>
+<body>
+<div id="content">
+<h1 class="title">craftandbudget</h1>
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#sec-1">1. vision general</a>
+<ul>
+<li><a href="#sec-1-1">1.1. resumen</a></li>
+<li><a href="#sec-1-2">1.2. abstract</a></li>
+</ul>
+</li>
+<li><a href="#sec-2">2. Agradecimientos</a></li>
+<li><a href="#sec-3">3. Introducción</a>
+<ul>
+<li><a href="#sec-3-1">3.1. Objetivos</a>
+<ul>
+<li><a href="#sec-3-1-1">3.1.1. Backend de la aplicación</a></li>
+<li><a href="#sec-3-1-2">3.1.2. Como realizar un página web responsive</a></li>
+<li><a href="#sec-3-1-3">3.1.3. Alternativas de web hosting, y como usarlas</a></li>
+</ul>
+</li>
+<li><a href="#sec-3-2">3.2. Motivación</a></li>
+<li><a href="#sec-3-3">3.3. Antecedentes</a></li>
+</ul>
+</li>
+<li><a href="#sec-4">4. Desarrollo de la práctica</a>
+<ul>
+<li><a href="#sec-4-1">4.1. Material</a>
+<ul>
+<li><a href="#sec-4-1-1">4.1.1. PHP</a></li>
+<li><a href="#sec-4-1-2">4.1.2. Framework codeigniter php</a></li>
+<li><a href="#sec-4-1-3">4.1.3. twitter bootstrap</a></li>
+<li><a href="#sec-4-1-4">4.1.4. api rest</a></li>
+<li><a href="#sec-4-1-5">4.1.5. base de datos en prestashop</a></li>
+<li><a href="#sec-4-1-6">4.1.6. comunicarse con prestashop mediante su web api</a></li>
+</ul>
+</li>
+<li><a href="#sec-4-2">4.2. Planificación</a></li>
+<li><a href="#sec-4-3">4.3. Descripción del trabajo realizado</a></li>
+<li><a href="#sec-4-4">4.4. Resultados y validación</a></li>
+</ul>
+</li>
+<li><a href="#sec-5">5. Conclusiones</a>
+<ul>
+<li><a href="#sec-5-1">5.1. Aportaciones</a></li>
+<li><a href="#sec-5-2">5.2. Trabajo futuro</a></li>
+</ul>
+</li>
+<li><a href="#sec-6">6. Bibliografía y webgrafía</a></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-sec-1" class="outline-2">
+<h2 id="sec-1"><span class="section-number-2">1</span> vision general</h2>
+<div class="outline-text-2" id="text-1">
+</div><div id="outline-container-sec-1-1" class="outline-3">
+<h3 id="sec-1-1"><span class="section-number-3">1.1</span> resumen</h3>
+<div class="outline-text-3" id="text-1-1">
+<p>
+   Craft&amp;budget es una web app destinada para que aquellos artesanos
+que tengan una tienda online en el CMS prestashop puedan manejar el
+stock de su tienda. Podrán tanto manejar el stock de los productos que
+tengan en venta, como el stock de los materiales que usan para crear
+sus productos. Con craft and budget podrán además gestionar la
+creación de sus productos sabiendo cuantos materiales necesitan para
+crear sus productos y cuántos productos pueden crear con los
+materiales de los que disponen. Finalmente también dispondrán de una
+libreta de dirección para almacenar todos sus proveedores.
+</p>
+
+<p>
+El stock de los materiales no se encuentra en la base de datos de
+prestashop, sino que los artesanos tendrán que crearlo con los
+materiales de que dispongan materiales.
+</p>
+
+<p>
+La primera versión se conectará con prestashop únicamente, pero en un
+futuro p2odrá conectarse con otras tiendas online. Para conectarse,
+craft and budget se comunica con prestashop mediante una api rest por
+la cual se descargá todos los productos que el artesano tiene en la
+tienda. Usaremos una base de datos mysql para guardar todos los
+productos y los materiales.
+</p>
+</div>
+</div>
+
+
+<div id="outline-container-sec-1-2" class="outline-3">
+<h3 id="sec-1-2"><span class="section-number-3">1.2</span> abstract</h3>
+</div>
+</div>
+
+<div id="outline-container-sec-2" class="outline-2">
+<h2 id="sec-2"><span class="section-number-2">2</span> Agradecimientos</h2>
+</div>
+
+<div id="outline-container-sec-3" class="outline-2">
+<h2 id="sec-3"><span class="section-number-2">3</span> Introducción</h2>
+<div class="outline-text-2" id="text-3">
+<p>
+Nuestro proyecto de fin de ciclo trata sobre una solución web
+multiplataforma para que aquellos artesanos que venden sus productos
+a través de prestashop puedan manejar su stock de materiales de una
+manera cómoda y sencilla y que además esté sincronizada con su
+tienda. En nuestra aplicación web, los artesanos podrán tanto añadir
+como quitar materiales de su inventario, dependiendo de si fabrican
+o compran materiales para sus productos. También podrán crear una
+lista de contactos de sus proveedores, para poder tenerlos a mano
+cuando los necesiten.
+</p>
+
+<p>
+Prestashop es un CRM open source, de fácil uso, para la creación de
+tiendas online. Actualmente se estima que hay en la red alrededor de
+125000 tiendas onlines que usan prestashop y cada vez se está haciendo
+más popular.
+</p>
+
+<p>
+Además es de fácil uso y está destinado a personas que tiene tiendas
+de tamaño pequeño-medio, de entre 500/1000 unidades a la venta. Estas
+fueron las principales razones por las que en un principio nos
+decidimos a crear un módulo para este. Es open source, es de fácil uso
+y está destinado a pequeñas tiendas. El principal problema que nos
+encontramos cuando estábamos creando el módulo es la escasa
+documentación que hay sobre como hacerlo, ya que aunque prestashop es
+open source, gana dinero de dos maneras: mediante servicios de
+hosting, y mediante cursos para que los usuarios aprendan cómo usarlo
+y que los desarrolladores aprendan cómo funciona.
+</p>
+
+<p>
+Fue entonces cuando decidimos que en vez de crear un módulo deberíamos
+crear una web app que se comunicará con prestashop mediante su web
+service. Al final fue una buena decisión, ya que haciendo una página
+web ajena a prestashop no solo implicaba no tener que usar sus
+librerías php, las cuales como ya hemos dicho tienen una documentación
+justa, sino que también nos abría las puertas con otras posibilidades
+que no están contempladas en ellas. Por ejemplo, hacer que nuestra app
+no solo se comunique con prestashop, sino con otros CRM también
+destinados a la creación de tiendas online. De ésta manera,
+multiplicamos nuestros usuarios potenciales.
+</p>
+
+<p>
+Además, si nos hubiésemos ceñido a crear el módulo, tan sólo habríamos
+usado php, html y css. Creando nuestra propia web desde cero no solo
+íbamos a aprender esas tres, sino que también nos veríamos obligados a
+usar tecnologías que están en boga tales como javascript y jquery, y
+lo más importante, aprender cómo crear páginas web para que se puedan
+ver bien en cualquier dispositivo.
+</p>
+</div>
+
+<div id="outline-container-sec-3-1" class="outline-3">
+<h3 id="sec-3-1"><span class="section-number-3">3.1</span> Objetivos</h3>
+<div class="outline-text-3" id="text-3-1">
+<p>
+Los perfiles de programadores web están muy solicitados. De hecho, a
+la hora de crear aplicaciones para dispositivos móviles, muchas
+empresas optan por realizarlas en html5 y de ahí exportarlas
+utilizando algún framework como phonegap. Estas tecnologías se están
+desarrollando muy rápido y cada vez se puede acceder a más
+funcionalidades de los dispositivos móviles, algunas de las cuales se
+consideraban inviables en un pasado.<a href="#phonegapinfo">6</a>
+  <img src="./img/phone_gap_features.png" alt="phone_gap_features.png" />
+</p>
+
+<p>
+Durante los dos años que han durado los estudios nos hemos centrado en
+la programación java. Consideramos interesante y de un valor añadido
+el aprender a realizar aplicaciones webs multidispositivo.
+</p>
+
+<p>
+El objetivo principal que perseguimos al empezar el proyecto era el
+de tener una visión general del proceso de creación de páginas webs,
+así de las tecnologías más usadas y las ventajas de unas respecto de
+otra.  También las ventajas que ofrece el encapsular tu aplicación
+desde html5 en vez de crearla directamente con tecnologías nativas.
+</p>
+
+<ul class="org-ul">
+<li>Investigación sobre las diferentes tecnologías que hay para
+realizar el back end de un página web, cuales son las ventajas y
+desventajas de usar unos frente a otros. Porque es ampliamente
+usado PHP
+</li>
+<li>Como maquetar para que la págian web pueda verse correctamente en
+diferentes tamaños de pantallas.
+</li>
+<li>Las diferentes plataformas de web hosting que hay disponibles y
+cuales son los puntos en los que tienes que centrar para escoger
+uno u otro.
+</li>
+<li>Que tecnologías existen hay para exportar tu página web a
+aplicaciones nativas de android e IOs.
+</li>
+<li>XAMPP 
+</li>
+</ul>
+</div>
+<div id="outline-container-sec-3-1-1" class="outline-4">
+<h4 id="sec-3-1-1"><span class="section-number-4">3.1.1</span> Backend de la aplicación</h4>
+<div class="outline-text-4" id="text-3-1-1">
+<p>
+El backend de la aplicación es la parte del código de la página
+web que se encarga de la manipulación y flujo de los
+datos. Generalmente está compuesta de tres elementos: un servidor,
+una aplicación y una base de datos. Para enlazar estos tres
+elementos se usan lenguajes especializados que se ejecutan desde
+el lado del servidor. 
+</p>
+
+<p>
+Para realizar nuestra aplicaciónno, nos hemos decantado por el
+lenguaje de script PHP. Acutalmente, según
+W3tech<a href="#porcentajewebsphp">6</a>, PHP es usado por el 81.9% de páginas web
+del plantea. 
+</p>
+
+<p>
+En el mundo profesiona generalmente se usa php mediante un
+framework para facilitar el proceso de creción de software. Por
+ello decidimos usar uno para experimentar de primera mano la
+ventajas que ofrece. Finalmente elegimos el framework Codeigniter
+el cual esta basado en MVC. A pesar de que hayan aparecido nuevos
+frameworks muy potentes como laravel, hemos decidido realizar el
+proyecto en codeigniter porque es rápido, fácil de instalar y
+configurar, está bien documentado y nos aporta una buena
+introducción a la convenciones de MVC en php. Además tiene un
+sistema de ruteo fácil, es fácil de extender y existentes una
+amplia base de librerías.
+<a href="#phpframeworkgraph">6</a>
+</p>
+
+<div class="figure">
+<p><img src="./img/php_framework_overview.png" alt="php_framework_overview.png" width="700" />
+</p>
+</div>
+
+<p>
+En cuanto a nuestra base de datos, nuestra aplicación correrá en
+una base de datos MySQL. En un principio habíamos decidido
+utilizar mongodb, pero existía el problema que casi ninguno de los
+proveedores que barajeabamos para albergar nuestra aplicación
+ofrecía mongodb como una solución por defecto, sino que era de
+pago. Mongodb nos parecía una buena solución ya que nuestra app
+necesitaba una base de datos dinámica, en la que no es necesario
+seguir ningún esquema. Por ejemplo, los productos que los artesanos
+venden en la tienda, pueden tener una gran variedad de
+materiales. Y además un mismo material puede proveenir de distintos
+proveedores. Usando mongodb podríamos haber conseguido una base de
+datos dinámica y menos rígida más apropiada para la gestión de
+materiales de artesanos a pequeña escala.
+</p>
+
+<p>
+Finalmente nos decidimos por MySQL, ya que esta está
+disponible en la mayoría de los servidores de hosting, PHP se
+integra bien con éste, y es rápido. Además es la segunda de bases de
+datos más usada hasta el momento, lo que quiere decir que está muy
+demandada en el mundo profesional.<a href="#basesdatosranking">6</a>
+</p>
+</div>
+</div>
+<div id="outline-container-sec-3-1-2" class="outline-4">
+<h4 id="sec-3-1-2"><span class="section-number-4">3.1.2</span> Como realizar un página web responsive</h4>
+<div class="outline-text-4" id="text-3-1-2">
+<p>
+Para la maquetación usaremos el lenguaje de marcas HTML junto con
+css. De igual modo, que para el backend, para facilitar el proceso
+de diseño de esta usaremos el framework twitter bootstrap.
+</p>
+</div>
+</div>
+
+
+<div id="outline-container-sec-3-1-3" class="outline-4">
+<h4 id="sec-3-1-3"><span class="section-number-4">3.1.3</span> Alternativas de web hosting, y como usarlas</h4>
+</div>
+</div>
+
+<div id="outline-container-sec-3-2" class="outline-3">
+<h3 id="sec-3-2"><span class="section-number-3">3.2</span> Motivación</h3>
+<div class="outline-text-3" id="text-3-2">
+<p>
+Cada vez son más las personas que se animan a crear artseanías y
+venderlas en internet. Existen varios tiendas online en las que los
+artesanos pueden publicar sus productos, el problema de estás es
+que cobran un porcentaje por cada venta que hagas. Por ello, muchos
+artesanos optan por crearse sus propias tiendas online para asi
+evitar pérdidas.
+</p>
+
+<p>
+Existen muchos CMS especializados en la creación de tiendas
+online. Shopify, bigcommerce, 3dcart. Todas estas tiene el
+inconveniente que son de pago. Entre todos ellas esta teniendo
+mucho éxito prestashop, la cuál es gratuita y open source. Es de
+fácil uso y cada vez es más usada, sobre todo por gente que no
+tiene conocimientos de programación. Está basado en módulos, los
+hay gratuitos y otros de pago, por los cuales puedes extender la
+funcionalidad de tu tienda.
+</p>
+
+<p>
+El problema con prestashop, es que no tiene ningún módulo para
+ayudar a la creación de productos para los artesanos. No tiene
+ningún módulo para facilitar el proceso de creación de
+artesanías. En un principio teníamos pensado crear un módulo, pero
+decidimos sincronizarlo con prestashop a través de su api web
+basada en api rest. Tomamos esta decisión para así también poder
+sincronizar nuestra aplicación web con otra tiendas online que no
+sean prestashop. La idea es que en un futuro craft and budget sea
+una herramienta de gestión para los artesanos en los que pueden
+exportar e importar sus prodcutor a diferentes tiendas online. De
+esta manera tendríamos mas usuario potenciales.
+</p>
+</div>
+</div>
+
+<div id="outline-container-sec-3-3" class="outline-3">
+<h3 id="sec-3-3"><span class="section-number-3">3.3</span> Antecedentes</h3>
+<div class="outline-text-3" id="text-3-3">
+<p>
+Después de investigar diferentes tecnologías
+disponibles, más tarde expondremos cuales, nos decantamos por las
+siguientes:
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-sec-4" class="outline-2">
+<h2 id="sec-4"><span class="section-number-2">4</span> Desarrollo de la práctica</h2>
+<div class="outline-text-2" id="text-4">
+<p>
+En esta sección se ofrece información soblre la realización del
+trabajo en sí. En esta parte se describe lo que se ha hecho, cómo se
+ha llevado a cabo, por qué se ha hecho así y no de otra manera, qué
+materiales o herramientas ha sido necesario utilizar, qué
+metodología de trabajo y validación se ha utilizado, etc.
+</p>
+</div>
+
+<div id="outline-container-sec-4-1" class="outline-3">
+<h3 id="sec-4-1"><span class="section-number-3">4.1</span> Material</h3>
+<div class="outline-text-3" id="text-4-1">
+<p>
+A continuación vamos a detallar cada tecnología que ha estado
+implicada en la realización de nuestro proyecto. 
+Abrir una sección por cada tecnología usada o implicada en la
+realización del trabajo (ej.: BDs, Java, Android, etc.). En este
+capítulo se pretende ofrecer un resumen destinado a lectores no
+familiarizados con la tecnología utilizada. Destinar más páginas según
+la importancia en el trabajo, de dos a cuatro páginas cada sección con
+todas las referencias bibliográficas que se consideren oportunas.
+</p>
+</div>
+
+<div id="outline-container-sec-4-1-1" class="outline-4">
+<h4 id="sec-4-1-1"><span class="section-number-4">4.1.1</span> PHP</h4>
+<div class="outline-text-4" id="text-4-1-1">
+<p>
+PHP es una lenguage de scripting diseñado específicamente para el uso
+de programación web. Tiene características que ayudan a los
+programadores al desarrollo de aplicaciones web dinámicas.
+</p>
+
+<p>
+PHP es el acrónimo de HyperText Preprocessor. Para crear páginas web
+dinámicas, es necesario recuperar datos y mostrarlos en la página web.
+Para almacenar los datos hemos escogido MySql, el cual es un  sistema
+gestor de bases de datos gratuito y popular, que se integra
+perfectamente con php con el fin de crear páginas webs dinámica y
+funcionales. MySQL una base de datos RDBMS (Relational
+database managment system) rápida, y fácil de usar que se usa en
+la mayoría de páginas web.
+</p>
+
+<p>
+En resumen, las razones por las que hemos escogido php y MySQL como
+backend de nuestra aplicación son:
+</p>
+
+<ul class="org-ul">
+<li>Son gratuitas. La mejor opción de coste-eficiencia.
+</li>
+<li>Son orientadas a la creación de páginas webs. Ambos fueron
+creados específicamente para ser usados en la programación de
+páginas webs dinámicas.
+</li>
+<li>Son fáciles de usar. Ambos fueron creados para crear webs
+rápidamente.
+</li>
+<li>Son rápidas. Fueron diseñados para que fuesen rápidos. Juntos
+proveen una de las maneras más rápidas de crear páginas webs
+dinámicas.
+</li>
+<li>Se comunican bien entre si. PHP tiene caracterísitcas integradas
+para comunicarse con MySql. No es necesario tener un
+conocimiento de los detalles técnicos, PHP se encarga de ellos.
+</li>
+<li>Ambos tienen una amplia comunidad de desarrolladores. Tiene una
+amplia base de soporte técnico, además, como se suelen usar
+juntos, comparten la misma comunidad de desarrolladores.
+</li>
+<li>Al ser ambos de código abierto, son customizables. Permiten a
+los programadores modificar el software PHP y MySQL para que se
+ajusten a sus necesidades particulares.
+</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-sec-4-1-2" class="outline-4">
+<h4 id="sec-4-1-2"><span class="section-number-4">4.1.2</span> Framework codeigniter php</h4>
+<div class="outline-text-4" id="text-4-1-2">
+<p>
+Para la parte del servidor, decidimos usar el framework de php
+codeigniter. Queríamos asegurarnos de que desarrollabamos una
+página web estructurada, de fácil mantenimiento y
+legibilidad. Usar un framework te garantiza todo eso. 
+</p>
+
+<p>
+Codeigniter te permite ahorrar tiempo, ya que este
+se encargar de la sanitazión de los datos, manejor de errores,
+procesos de logeo, proceso de registro, y manejo de las
+sesiones. También cuenta con multitud de librerías que te
+facilitan tareas como enviar e-mails, validación de informes,
+subida de ficheros a la base de datos. Sin todas estas librerías
+el desarrollo de la página web habría sido mucho mas lenta,
+tediosa e insecura.
+</p>
+
+<p>
+Además al usar un framework, es difícil que acabes con una
+estructura de directorio poco organizada, ya que la mayoría de
+estos viene con una estructura predefinida para usar. En concreto,
+codeigniter usa el modelo MVC (modelo vista controlador), el cual
+te permite separa la lógica de las interfaces de usuario de manera
+que la páginas web contienen pocos scripts. En el caso de
+codeigniter, el modelo representa la estructura de datos. Es donde
+se realizan las conexiones con las bases de datos y donde se
+encuentran las funciones que permiten insertar, coger, y
+actualizar los datos. La vista es donde se presenta la información
+al usuario. Generalmente, en codeingniter se suelen separa en
+footer, body y el header para no repetir código. Por último el
+controlador es un intermediario entre la la vista y el
+modelo. Además es el encargado de procesar las request de http
+como los get y post de los formularios. También es el encargado de
+generar las vistas.
+</p>
+
+<p>
+Codeigniter ofrece también flexibilidad a la hora de cambiar la
+plataforma de la base de datos. Tan solo tienes que cambiar
+algunos archivos de configuración y ya está lista para cambiar la
+plataforma en la que corre tu aplicaición. 
+</p>
+
+<p>
+Los framework ofrecen por defectos buenas medidas de
+seguridad. Por ejemplo, codeigniter ofrece las siguientes
+funcionalidades por defecto: 
+</p>
+
+<ul class="org-ul">
+<li>Cada valor que a un objeto de la base de datos es filtrado
+contra ataques SQL de inyección. 
+</li>
+<li>Todas las funciones generadoras de HTML, como las de formularios
+y URL filtran los datos de salida automaticamente.
+</li>
+</ul>
+<p>
+-Todo dato ingresado por el usuario puede ser filtrado contra
+XSS. 
+</p>
+<ul class="org-ul">
+<li>Posibildad de encriptar cookies automáticamente tan solo
+cambiando opciones de configuración.
+</li>
+</ul>
+
+<p>
+Optimización de seo por defecto. Las URLs generados por
+codeigniter son limpias y amigables con los sistemas de búsqueda
+online. Lo consigue porque en vez de usar direccionamiento de URL
+standard, por ejemplo
+"<a href="http://www.example.com/catalog.asp?itemid=232&template=fresh&crcat=ppc&crsource=google&crkw=buy-a-lot">http://www.example.com/catalog.asp?itemid=232&template=fresh&crcat=ppc&crsource=google&crkw=buy-a-lot</a>"
+usa un sistema personalizado en el que es mucho mas legible, y es
+comprensible lo que hace la url, ya que como ya se detallarás más
+adelante, codeigniter usa query string del tipoe
+"example.com/news/article/345" en donde:
+</p>
+
+<ul class="org-ul">
+<li>example.com: Dominio de la web.
+</li>
+<li>news: controlador que se esta utilizando
+</li>
+<li>article: método dentro del controlador que se esta llamando.
+</li>
+<li>345: parámetro que se le esta pasando al controlador.
+</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-sec-4-1-3" class="outline-4">
+<h4 id="sec-4-1-3"><span class="section-number-4">4.1.3</span> twitter bootstrap</h4>
+</div>
+<div id="outline-container-sec-4-1-4" class="outline-4">
+<h4 id="sec-4-1-4"><span class="section-number-4">4.1.4</span> api rest</h4>
+</div>
+<div id="outline-container-sec-4-1-5" class="outline-4">
+<h4 id="sec-4-1-5"><span class="section-number-4">4.1.5</span> base de datos en prestashop</h4>
+</div>
+<div id="outline-container-sec-4-1-6" class="outline-4">
+<h4 id="sec-4-1-6"><span class="section-number-4">4.1.6</span> comunicarse con prestashop mediante su web api</h4>
+</div>
+</div>
+<div id="outline-container-sec-4-2" class="outline-3">
+<h3 id="sec-4-2"><span class="section-number-3">4.2</span> Planificación</h3>
+</div>
+<div id="outline-container-sec-4-3" class="outline-3">
+<h3 id="sec-4-3"><span class="section-number-3">4.3</span> Descripción del trabajo realizado</h3>
+</div>
+<div id="outline-container-sec-4-4" class="outline-3">
+<h3 id="sec-4-4"><span class="section-number-3">4.4</span> Resultados y validación</h3>
+</div>
+</div>
+<div id="outline-container-sec-5" class="outline-2">
+<h2 id="sec-5"><span class="section-number-2">5</span> Conclusiones</h2>
+<div class="outline-text-2" id="text-5">
+</div><div id="outline-container-sec-5-1" class="outline-3">
+<h3 id="sec-5-1"><span class="section-number-3">5.1</span> Aportaciones</h3>
+</div>
+<div id="outline-container-sec-5-2" class="outline-3">
+<h3 id="sec-5-2"><span class="section-number-3">5.2</span> Trabajo futuro</h3>
+</div>
+</div>
+<div id="outline-container-sec-6" class="outline-2">
+<h2 id="sec-6"><span class="section-number-2">6</span> Bibliografía y webgrafía</h2>
+<div class="outline-text-2" id="text-6">
+<p>
+<a href="http://phonegap.com/">http://phonegap.com/</a><a id="phonegapinfo" name="phonegapinfo"></a>
+</p>
+
+<p>
+<a href="http://w3techs.com/technologies/overview/programming_language/all">http://w3techs.com/technologies/overview/programming_language/all</a><a id="porcentajewebsphp" name="porcentajewebsphp"></a>
+</p>
+
+<p>
+<a href="http://www.sitepoint.com/best-php-framework-2015-sitepoint-survey-results/">http://www.sitepoint.com/best-php-framework-2015-sitepoint-survey-results/</a><a id="phpframeworkgraph" name="phpframeworkgraph"></a>
+</p>
+
+<p>
+<a href="http://db-engines.com/en/ranking">http://db-engines.com/en/ranking</a><a id="basesdatosranking" name="basesdatosranking"></a>
+</p>
+
+<p>
+<a href="http://web2.0entrepreneur.com/7/why-you-should-use-a-web-application-framework.html">http://web2.0entrepreneur.com/7/why-you-should-use-a-web-application-framework.html</a>
+</p>
+
+<p>
+<a href="http://es.wikipedia.org/wiki/Inyecci%C3%B3n_SQL">http://es.wikipedia.org/wiki/Inyecci%C3%B3n_SQL</a>
+</p>
+
+<p>
+<a href="http://www.codeigniter.com/user_guide/">http://www.codeigniter.com/user_guide/</a>
+</p>
+
+<p>
+<a href="http://www.smartec.la/blog/por-que-usar-un-framework">http://www.smartec.la/blog/por-que-usar-un-framework</a>((imagenes de frameworks))
+</p>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<p class="author">Author: Nicolas Alphonse</p>
+<p class="date">Created: 2015-06-01 Mon 17:01</p>
+<p class="creator"><a href="http://www.gnu.org/software/emacs/">Emacs</a> 24.5.1 (<a href="http://orgmode.org">Org</a> mode 8.2.10)</p>
+<p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
+</div>
+</body>
+</html>
