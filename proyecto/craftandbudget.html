@@ -1,0 +1,244 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<title>craftandbudget</title>
+<!-- 2015-06-01 Mon 12:11 -->
+<meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta  name="generator" content="Org-mode" />
+<meta  name="author" content="Nicolas Alphonse" />
+<style type="text/css">
+ <!--/*--><![CDATA[/*><!--*/
+  .title  { text-align: center; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { color: green; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #ccc;
+    box-shadow: 3px 3px 3px #eee;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: visible;
+    padding-top: 1.2em;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    background-color: white;
+    top: -10px;
+    right: 10px;
+    padding: 3px;
+    border: 1px solid black;
+  }
+  pre.src:hover:before { display: inline;}
+  pre.src-sh:before    { content: 'sh'; }
+  pre.src-bash:before  { content: 'sh'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-R:before     { content: 'R'; }
+  pre.src-perl:before  { content: 'Perl'; }
+  pre.src-java:before  { content: 'Java'; }
+  pre.src-sql:before   { content: 'SQL'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.right  { text-align: center;  }
+  th.left   { text-align: center;   }
+  th.center { text-align: center; }
+  td.right  { text-align: right;  }
+  td.left   { text-align: left;   }
+  td.center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara:nth-child(2) { display: inline; }
+  .footpara { display: block; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  /*]]>*/-->
+</style>
+<script type="text/javascript">
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012-2013 Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+</head>
+<body>
+<div id="content">
+<h1 class="title">craftandbudget</h1>
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#sec-1">1. vision general</a>
+<ul>
+<li><a href="#sec-1-1">1.1. resumen</a></li>
+<li><a href="#sec-1-2">1.2. abstract</a></li>
+</ul>
+</li>
+<li><a href="#sec-2">2. Agradecimientos</a></li>
+<li><a href="#sec-3">3. introduccion</a>
+<ul>
+<li><a href="#sec-3-1">3.1. Objetivos</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-sec-1" class="outline-2">
+<h2 id="sec-1"><span class="section-number-2">1</span> vision general</h2>
+<div class="outline-text-2" id="text-1">
+</div><div id="outline-container-sec-1-1" class="outline-3">
+<h3 id="sec-1-1"><span class="section-number-3">1.1</span> resumen</h3>
+<div class="outline-text-3" id="text-1-1">
+<p>
+   Craft&amp;budget es una web app destinada para que aquellos artesanos   que tengan una tienda online en el CMS prestashop puedan manejar el stock de su tienda. Podrán tanto manejar el stock de los productos que tengan en venta, como el stock de los materiales que usan para  crear sus productos. Con craft and budget podrán además gestionar la
+creación de sus productos sabiendo cuantos materiales necesitan para crear sus productos y cuántos productos pueden crear con los materiales de los que disponen. Finalmente también dispondrán de una libreta de dirección para almacenar todos sus proveedores.
+</p>
+
+<p>
+El stock de los materiales no se encuentra en la base de  datos de prestashop, sino que los artesanos tendrán que crearlo con  los materiales de que dispongan materiales. 
+</p>
+
+<p>
+La primera versión se conectará con prestashop únicamente, pero en  un futuro p2odrá conectarse con otras tiendas online. Para  conectarse, craft and budget se comunica con prestashop mediante una  api rest por la cual se descargá todos los productos que el artesano  tiene en la tienda. Usaremos una base de datos mysql para guardar
+todos los productos y los materiales.
+</p>
+</div>
+</div>
+
+
+<div id="outline-container-sec-1-2" class="outline-3">
+<h3 id="sec-1-2"><span class="section-number-3">1.2</span> abstract</h3>
+</div>
+</div>
+
+<div id="outline-container-sec-2" class="outline-2">
+<h2 id="sec-2"><span class="section-number-2">2</span> Agradecimientos</h2>
+</div>
+
+<div id="outline-container-sec-3" class="outline-2">
+<h2 id="sec-3"><span class="section-number-2">3</span> introduccion</h2>
+<div class="outline-text-2" id="text-3">
+<p>
+Nuestro proyecto de fin de ciclo trata sobre una solución web multiplataforma para que aquellos artesanos que venden sus productos a través de prestashop puedan manejar su stock de materiales de una manera cómoda y sencilla y que además esté sincronizada con su tienda. En nuestra aplicación web, los artesanos podrán tanto añadir como quitar materiales de su inventario, dependiendo de si fabrican o compran materiales para sus productos. También podrán crear una lista de contactos de sus proveedores, para poder tenerlos a mano cuando los necesiten.
+</p>
+
+<p>
+Prestashop es un CRM open source, de fácil uso, para la creación de tiendas online. Actualmente se estima que hay en la red alrededor de 125000 tiendas onlines que usan prestashop y cada vez se está haciendo más popular.
+</p>
+
+<p>
+Además es de fácil uso y está destinado a personas que tiene tiendas de
+tamaño pequeño-medio, de entre 500/1000 unidades a la venta. Estas fueron las principales razones por las que en un principio nos decidimos a crear un módulo para este. Es open source, es de fácil uso y está destinado a pequeñas tiendas. El principal problema que nos encontramos cuando estábamos creando el módulo es la escasa documentación que hay sobre como hacerlo, ya que aunque prestashop es open source, gana dinero de dos maneras: mediante servicios de hosting, y mediante cursos para que los usuarios aprendan cómo usarlo y que los desarrolladores aprendan cómo funciona.
+</p>
+
+<p>
+Fue entonces cuando decidimos que en vez de crear un módulo deberíamos crear una web app que se comunicará con prestashop mediante su web service. Al final fue una buena decisión, ya que haciendo una página web ajena a prestashop no solo implicaba no tener que usar sus librerías php, las cuales como ya hemos dicho tienen una documentación  justa, sino que también nos abría las puertas con otras posibilidades que no están contempladas en ellas. Por ejemplo, hacer que nuestra app no solo se comunique con prestashop, sino con otros CRM también destinados a la creación de tiendas online. De ésta manera, multiplicamos nuestros usuarios potenciales.
+</p>
+
+<p>
+Además, si nos hubiésemos ceñido a crear el módulo, tan sólo habríamos
+usado php, html y css. Creando nuestra propia web desde cero no solo
+íbamos a aprender esas tres, sino que también nos veríamos obligados a
+usar tecnologías que están en boga tales como javascript y jquery, y lo más importante, aprender cómo crear páginas web para que se puedan ver bien en cualquier dispositivo.
+</p>
+</div>
+
+<div id="outline-container-sec-3-1" class="outline-3">
+<h3 id="sec-3-1"><span class="section-number-3">3.1</span> Objetivos</h3>
+<div class="outline-text-3" id="text-3-1">
+<p>
+Los perfiles de programadores web están muy solicitados. De hecho, a
+la hora de crear aplicaciones para dispositivos móviles, muchas
+empresas optan por realizarlas en html5 y de ahí exportarlas
+utilizando algún framework como phonegap. Estas tecnologías se están
+desarrollando muy rápido y cada vez se puede acceder a más
+funcionalidades de los dispositivos móviles, algunas de las cuales se
+consideraban inviables en un pasado.
+<img src="file:///home/nicolas/craftandbudget/proyecto/img/phone_gap_features.png" alt="phone_gap_features.png" />
+</p>
+</div>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<p class="author">Author: Nicolas Alphonse</p>
+<p class="date">Created: 2015-06-01 Mon 12:11</p>
+<p class="creator"><a href="http://www.gnu.org/software/emacs/">Emacs</a> 24.5.1 (<a href="http://orgmode.org">Org</a> mode 8.2.10)</p>
+<p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
+</div>
+</body>
+</html>

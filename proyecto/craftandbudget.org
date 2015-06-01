@@ -1,0 +1,39 @@
+* vision general 
+** resumen
+   Craft&budget es una web app destinada para que aquellos artesanos   que tengan una tienda online en el CMS prestashop puedan manejar el stock de su tienda. Podrán tanto manejar el stock de los productos que tengan en venta, como el stock de los materiales que usan para  crear sus productos. Con craft and budget podrán además gestionar la
+creación de sus productos sabiendo cuantos materiales necesitan para crear sus productos y cuántos productos pueden crear con los materiales de los que disponen. Finalmente también dispondrán de una libreta de dirección para almacenar todos sus proveedores.
+    
+ El stock de los materiales no se encuentra en la base de  datos de prestashop, sino que los artesanos tendrán que crearlo con  los materiales de que dispongan materiales. 
+  
+ La primera versión se conectará con prestashop únicamente, pero en  un futuro p2odrá conectarse con otras tiendas online. Para  conectarse, craft and budget se comunica con prestashop mediante una  api rest por la cual se descargá todos los productos que el artesano  tiene en la tienda. Usaremos una base de datos mysql para guardar
+ todos los productos y los materiales.
+
+
+** abstract
+
+* Agradecimientos
+
+* introduccion
+  Nuestro proyecto de fin de ciclo trata sobre una solución web multiplataforma para que aquellos artesanos que venden sus productos a través de prestashop puedan manejar su stock de materiales de una manera cómoda y sencilla y que además esté sincronizada con su tienda. En nuestra aplicación web, los artesanos podrán tanto añadir como quitar materiales de su inventario, dependiendo de si fabrican o compran materiales para sus productos. También podrán crear una lista de contactos de sus proveedores, para poder tenerlos a mano cuando los necesiten.
+
+Prestashop es un CRM open source, de fácil uso, para la creación de tiendas online. Actualmente se estima que hay en la red alrededor de 125000 tiendas onlines que usan prestashop y cada vez se está haciendo más popular.
+
+Además es de fácil uso y está destinado a personas que tiene tiendas de
+tamaño pequeño-medio, de entre 500/1000 unidades a la venta. Estas fueron las principales razones por las que en un principio nos decidimos a crear un módulo para este. Es open source, es de fácil uso y está destinado a pequeñas tiendas. El principal problema que nos encontramos cuando estábamos creando el módulo es la escasa documentación que hay sobre como hacerlo, ya que aunque prestashop es open source, gana dinero de dos maneras: mediante servicios de hosting, y mediante cursos para que los usuarios aprendan cómo usarlo y que los desarrolladores aprendan cómo funciona.
+
+Fue entonces cuando decidimos que en vez de crear un módulo deberíamos crear una web app que se comunicará con prestashop mediante su web service. Al final fue una buena decisión, ya que haciendo una página web ajena a prestashop no solo implicaba no tener que usar sus librerías php, las cuales como ya hemos dicho tienen una documentación  justa, sino que también nos abría las puertas con otras posibilidades que no están contempladas en ellas. Por ejemplo, hacer que nuestra app no solo se comunique con prestashop, sino con otros CRM también destinados a la creación de tiendas online. De ésta manera, multiplicamos nuestros usuarios potenciales.
+
+Además, si nos hubiésemos ceñido a crear el módulo, tan sólo habríamos
+usado php, html y css. Creando nuestra propia web desde cero no solo
+íbamos a aprender esas tres, sino que también nos veríamos obligados a
+usar tecnologías que están en boga tales como javascript y jquery, y lo más importante, aprender cómo crear páginas web para que se puedan ver bien en cualquier dispositivo.
+
+** Objetivos
+Los perfiles de programadores web están muy solicitados. De hecho, a
+la hora de crear aplicaciones para dispositivos móviles, muchas
+empresas optan por realizarlas en html5 y de ahí exportarlas
+utilizando algún framework como phonegap. Estas tecnologías se están
+desarrollando muy rápido y cada vez se puede acceder a más
+funcionalidades de los dispositivos móviles, algunas de las cuales se
+consideraban inviables en un pasado.
+[[/home/nicolas/craftandbudget/proyecto/img/phone_gap_features.png]]
