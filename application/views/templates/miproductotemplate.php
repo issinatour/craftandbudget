@@ -7,7 +7,13 @@
  */
 
 $this->load->view('templates/header_backoffice',$header);
-$this->load->view('menu');
+
+if(isset($menu)){
+    $this->load->view('menu',$menu);
+}else{
+    $this->load->view('menu');
+}
+
 
 ?>
 

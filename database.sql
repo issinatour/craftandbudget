@@ -142,6 +142,8 @@ PRIMARY KEY (id_stock_material),
 CONSTRAINT `fk_id_material_stock_material` FOREIGN KEY (id_material) REFERENCES material (id_material) ON DELETE NO ACTION ON UPDATE NO ACTION
 )ENGINE=InnoDB;
 
+alter table stock_material add column quantity double;
+
 CREATE TABLE IF NOT EXISTS material_supplier(
 id_material_supplier int(10) NOT NULL AUTO_INCREMENT,
 id_material int(10),

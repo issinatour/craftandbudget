@@ -9,7 +9,7 @@
 class Producto_obj{
 
     public $id_material;
-    public $id_user;
+    public $id_craftshop;
     public $name;
     public $measurement_type;
     public $price;
@@ -20,7 +20,7 @@ class Producto_obj{
     	$this->instance = &get_instance();
     	if($data != 0){
     		$this->$idmaterial = $data['id_material'];
-    		$this->$id_user = $data['$id_user'];
+    		$this->$id_craftshop = $data['$id_user'];
     		$this->$name = $data['$name'];
     		$this->$measurement_type = $data['$measurement_type'];
     		$this->$price = $data['$price'];

@@ -95,6 +95,26 @@ class Product_mod extends CI_Model
         return $this->db->insert_id();
     }
 
+    function get_product_media($filename,$id_product){
+        $this->db->where('product_media.file', $filename);
+        $this->db->where('product_media_product.id_product', $id_product);
+        $this->db->join('product_media', 'product_media_product.id_media = product_media.id_media','left');
+        $query = $this->db->get("product_media_product");
+        echo $this->db->last_query();
+        return $query->row_array();
+    }
+
+    function delete_product_media_product($id_media,$id_product){
+        $this->db->where('id_product', $id_product);
+        $this->db->where('id_media', $id_media);
+        $this->db->delete('product_media_product');
+    }
+
+    function delete_product_media($id_media){
+        $this->db->where('id_media', $id_media);
+        $this->db->delete('product_media');
+    }
+
     function get_product_ps($id_craftshop,$id_product_ps){
         $this->db->where('product.id_craftshop', $id_craftshop);
         $this->db->where('product.id_product_prestashop', $id_product_ps);

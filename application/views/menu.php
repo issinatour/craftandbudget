@@ -1,15 +1,16 @@
 
-<body>
 
+<?php if(isset($full_width) && $full_width==1){ ?>
+<body class="pace-done mini-navbar">
+<?php }else{?>
+<body>
+<?php } ?>
 <?php
     $name= $this->session->userdata('user');
     $email = $this->session->userdata('email');
     $logged_in= $this->session->userdata('logged_in');
     $myshop= $this->session->userdata('id_craftshop');
 
-print_r($name);
-print_r($email);print_r($logged_in);print_r($myshop);
-print_r('asdasd');
 ?>
 
 <div id="wrapper">
@@ -48,7 +49,7 @@ print_r('asdasd');
              <li>
                 <a href="#"><i class="fa fa-bar-chart-o"></i> <span class="nav-label">Materiales</span><span class="fa arrow"></span></a>
                 <ul class="nav nav-second-level">
-                    <li><a href="<?=base_url()?>material">Mis materiales</a></li>
+                    <li><a href="<?=base_url()?>materiales">Mis materiales</a></li>
                 </ul>
             </li>
         </ul>

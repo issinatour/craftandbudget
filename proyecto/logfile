@@ -1,3 +1,5 @@
 la tabla producto producto_img y producto_lang son separadas para que al hacer el join no no sala vacio si no tiene imagen predefinida
 un usuario puede tener varias tiendas electronicas
 una tienda tendra varios usuarios que pueden utilizarla
+
+- pene
