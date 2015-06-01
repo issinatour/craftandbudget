@@ -4,7 +4,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
 <title>craftandbudget</title>
-<!-- 2015-06-01 Mon 13:49 -->
+<!-- 2015-06-01 Mon 16:18 -->
 <meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta  name="generator" content="Org-mode" />
 <meta  name="author" content="Nicolas Alphonse" />
@@ -303,7 +303,7 @@ utilizando algún framework como phonegap. Estas tecnologías se están
 desarrollando muy rápido y cada vez se puede acceder a más
 funcionalidades de los dispositivos móviles, algunas de las cuales se
 consideraban inviables en un pasado.<a href="#phonegapinfo">6</a>
-<img src="file:///home/nicolas/craftandbudget/proyecto/img/phone_gap_features.png" alt="phone_gap_features.png" />
+  <img src="./img/phone_gap_features.png" alt="phone_gap_features.png" />
 </p>
 
 <p>
@@ -344,27 +344,64 @@ aplicaciones nativas de android e IOs.
 <h4 id="sec-3-1-1"><span class="section-number-4">3.1.1</span> Backend de la aplicación</h4>
 <div class="outline-text-4" id="text-3-1-1">
 <p>
-El backend de la aplicación 
-Para la programación por parte del servidor nos hemos decantado por
-el lenguaje de script PHP. Acutalmente, según
+El backend de la aplicación es la parte del código de la página
+web que se encarga de la manipulación y flujo de los
+datos. Generalmente está compuesta de tres elementos: un servidor,
+una aplicación y una base de datos. Para enlazar estos tres
+elementos se usan lenguajes especializados que se ejecutan desde
+el lado del servidor. 
+</p>
+
+<p>
+Para realizar nuestra aplicaciónno, nos hemos decantado por el
+lenguaje de script PHP. Acutalmente, según
 W3tech<a href="#porcentajewebsphp">6</a>, PHP es usado por el 81.9% de páginas web
 del plantea. 
 </p>
 
 <p>
-En el mundo profesional generalmente se usa php mediante un
+En el mundo profesiona generalmente se usa php mediante un
 framework para facilitar el proceso de creción de software. Por
 ello decidimos usar uno para experimentar de primera mano la
-ventajas que ofrece. Finalmente elegimos el framework codeigniter
-el cual esta basado en MVC.
+ventajas que ofrece. Finalmente elegimos el framework Codeigniter
+el cual esta basado en MVC. A pesar de que hayan aparecido nuevos
+frameworks muy potentes como laravel, hemos decidido realizar el
+proyecto en codeigniter porque es rápido, fácil de instalar y
+configurar, está bien documentado y nos aporta una buena
+introducción a la convenciones de MVC en php. Además tiene un
+sistema de ruteo fácil, es fácil de extender y existentes una
+amplia base de librerías.
+<a href="#phpframeworkgraph">6</a>
+</p>
+
+<div class="figure">
+<p><img src="./img/php_framework_overview.png" alt="php_framework_overview.png" width="700" />
+</p>
+</div>
+
+<p>
+En cuanto a nuestra base de datos, nuestra aplicación correrá en
+una base de datos MySQL. En un principio habíamos decidido
+utilizar mongodb, pero existía el problema que casi ninguno de los
+proveedores que barajeabamos para albergar nuestra aplicación
+ofrecía mongodb como una solución por defecto, sino que era de
+pago. Mongodb nos parecía una buena solución ya que nuestra app
+necesitaba una base de datos dinámica, en la que no es necesario
+seguir ningún esquema. Por ejemplo, los productos que los artesanos
+venden en la tienda, pueden tener una gran variedad de
+materiales. Y además un mismo material puede proveenir de distintos
+proveedores. Usando mongodb podríamos haber conseguido una base de
+datos dinámica y menos rígida más apropiada para la gestión de
+materiales de artesanos a pequeña escala.
 </p>
 
 <p>
- Nuestra base de datos será mysql. La razón por la que la hemos
- escogido es porque esta disponible en la mayoría de los
- servidores web por defecto. Además es la segunda base de datos
- más usada por detrás de oracle, y ambas son
-realcionales. (((db-engines-ranking)<a href="http://db-engines.com/en/ranking">http://db-engines.com/en/ranking</a>))
+Finalmente nos decidimos por MySQL, ya que esta está
+disponible en la mayoría de los servidores de hosting, PHP se
+integra bien con éste, y es rápido. Es la segunda de bases de
+datos más usada hasta el momento, lo que quiere decir que está muy
+bien demandada en el mundo profesional.<a href="#basesdatosranking">6</a>
+ (((db-engines-ranking)<a href="http://db-engines.com/en/ranking">http://db-engines.com/en/ranking</a>))
 </p>
 </div>
 </div>
@@ -651,8 +688,18 @@ adelante, codeigniter usa query string del tipoe
 <div class="outline-text-2" id="text-6">
 <p>
 <a href="http://phonegap.com/">http://phonegap.com/</a><a id="phonegapinfo" name="phonegapinfo"></a>
+</p>
+
+<p>
 <a href="http://w3techs.com/technologies/overview/programming_language/all">http://w3techs.com/technologies/overview/programming_language/all</a><a id="porcentajewebsphp" name="porcentajewebsphp"></a>
-  <a href="http://db-engines.com/en/ranking">http://db-engines.com/en/ranking</a>
+</p>
+
+<p>
+<a href="http://www.sitepoint.com/best-php-framework-2015-sitepoint-survey-results/">http://www.sitepoint.com/best-php-framework-2015-sitepoint-survey-results/</a><a id="phpframeworkgraph" name="phpframeworkgraph"></a>
+</p>
+
+<p>
+<a href="http://db-engines.com/en/ranking">http://db-engines.com/en/ranking</a><a id="basesdatosranking" name="basesdatosranking"></a>
 </p>
 
 <p>
@@ -675,7 +722,7 @@ adelante, codeigniter usa query string del tipoe
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: Nicolas Alphonse</p>
-<p class="date">Created: 2015-06-01 Mon 13:49</p>
+<p class="date">Created: 2015-06-01 Mon 16:18</p>
 <p class="creator"><a href="http://www.gnu.org/software/emacs/">Emacs</a> 24.5.1 (<a href="http://orgmode.org">Org</a> mode 8.2.10)</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>

@@ -80,7 +80,7 @@ libreta de dirección para almacenar todos sus proveedores.
    desarrollando muy rápido y cada vez se puede acceder a más
    funcionalidades de los dispositivos móviles, algunas de las cuales se
    consideraban inviables en un pasado.[[phonegapinfo]]
-   [[/home/nicolas/craftandbudget/proyecto/img/phone_gap_features.png]]
+  [[./img/phone_gap_features.png]]
    
    Durante los dos años que han durado los estudios nos hemos centrado en
    la programación java. Consideramos interesante y de un valor añadido
@@ -118,18 +118,42 @@ libreta de dirección para almacenar todos sus proveedores.
     W3tech[[porcentajewebsphp]], PHP es usado por el 81.9% de páginas web
     del plantea. 
 
-    En el mundo profesional generalmente se usa php mediante un
+    En el mundo profesiona generalmente se usa php mediante un
     framework para facilitar el proceso de creción de software. Por
     ello decidimos usar uno para experimentar de primera mano la
-    ventajas que ofrece. Finalmente elegimos el framework codeigniter
-    el cual esta basado en MVC.
+    ventajas que ofrece. Finalmente elegimos el framework Codeigniter
+    el cual esta basado en MVC. A pesar de que hayan aparecido nuevos
+    frameworks muy potentes como laravel, hemos decidido realizar el
+    proyecto en codeigniter porque es rápido, fácil de instalar y
+    configurar, está bien documentado y nos aporta una buena
+    introducción a la convenciones de MVC en php. Además tiene un
+    sistema de ruteo fácil, es fácil de extender y existentes una
+    amplia base de librerías.
+    [[phpframeworkgraph]]
+    #+ATTR_HTML: :width 700
+    [[./img/php_framework_overview.png]]
 
-    Nuestra base de datos será mysql. La razón por la que la hemos
-    escogido es porque esta disponible en la mayoría de los
-    servidores web por defecto. Además es la segunda base de datos
-    más usada por detrás de oracle, y ambas son
-   realcionales. (((db-engines-ranking)http://db-engines.com/en/ranking))
+    En cuanto a nuestra base de datos, nuestra aplicación correrá en
+    una base de datos MySQL. En un principio habíamos decidido
+    utilizar mongodb, pero existía el problema que casi ninguno de los
+    proveedores que barajeabamos para albergar nuestra aplicación
+    ofrecía mongodb como una solución por defecto, sino que era de
+    pago. Mongodb nos parecía una buena solución ya que nuestra app
+    necesitaba una base de datos dinámica, en la que no es necesario
+    seguir ningún esquema. Por ejemplo, los productos que los artesanos
+    venden en la tienda, pueden tener una gran variedad de
+    materiales. Y además un mismo material puede proveenir de distintos
+    proveedores. Usando mongodb podríamos haber conseguido una base de
+    datos dinámica y menos rígida más apropiada para la gestión de
+    materiales de artesanos a pequeña escala.
+    
+    Finalmente nos decidimos por MySQL, ya que esta está
+    disponible en la mayoría de los servidores de hosting, PHP se
+    integra bien con éste, y es rápido. Además es la segunda de bases de
+    datos más usada hasta el momento, lo que quiere decir que está muy
+    demandada en el mundo profesional.[[basesdatosranking]]
 *** Como realizar un página web responsive  
+    
    Para la maquetación usaremos el lenguaje de marcas HTML junto con
    css. De igual modo, que para el backend, para facilitar el proceso
    de diseño de esta usaremos el framework twitter bootstrap.
@@ -303,13 +327,15 @@ libreta de dirección para almacenar todos sus proveedores.
 
    http://w3techs.com/technologies/overview/programming_language/all<<porcentajewebsphp>>
 
-   http://db-engines.com/en/ranking
+   http://www.sitepoint.com/best-php-framework-2015-sitepoint-survey-results/<<phpframeworkgraph>>
+   
+   http://db-engines.com/en/ranking<<basesdatosranking>>
 
-  http://web2.0entrepreneur.com/7/why-you-should-use-a-web-application-framework.html
+   http://web2.0entrepreneur.com/7/why-you-should-use-a-web-application-framework.html
+   
+   http://es.wikipedia.org/wiki/Inyecci%C3%B3n_SQL
+   
+   http://www.codeigniter.com/user_guide/
 
-  http://es.wikipedia.org/wiki/Inyecci%C3%B3n_SQL
-
-  http://www.codeigniter.com/user_guide/
-
-  http://www.smartec.la/blog/por-que-usar-un-framework((imagenes de frameworks))
+   http://www.smartec.la/blog/por-que-usar-un-framework((imagenes de frameworks))
   
