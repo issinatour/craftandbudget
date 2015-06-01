@@ -26,6 +26,7 @@ class ps_api {
         $opt['resource'] = 'products';
         $opt['display'] = 'full';
 
+
         $xml = $webService->get($opt);
         $resources = $xml->children()->children();
 

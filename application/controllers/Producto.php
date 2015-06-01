@@ -91,6 +91,10 @@ class Producto extends CI_Controller{
                 )
             );
 
+            $data['menu'] = array(
+                "full_width" =>1
+            );
+
             $data['productdata'] = $this->product_lib->get_empty_product();
         }else {
 
@@ -106,7 +110,11 @@ class Producto extends CI_Controller{
                     "css/plugins/summernote/summernote-bs3.css"
                 )
             );
-            $data['footer'] = array(
+                $data['menu'] = array(
+                    "full_width" =>1
+                );
+
+                $data['footer'] = array(
                 "script" => array(
                     "js/plugins/summernote/summernote.min.js",
                     "js/custom/customsummernote.js"

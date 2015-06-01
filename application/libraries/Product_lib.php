@@ -173,25 +173,35 @@ class Product_lib {
         $id_user = $this->instance->session->userdata('id');
      //   $psapi= new ps_api($web,$api,$debug);
         $myproductsfull = $this->get_products_ps_full($web,$api,$debug);
-
+        set_time_limit(600);
         foreach($myproductsfull as $miproducto){
 
                 $my_product_get = $this->instance->product_mod->get_product_ps($myshop,$miproducto['id']);
+
             if(!empty($my_product_get)){
                 $productdata=array(
                     "price" => $miproducto['price']
                 );
                 $this->instance->product_mod->update_product_ps($productdata,$miproducto['id'],$myshop);
 
-                $url = "'http://buhoplace.es/api/images/products/".$miproducto['id']."/".$miproducto['id_default_image'].'&ws_key=2RE9HIPQVCPP3N3RYLAQW79IW9XR1U34';
+                $url = 'http://buhoplace.es/api/images/products/'.$miproducto['id']."/".$miproducto['id_default_image'].'&ws_key=2RE9HIPQVCPP3N3RYLAQW79IW9XR1U34';
+                $fp ='uploads/'.$id_user."/p/".$miproducto['id_default_image'].'.jpg';
 
+                //descargamos la imagen y reducimos tamaño y calidad (mas mejor!)
+                $this->download_and_resize($url,$fp,0.3);
 
-             $fp ='upload/'.$id_user."/p/".$miproducto["id_default_image"];
+                $media_product =$this->instance->product_mod->get_product_media($miproducto['id_default_image'].'.jpg',$my_product_get['id_product']);
+                if(empty($media_product)){
+                    $mmedia['id_insert_media']= $this->instance->product_mod->create_media(array("is_default" => 1,"file" => $miproducto['id_default_image'].'.jpg'));
+                    $this->instance->product_mod->create_product_media(array("id_product"=>$my_product_get['id_product'],"id_media" =>$mmedia['id_insert_media']));
+                }else{
+                    $this->instance->product_mod->delete_product_media_product($media_product['id_media'],$my_product_get['id_product']);
+                    $this->instance->product_mod->delete_product_media($media_product['id_media']);
 
+                    $mmedia['id_insert_media']= $this->instance->product_mod->create_media(array("is_default" => 1,"file" => $miproducto['id_default_image'].'.jpg'));
+                    $this->instance->product_mod->create_product_media(array("id_product"=>$my_product_get['id_product'],"id_media" =>$mmedia['id_insert_media']));
+                }
 
-                copy($url, $fp);
-
-                //  $this->instance->product_mod->insert_product_data(array("id_product" => $my_product_get['id_product'], "id_type" => 1));
 
             }else{
                 $productdata=array(
@@ -249,6 +259,17 @@ class Product_lib {
 
     }
 
+    function download_and_resize($url,$dest,$quality){
+        $porcentaje = $quality;
+        list($ancho, $alto) = getimagesize($url);
+        $nuevo_ancho = $ancho * $porcentaje;
+        $nuevo_alto = $alto * $porcentaje;
+
+        $imagen_p = imagecreatetruecolor($nuevo_ancho, $nuevo_alto);
+        $imagen = imagecreatefromjpeg($url);
+        imagecopyresampled($imagen_p, $imagen, 0, 0, 0, 0, $nuevo_ancho, $nuevo_alto, $ancho, $alto);
+        imagejpeg($imagen_p,$dest);
+    }
 
 
 

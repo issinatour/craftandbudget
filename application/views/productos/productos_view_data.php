@@ -28,7 +28,7 @@ foreach( $myproducts as $product): ?>
 
  <td>
      <div class="col-lg-9">
-     <img width="100%"  height="80" <?php $mfile='uploads/'.$product->getcraftshopid().'/p/'.$product->getproductfile();
+     <img width="130"  height="80" <?php $mfile='uploads/'.$product->getcraftshopid().'/p/'.$product->getproductfile();
      if(file_exists($mfile)) {?>
          src="<?=base_url().$mfile?>"
 <?php } else { ?>
