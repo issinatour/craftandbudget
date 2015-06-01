@@ -89,14 +89,29 @@ class Materiales extends CI_Controller
                     "js/plugins/chosen/chosen.jquery.js"
                 )
             );
-
             $data['measurements'] =  $this->material_lib->get_material_measurements_selected($id);
-
-print_r($data['measurements']);
+            $data['material'] = $this->material_lib->get_material_data($id);
         }
 
         $this->load->view('templates/materialviewtemplate', $data);
 
 
+    }
+
+    public function save_material(){
+        $this->load->library('material_lib');
+
+        $id_craftshop = $this->session->userdata('id_craftshop');
+        $material = array(
+            "id_material" => $this->input->post("id_material"),
+            "id_craftshop"=> $id_craftshop,
+            "name" => $this->input->post("name"),
+            "id_category" =>1,
+            "price" => $this->input->post("price"),
+            "id_measurement" => $this->input->post('chose')
+        );
+        print_r($material);
+       $material_id= $this->material_lib->save_material($material);
+        redirect('Materiales/mimaterial/'.$material['id_material']);
     }
 }

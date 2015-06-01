@@ -14,8 +14,12 @@ class Material_mod extends CI_Model
         return $query->result_array();
     }
 
-    function get_material_data(){
-
+    function get_material_data($id_material){
+        $this->db->where('material.id_material', $id_material);
+        $this->db->join('stock_material', 'stock_material.id_material = material.id_material','left');
+        $this->db->select('material.id_material, material.id_craftshop, material.name, material.price,  stock_material.quantity as quantity');
+        $query = $this->db->get("material");
+        return $query->row_array();
     }
 
     function get_measurements(){
@@ -34,5 +38,13 @@ class Material_mod extends CI_Model
         return $query->row_array();
     }
 
-  
+    function create_material($data){
+        $this->db->insert("material",$data);
+        return $this->db->insert_id();
+    }
+
+    function update_material($data,$id_material){
+        $this->db->where('id_material', $id_material);
+        $this->db->update('material', $data);
+    }
 }

@@ -152,7 +152,7 @@ class Producto extends CI_Controller{
             "id_product" => $this->input->post("id_product")
         );
 
-$arr =array();
+        $arr =array();
       $myuserid=$this->session->userdata('id');
        $urld='uploads/' . $myuserid . '/p/';
 

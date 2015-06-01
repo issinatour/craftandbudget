@@ -29,7 +29,7 @@ image varchar(120),
 type  varchar(100),
 PRIMARY KEY (id_shop)
 
-);
+)ENGINE=InnoDB;
 
 
 CREATE TABLE IF NOT EXISTS shop_user(
@@ -41,7 +41,7 @@ PRIMARY KEY (id_shop_user),
  CONSTRAINT `fk_id_shop_user` FOREIGN KEY (`id_shop`) REFERENCES `shop` (`id_shop`) ON DELETE NO ACTION ON UPDATE NO ACTION,
  CONSTRAINT `fk_id_user_shop_user` FOREIGN KEY (`id_user`) REFERENCES `user` (`id_user`) ON DELETE NO ACTION ON UPDATE NO ACTION
 
-);
+)ENGINE=InnoDB;
 
 
 
@@ -75,11 +75,11 @@ telephone varchar(70),
 PRIMARY KEY (id_supplier)
 )ENGINE=InnoDB;
 
-CREATE TABLE measurement(
+CREATE TABLE IF NOT EXISTS measurement(
 id_measurement int(10) NOT NULL AUTO_INCREMENT,
 name varchar(50),
 PRIMARY KEY (id_measurement)
-);
+)ENGINE=InnoDB;
 
 CREATE TABLE IF NOT EXISTS category(
 id_category int(10) NOT NULL AUTO_INCREMENT,
@@ -137,12 +137,11 @@ CONSTRAINT `fk_id_category_material` FOREIGN KEY (id_category) REFERENCES catego
 CREATE TABLE IF NOT EXISTS stock_material(
 id_stock_material int(10) NOT NULL AUTO_INCREMENT,
 id_material int(10),
-quantity int,
+quantity double,
 PRIMARY KEY (id_stock_material),
 CONSTRAINT `fk_id_material_stock_material` FOREIGN KEY (id_material) REFERENCES material (id_material) ON DELETE NO ACTION ON UPDATE NO ACTION
 )ENGINE=InnoDB;
 
-alter table stock_material add column quantity double;
 
 CREATE TABLE IF NOT EXISTS material_supplier(
 id_material_supplier int(10) NOT NULL AUTO_INCREMENT,
@@ -171,19 +170,19 @@ CREATE TABLE IF NOT EXISTS `product` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 
-CREATE TABLE TYPES(
+CREATE TABLE IF NOT EXISTS types(
 id_type int NOT NULL AUTO_INCREMENT,
 name VARCHAR(120),
 PRIMARY KEY (id_type)
 )ENGINE=InnoDB;
 
-CREATE TABLE PRODUCT_TYPES(
+CREATE TABLE IF NOT EXISTS product_types(
 id_product_type int NOT NULL AUTO_INCREMENT,
 id_type int,
 id_product int,
 PRIMARY KEY (id_product_type),
   CONSTRAINT `fk_product_type_` FOREIGN KEY (`id_product`) REFERENCES product (`id_product`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  CONSTRAINT `fk_product_type_type` FOREIGN KEY (`id_type`) REFERENCES `TYPES` (`id_type`) ON DELETE NO ACTION ON UPDATE NO ACTION
+  CONSTRAINT `fk_product_type_type` FOREIGN KEY (`id_type`) REFERENCES `types` (`id_type`) ON DELETE NO ACTION ON UPDATE NO ACTION
 )ENGINE=InnoDB;
 
 CREATE TABLE IF NOT EXISTS `product_media` (
@@ -203,25 +202,7 @@ CREATE TABLE IF NOT EXISTS `product_media_product` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 
-CREATE TABLE IF NOT EXISTS shop_product(
-id_shop_product int not null auto_increment,
-id_shop int,
-id_product int,
-PRIMARY KEY (id_shop_product),
- CONSTRAINT `fk_id_shops_product_shop` FOREIGN KEY (`id_shop`) REFERENCES `shop` (`id_shop`) ON DELETE NO ACTION ON UPDATE NO ACTION,
- CONSTRAINT `fk_id_products_shop_product` FOREIGN KEY (`id_product`) REFERENCES `product` (`id_product`) ON DELETE NO ACTION ON UPDATE NO ACTION
 
-);
-
-CREATE TABLE IF NOT EXISTS shop_producto(
-id_shop_product int not null auto_increment,
-id_shop_ps int,
-id_product_ps int,
-PRIMARY KEY (id_shop_product),
- CONSTRAINT `fk_id_shops_product_shop` FOREIGN KEY (`id_shop_ps`) REFERENCES `shop` (`id_shop_ps`) ON DELETE NO ACTION ON UPDATE NO ACTION,
- CONSTRAINT `fk_id_products_shop_product` FOREIGN KEY (`id_product_ps`) REFERENCES `product` (`id_product_prestashop`) ON DELETE NO ACTION ON UPDATE NO ACTION
-
-);
 
 
 CREATE TABLE IF NOT EXISTS `product_language` (
@@ -296,5 +277,4 @@ CREATE TABLE IF NOT EXISTS `material_combination` (
   CONSTRAINT `fk_to_combination` FOREIGN KEY (`id_combination`) REFERENCES `combination` (`id_combination`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   PRIMARY KEY (`id_combination`,`id_material`)
   ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
 

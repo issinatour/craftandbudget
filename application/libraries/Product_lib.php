@@ -212,7 +212,7 @@ class Product_lib {
                 $my_product_get['id_product']=  $this->instance->product_mod->insert_product_ps($productdata);
                 $product_type =$this->instance->product_mod->get_product_type($my_product_get['id_product']);
 
-                copy("http://buhoplace.es/api/images/products/".$miproducto['id_default_image'],"uploads/".$id_user.'/p/'.$miproducto['id_default_image']);
+                //copy("http://buhoplace.es/api/images/products/".$miproducto['id_default_image'],"uploads/".$id_user.'/p/'.$miproducto['id_default_image']);
                 if(empty($product_type)){
                     $this->instance->product_mod->insert_product_data(array("id_product" => $my_product_get['id_product'], "id_type" => 1));
                 }
