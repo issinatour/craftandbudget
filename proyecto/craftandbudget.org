@@ -104,16 +104,21 @@ libreta de dirección para almacenar todos sus proveedores.
    - Que tecnologías existen hay para exportar tu página web a
      aplicaciones nativas de android e IOs.
    - XAMPP 
-*** Backend de la aplicación
-
-    El backend de la aplicación es la parte del código de la página
-    web que se encarga de la manipulación y flujo de los
+*** Entender la importancia de escoger una tecnología backend apropiada
+    Una de las decisiones mas importantes a la hora de crear un
+    producto, es escoger la pila de tecnologías en la que te vas a
+    basar.  El backend de una aplicación es la capa de software que el
+    usario final no ve, pero no por ello es menos importante.  El
+    backend de la aplicación es la parte del código de la página web
+    que se encarga de la manipulación y flujo de los
     datos. Generalmente está compuesta de tres elementos: un servidor,
     una aplicación y una base de datos. Para enlazar estos tres
     elementos se usan lenguajes especializados que se ejecutan desde
-    el lado del servidor. 
-
-    Para realizar nuestra aplicaciónno, nos hemos decantado por el
+    el lado del servidor.  A la hora de escoger que tecnología backend
+    es importante escoger una que te permita escalar y operar a un
+    precio bajo. 
+        
+    Para realizar nuestra aplicación, nos hemos decantado por el
     lenguaje de script PHP. Acutalmente, según
     W3tech[[porcentajewebsphp]], PHP es usado por el 81.9% de páginas web
     del plantea. 
@@ -152,14 +157,41 @@ libreta de dirección para almacenar todos sus proveedores.
     integra bien con éste, y es rápido. Además es la segunda de bases de
     datos más usada hasta el momento, lo que quiere decir que está muy
     demandada en el mundo profesional.[[basesdatosranking]]
+
 *** Como realizar un página web responsive  
+    A la hora de realizar la maquetación web, deberías de ser capaz de
+    diseñar, maquetar, cambiar colores etc. con relativa
+    facilidad. Para ello es importante escoger un framework que te
+    permita crear una aplicación agradable y fácil de usar sin mucha
+    dificultad. Además, nosotros hemos decidido que nuestra aplicación
+    debe ser responsive, es decir, que pueda ser utilizada en
+    diferentes dispositivos sin que la usabilidad se vea
+    perjudicada. En nuestro proyecto es más importante si cabe, ya que
+    está enfocada a artesanos, y estos no siempre tendrán a mano un
+    ordenador para gestionar sus materiales cuando estén fabricando
+    sus productos, pero un móvil si que es posile que lo tenga a mano.
     
-   Para la maquetación usaremos el lenguaje de marcas HTML junto con
-   css. De igual modo, que para el backend, para facilitar el proceso
-   de diseño de esta usaremos el framework twitter bootstrap.
+    
+    Para la maquetación usaremos el lenguaje de marcas
+    HTML junto con css. De igual modo, que para el backend, para
+    facilitar el proceso de diseño de esta usaremos el framework
+    twitter bootstrap.
    
 
-*** Alternativas de web hosting, y como usarlas
+*** Alternativas de web hosting, hacer una aplicación SEO friendly.
+    A la hora de sacar al mercado una página web, sino puedes usar tus
+    propios servidores, seleccionar un servicio hosting que se ajuste
+    a tus espectativas es vital. Con este proyecto queremos investigar
+    cuales son las alternativas existentes en el mercado actual en lo
+    referente a estos servicios, así como aprender a distinguir a
+    servicios de mala calidad de los que ofrecen una buena. 
+
+    Para que tu aplicación web tenga éxito, también es importante el
+    tener en cuenta como incrementar tu SEO. Nuestro objetivo es
+    también por tanto, el crear una aplicación lo mas 'SEO friendly'
+    posible. Para ello, vamos a realizar estudiar cuales son los
+    puntos más importantes que usan los buscadores para determinar tu
+    SEO.
    
 ** Motivación
    Cada vez son más las personas que se animan a crear artseanías y
