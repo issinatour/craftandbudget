@@ -59,6 +59,7 @@ class SimpleLoginSecure
             $usershop=  $this->CI->product_lib->get_user_shops($row_data['id_user']);
 			//Set session data
             $user_data['id'] = $row_data['id_user'];
+            $user_data['email'] = $row_data['email'];
             $user_data['id_craftshop'] = $usershop['id_craftshop'];
 			$user_data['user'] = $row_data['name']; // for compatibility with Simplelogin
 			$user_data['logged_in'] = true;

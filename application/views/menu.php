@@ -10,7 +10,6 @@
     $email = $this->session->userdata('email');
     $logged_in= $this->session->userdata('logged_in');
     $myshop= $this->session->userdata('id_craftshop');
-
 ?>
 
 <div id="wrapper">
@@ -19,13 +18,13 @@
         <ul class="nav" id="side-menu">
             <li class="nav-header">
                 <div class="dropdown profile-element"> <span>
-                            <img alt="image" class="img-circle" src="<?=base_url()?>assets/backtheme/img/profile_small.jpg" />
+                            <img width="160" alt="image" class="img-circle" src="http://www.gravatar.com/avatar/<?=md5(strtolower(trim($name))).'?s=80&d='.urlencode( 'http://curiosidades.batanga.com/sites/curiosidades.batanga.com/files/imagecache/primera/Como-gira-la-cabeza-un-buho-1_0.jpg' )?>". />
                              </span>
                     <a data-toggle="dropdown" class="dropdown-toggle" href="#">
                             <span class="clear"> <span class="block m-t-xs"> <strong class="font-bold"><?=$name?></strong>
                              </span> <span class="text-muted text-xs block">Opciones <b class="caret"></b></span> </span> </a>
                     <ul class="dropdown-menu animated fadeInRight m-t-xs">
-                        <li><a href="profile.html">Perfil</a></li>
+                        <li><a href="<?=base_url()?>Usuarios/profile">Perfil</a></li>
                         <li><a href="mailbox.html">Opciones de prestashop</a></li>
                         <li class="divider"></li>
                         <li><a href="<?=base_url()?>Usuarios/logout">Desconectarse</a></li>

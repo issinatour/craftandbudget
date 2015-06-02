@@ -5,6 +5,7 @@
 <div class="ibox-title">
     <a  href="<?=base_url()?>Producto/miproducto" type="button" class="btn btn-w-m btn-primary">Crear producto</a>
 
+    <a style="float: right;"  href="<?=base_url()?>Producto/importproducts" type="button" class="btn btn-w-m btn-primary">Importar productos</a>
 </div>
 <div class="ibox-content">
 

@@ -75,5 +75,50 @@ class Usuarios extends CI_Controller {
         redirect("usuarios");
     }
 
+    public function profile(){
+        $this->load->library('craft_lib');
+        $data['header'] = array(
+            "title" => "Mi producto",
+            "css" => array(
+                "css/plugins/summernote/summernote.css",
+                "css/plugins/summernote/summernote-bs3.css"
+            )
+        );
+        $data['menu'] = array(
+            "full_width" =>0
+        );
+
+        $data['footer'] = array(
+            "script" => array(
+                "js/plugins/summernote/summernote.min.js",
+                "js/custom/customsummernote.js"
+            )
+        );
+
+        $data['psshop'] = $this->craft_lib->get_craftshop_shops_by_type($this->session->userdata('id_craftshop'),'prestashop');
+       // print_r($data['psshop']);
+        $this->load->view('usuarios/profile', $data);
+
+
+    }
+
+
+
+    public function save_configuration(){
+
+        $this->load->library('craft_lib');
+        $prestaconfig = array(
+            "url_shop" => $this->input->post("psurl"),
+            "key_api_shop" => $this->input->post("pskey"),
+        );
+        $userconfig=array(
+            "id_craftshop" => $this->session->userdata('id_craftshop'),
+            "nametype" => $this->input->post("psurl"),
+            "id_craftshop_shop" => $this->input->post('id_craftshop_shop')
+         );
+
+        $this->craft_lib->update_config_shop_user($prestaconfig,$userconfig);
+    }
+
 
 }

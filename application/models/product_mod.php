@@ -100,7 +100,6 @@ class Product_mod extends CI_Model
         $this->db->where('product_media_product.id_product', $id_product);
         $this->db->join('product_media', 'product_media_product.id_media = product_media.id_media','left');
         $query = $this->db->get("product_media_product");
-        echo $this->db->last_query();
         return $query->row_array();
     }
 
@@ -148,5 +147,7 @@ class Product_mod extends CI_Model
         $this->db->where('id_product', $id_product);
         $this->db->update('product_language', $data);
     }
+
+
 
 }
