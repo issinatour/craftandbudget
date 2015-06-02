@@ -27,7 +27,6 @@ libreta de dirección para almacenar todos sus proveedores.
 * Agradecimientos
   
 * Introducción
-
   Nuestro proyecto de fin de ciclo trata sobre una solución web
   multiplataforma para que aquellos artesanos que venden sus productos
   a través de prestashop puedan manejar su stock de materiales de una
@@ -221,18 +220,28 @@ libreta de dirección para almacenar todos sus proveedores.
    una herramienta de gestión para los artesanos en los que pueden
    exportar e importar sus prodcutor a diferentes tiendas online. De
    esta manera tendríamos mas usuario potenciales.
-   
+
+   Además de sincronizar nuestra app con tiendas personales creadas
+   por los artesanos, también vemos lógico sincronizarla con portales
+   e-commerce. Estos portales, a diferencia de las tiendas personales
+   donde solo están disponibles productos propios del artesano, son
+   tiendas virtuales masivas donde artesanos pueden subir sus
+   productos para que gente interesada pueda comprarlos. Los dos
+   portales ecommerce enfocados para artesanos más importantes en
+   estos momentos y en los que teníamos pensado sincronizarlas son
+   etsy, dawanda. Ambas disponen de web appi basadas en rest api,
+   iguales que prestashop.
+
 ** Antecedentes
    Después de investigar diferentes tecnologías
    disponibles, más tarde expondremos cuales, nos decantamos por las
    siguientes:
-   
 * Desarrollo de la práctica
-  En esta sección se ofrece información soblre la realización del
+  En esta sección vamos a ofrecer información sobre la realización del
   trabajo en sí. En esta parte se describe lo que se ha hecho, cómo se
   ha llevado a cabo, por qué se ha hecho así y no de otra manera, qué
-  materiales o herramientas ha sido necesario utilizar, qué
-  metodología de trabajo y validación se ha utilizado, etc.
+  materiales o herramientas han sido necesario utilizar, qué
+  metodología de trabajo y validación se ha utilizado.
   
 ** Material
    A continuación vamos a detallar cada tecnología que ha estado
@@ -243,12 +252,25 @@ libreta de dirección para almacenar todos sus proveedores.
    familiarizados con la tecnología utilizada. Destinar más páginas según
    la importancia en el trabajo, de dos a cuatro páginas cada sección con
    todas las referencias bibliográficas que se consideren oportunas.
-   
-*** PHP
-    PHP es una lenguage de scripting diseñado específicamente para el uso
-    de programación web. Tiene características que ayudan a los
-    programadores al desarrollo de aplicaciones web dinámicas.
+*** PHP y MySQL
     
+    PHP es el lenguaje de lado servidor más extendido en la web. Nacido en
+    1994, se trata de un lenguaje de creación relativamente reciente,
+    aunque con la rapidez con la que evoluciona Internet parezca que ha
+    existido toda la vida. Es un lenguaje que ha tenido una gran
+    aceptación en la comunidad de desarrolladores, debido a la potencia y
+    simplicidad que lo caracterizan, así como al soporte generalizado en
+    la mayoría de los servidores de hosting.
+    
+    PHP nos permite embeber su pequeños fragmentos de código dentro de
+    la página HTML y realizar determinadas acciones de una forma fácil
+    y eficaz, combinando lo que ya sabemos del desarrollo HTML. Es
+    decir, con PHP escribimos scripts dentro del código HTML, con el
+    que se supone que ya estamos familiarizados. Por otra parte, y es
+    aquí donde reside su mayor interés, PHP ofrece un sinfín de
+    funciones para la explotación de bases de datos de una manera
+    llana, sin complicaciones.
+
     PHP es el acrónimo de HyperText Preprocessor. Para crear páginas web
     dinámicas, es necesario recuperar datos y mostrarlos en la página web.
     Para almacenar los datos hemos escogido MySql, el cual es un  sistema
@@ -258,8 +280,8 @@ libreta de dirección para almacenar todos sus proveedores.
     database managment system) rápida, y fácil de usar que se usa en
     la mayoría de páginas web.
     
-    En resumen, las razones por las que hemos escogido php y MySQL como
-    backend de nuestra aplicación son:
+    Las principales razones por las que nos hemos decidido ha escoger
+    php y MySQL como backend de nuestra aplicación son:
     
     - Son gratuitas. La mejor opción de coste-eficiencia.
     - Son orientadas a la creación de páginas webs. Ambos fueron

@@ -4,7 +4,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
 <title>craftandbudget</title>
-<!-- 2015-06-01 Mon 17:01 -->
+<!-- 2015-06-02 Tue 11:03 -->
 <meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta  name="generator" content="Org-mode" />
 <meta  name="author" content="Nicolas Alphonse" />
@@ -153,9 +153,9 @@ for the JavaScript code in this tag.
 <ul>
 <li><a href="#sec-3-1">3.1. Objetivos</a>
 <ul>
-<li><a href="#sec-3-1-1">3.1.1. Backend de la aplicación</a></li>
+<li><a href="#sec-3-1-1">3.1.1. Entender la importancia de escoger una tecnología backend apropiada</a></li>
 <li><a href="#sec-3-1-2">3.1.2. Como realizar un página web responsive</a></li>
-<li><a href="#sec-3-1-3">3.1.3. Alternativas de web hosting, y como usarlas</a></li>
+<li><a href="#sec-3-1-3">3.1.3. Alternativas de web hosting, hacer una aplicación SEO friendly.</a></li>
 </ul>
 </li>
 <li><a href="#sec-3-2">3.2. Motivación</a></li>
@@ -166,7 +166,7 @@ for the JavaScript code in this tag.
 <ul>
 <li><a href="#sec-4-1">4.1. Material</a>
 <ul>
-<li><a href="#sec-4-1-1">4.1.1. PHP</a></li>
+<li><a href="#sec-4-1-1">4.1.1. PHP y MySQL</a></li>
 <li><a href="#sec-4-1-2">4.1.2. Framework codeigniter php</a></li>
 <li><a href="#sec-4-1-3">4.1.3. twitter bootstrap</a></li>
 <li><a href="#sec-4-1-4">4.1.4. api rest</a></li>
@@ -341,19 +341,25 @@ aplicaciones nativas de android e IOs.
 </ul>
 </div>
 <div id="outline-container-sec-3-1-1" class="outline-4">
-<h4 id="sec-3-1-1"><span class="section-number-4">3.1.1</span> Backend de la aplicación</h4>
+<h4 id="sec-3-1-1"><span class="section-number-4">3.1.1</span> Entender la importancia de escoger una tecnología backend apropiada</h4>
 <div class="outline-text-4" id="text-3-1-1">
 <p>
-El backend de la aplicación es la parte del código de la página
-web que se encarga de la manipulación y flujo de los
+Una de las decisiones mas importantes a la hora de crear un
+producto, es escoger la pila de tecnologías en la que te vas a
+basar.  El backend de una aplicación es la capa de software que el
+usario final no ve, pero no por ello es menos importante.  El
+backend de la aplicación es la parte del código de la página web
+que se encarga de la manipulación y flujo de los
 datos. Generalmente está compuesta de tres elementos: un servidor,
 una aplicación y una base de datos. Para enlazar estos tres
 elementos se usan lenguajes especializados que se ejecutan desde
-el lado del servidor. 
+el lado del servidor.  A la hora de escoger que tecnología backend
+es importante escoger una que te permita escalar y operar a un
+precio bajo. 
 </p>
 
 <p>
-Para realizar nuestra aplicaciónno, nos hemos decantado por el
+Para realizar nuestra aplicación, nos hemos decantado por el
 lenguaje de script PHP. Acutalmente, según
 W3tech<a href="#porcentajewebsphp">6</a>, PHP es usado por el 81.9% de páginas web
 del plantea. 
@@ -404,20 +410,56 @@ demandada en el mundo profesional.<a href="#basesdatosranking">6</a>
 </p>
 </div>
 </div>
+
 <div id="outline-container-sec-3-1-2" class="outline-4">
 <h4 id="sec-3-1-2"><span class="section-number-4">3.1.2</span> Como realizar un página web responsive</h4>
 <div class="outline-text-4" id="text-3-1-2">
 <p>
-Para la maquetación usaremos el lenguaje de marcas HTML junto con
-css. De igual modo, que para el backend, para facilitar el proceso
-de diseño de esta usaremos el framework twitter bootstrap.
+A la hora de realizar la maquetación web, deberías de ser capaz de
+diseñar, maquetar, cambiar colores etc. con relativa
+facilidad. Para ello es importante escoger un framework que te
+permita crear una aplicación agradable y fácil de usar sin mucha
+dificultad. Además, nosotros hemos decidido que nuestra aplicación
+debe ser responsive, es decir, que pueda ser utilizada en
+diferentes dispositivos sin que la usabilidad se vea
+perjudicada. En nuestro proyecto es más importante si cabe, ya que
+está enfocada a artesanos, y estos no siempre tendrán a mano un
+ordenador para gestionar sus materiales cuando estén fabricando
+sus productos, pero un móvil si que es posile que lo tenga a mano.
+</p>
+
+
+<p>
+Para la maquetación usaremos el lenguaje de marcas
+HTML junto con css. De igual modo, que para el backend, para
+facilitar el proceso de diseño de esta usaremos el framework
+twitter bootstrap.
 </p>
 </div>
 </div>
 
 
 <div id="outline-container-sec-3-1-3" class="outline-4">
-<h4 id="sec-3-1-3"><span class="section-number-4">3.1.3</span> Alternativas de web hosting, y como usarlas</h4>
+<h4 id="sec-3-1-3"><span class="section-number-4">3.1.3</span> Alternativas de web hosting, hacer una aplicación SEO friendly.</h4>
+<div class="outline-text-4" id="text-3-1-3">
+<p>
+A la hora de sacar al mercado una página web, sino puedes usar tus
+propios servidores, seleccionar un servicio hosting que se ajuste
+a tus espectativas es vital. Con este proyecto queremos investigar
+cuales son las alternativas existentes en el mercado actual en lo
+referente a estos servicios, así como aprender a distinguir a
+servicios de mala calidad de los que ofrecen una buena. 
+</p>
+
+<p>
+Para que tu aplicación web tenga éxito, también es importante el
+tener en cuenta como incrementar tu SEO. Nuestro objetivo es
+también por tanto, el crear una aplicación lo mas 'SEO friendly'
+posible. Para ello, vamos a realizar estudiar cuales son los
+puntos más importantes que usan los buscadores para determinar tu
+SEO.
+</p>
+</div>
 </div>
 </div>
 
@@ -457,6 +499,19 @@ una herramienta de gestión para los artesanos en los que pueden
 exportar e importar sus prodcutor a diferentes tiendas online. De
 esta manera tendríamos mas usuario potenciales.
 </p>
+
+<p>
+Además de sincronizar nuestra app con tiendas personales creadas
+por los artesanos, también vemos lógico sincronizarla con portales
+e-commerce. Estos portales, a diferencia de las tiendas personales
+donde solo están disponibles productos propios del artesano, son
+tiendas virtuales masivas donde artesanos pueden subir sus
+productos para que gente interesada pueda comprarlos. Los dos
+portales ecommerce enfocados para artesanos más importantes en
+estos momentos y en los que teníamos pensado sincronizarlas son
+etsy, dawanda. Ambas disponen de web appi basadas en rest api,
+iguales que prestashop.
+</p>
 </div>
 </div>
 
@@ -471,16 +526,15 @@ siguientes:
 </div>
 </div>
 </div>
-
 <div id="outline-container-sec-4" class="outline-2">
 <h2 id="sec-4"><span class="section-number-2">4</span> Desarrollo de la práctica</h2>
 <div class="outline-text-2" id="text-4">
 <p>
-En esta sección se ofrece información soblre la realización del
+En esta sección vamos a ofrecer información sobre la realización del
 trabajo en sí. En esta parte se describe lo que se ha hecho, cómo se
 ha llevado a cabo, por qué se ha hecho así y no de otra manera, qué
-materiales o herramientas ha sido necesario utilizar, qué
-metodología de trabajo y validación se ha utilizado, etc.
+materiales o herramientas han sido necesario utilizar, qué
+metodología de trabajo y validación se ha utilizado.
 </p>
 </div>
 
@@ -498,14 +552,28 @@ la importancia en el trabajo, de dos a cuatro páginas cada sección con
 todas las referencias bibliográficas que se consideren oportunas.
 </p>
 </div>
-
 <div id="outline-container-sec-4-1-1" class="outline-4">
-<h4 id="sec-4-1-1"><span class="section-number-4">4.1.1</span> PHP</h4>
+<h4 id="sec-4-1-1"><span class="section-number-4">4.1.1</span> PHP y MySQL</h4>
 <div class="outline-text-4" id="text-4-1-1">
 <p>
-PHP es una lenguage de scripting diseñado específicamente para el uso
-de programación web. Tiene características que ayudan a los
-programadores al desarrollo de aplicaciones web dinámicas.
+PHP es el lenguaje de lado servidor más extendido en la web. Nacido en
+1994, se trata de un lenguaje de creación relativamente reciente,
+aunque con la rapidez con la que evoluciona Internet parezca que ha
+existido toda la vida. Es un lenguaje que ha tenido una gran
+aceptación en la comunidad de desarrolladores, debido a la potencia y
+simplicidad que lo caracterizan, así como al soporte generalizado en
+la mayoría de los servidores de hosting.
+</p>
+
+<p>
+PHP nos permite embeber su pequeños fragmentos de código dentro de
+la página HTML y realizar determinadas acciones de una forma fácil
+y eficaz, combinando lo que ya sabemos del desarrollo HTML. Es
+decir, con PHP escribimos scripts dentro del código HTML, con el
+que se supone que ya estamos familiarizados. Por otra parte, y es
+aquí donde reside su mayor interés, PHP ofrece un sinfín de
+funciones para la explotación de bases de datos de una manera
+llana, sin complicaciones.
 </p>
 
 <p>
@@ -520,8 +588,8 @@ la mayoría de páginas web.
 </p>
 
 <p>
-En resumen, las razones por las que hemos escogido php y MySQL como
-backend de nuestra aplicación son:
+Las principales razones por las que nos hemos decidido ha escoger
+php y MySQL como backend de nuestra aplicación son:
 </p>
 
 <ul class="org-ul">
@@ -721,7 +789,7 @@ adelante, codeigniter usa query string del tipoe
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: Nicolas Alphonse</p>
-<p class="date">Created: 2015-06-01 Mon 17:01</p>
+<p class="date">Created: 2015-06-02 Tue 11:03</p>
 <p class="creator"><a href="http://www.gnu.org/software/emacs/">Emacs</a> 24.5.1 (<a href="http://orgmode.org">Org</a> mode 8.2.10)</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
