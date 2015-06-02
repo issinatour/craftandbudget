@@ -114,6 +114,13 @@ class Product_lib {
 
     }
 
+    function  get_craftshop_shops_by_type($id_craftshop,$typename){
+        $this->instance->load->model('product_mod');
+
+        $myshop = $this->instance->product_mod->get_craftshop_shop_by_type($id_craftshop,$typename);
+        return $myshop;
+    }
+
 
     public function save_product($data,$datalang,$media)
     {
@@ -139,41 +146,65 @@ class Product_lib {
 
     }
 
-    function get_products_ps_full($web,$api,$debug){
+    function get_products_ps_full($web,$api,$debug,$config){
         $psapi= new ps_api($web,$api,$debug);
-        $myproducts = $psapi->get_products_prestashop();
-        $mycombinations = $psapi->get_combinations_prestashop();
+        $myproducts=array();
+        $mycombinations=array();
+        $product_op_value=array();
+        if($config['products']=='on'){
+            $myproducts = $psapi->get_products_prestashop($config);
+        }
+        if($config['combinations']=='on'){
+            $mycombinations = $psapi->get_combinations_prestashop();
+        }
+        if($config['atributtes']=='on'){
+            $product_op_value=  $psapi->get_products_options_values_prestashop();
+        }
         // $product_op_group=  $psapi->get_products_options_group();
-        $product_op_value=  $psapi->get_products_options_values_prestashop();
 
-        foreach($myproducts as &$miproducto){
-            //  echo 'id producto'.$miproducto['id'].'<br>';
-            if(sizeof($miproducto['combinations']>0)) {
-                foreach ($miproducto['combinations'] as &$product_combination) {
+        if($config['products']=='on') {
+            foreach ($myproducts as &$miproducto) {
+                //  echo 'id producto'.$miproducto['id'].'<br>';
+                if (sizeof($miproducto['combinations'] > 0)) {
+                    if($config['combinations']=='on') {
+                    foreach ($miproducto['combinations'] as &$product_combination) {
 
-                    $product_combination = array_merge($product_combination,$mycombinations[$product_combination['id']]);
+                            $product_combination = array_merge($product_combination, $mycombinations[$product_combination['id']]);
 
-                    foreach($product_combination['product_option_values'] as &$productoptionvalues){
+                        if($config['atributtes']=='on') {
+                        foreach ($product_combination['product_option_values'] as &$productoptionvalues) {
 
-                        $productoptionvalues=array_merge($productoptionvalues,$product_op_value[$productoptionvalues['id']]);
+                                $productoptionvalues = array_merge($productoptionvalues, $product_op_value[$productoptionvalues['id']]);
+                            }
+                            }
+                    }
                     }
                 }
 
             }
-
         }
         return $myproducts;
     }
 
+    function get_products_image_type($web,$api,$debug){
+        $this->instance->load->library('ps_api');
+        $psapi= new ps_api($web,$api,$debug);
+          $mytypes=  $psapi->get_image_product_types();
 
-    function import_presta_products_full($web,$api,$debug){
+       return $mytypes;
+    }
+
+
+    function import_presta_products_full($web,$api,$debug,$config){
         $this->instance->load->library('ps_api');
         $this->instance->load->model('product_mod');
         $myshop= $this->instance->session->userdata('id_craftshop');
         $id_user = $this->instance->session->userdata('id');
      //   $psapi= new ps_api($web,$api,$debug);
-        $myproductsfull = $this->get_products_ps_full($web,$api,$debug);
-        set_time_limit(600);
+        $myproductsfull = $this->get_products_ps_full($web,$api,$debug,$config);
+        set_time_limit(800);
+
+        if($config['products']=='on'){
         foreach($myproductsfull as $miproducto){
 
                 $my_product_get = $this->instance->product_mod->get_product_ps($myshop,$miproducto['id']);
@@ -184,11 +215,13 @@ class Product_lib {
                 );
                 $this->instance->product_mod->update_product_ps($productdata,$miproducto['id'],$myshop);
 
+            if($config['images']=='on'):
                 $url = 'http://buhoplace.es/api/images/products/'.$miproducto['id']."/".$miproducto['id_default_image'].'&ws_key=2RE9HIPQVCPP3N3RYLAQW79IW9XR1U34';
                 $fp ='uploads/'.$id_user."/p/".$miproducto['id_default_image'].'.jpg';
 
                 //descargamos la imagen y reducimos tamaño y calidad (mas mejor!)
-                $this->download_and_resize($url,$fp,0.3);
+
+                $this->download_and_resize($url,$fp,0.1);
 
                 $media_product =$this->instance->product_mod->get_product_media($miproducto['id_default_image'].'.jpg',$my_product_get['id_product']);
                 if(empty($media_product)){
@@ -202,7 +235,7 @@ class Product_lib {
                     $this->instance->product_mod->create_product_media(array("id_product"=>$my_product_get['id_product'],"id_media" =>$mmedia['id_insert_media']));
                 }
 
-
+              endif;
             }else{
                 $productdata=array(
                     "id_product_prestashop" => $miproducto['id'],
@@ -213,20 +246,23 @@ class Product_lib {
                 $product_type =$this->instance->product_mod->get_product_type($my_product_get['id_product']);
 
                 //copy("http://buhoplace.es/api/images/products/".$miproducto['id_default_image'],"uploads/".$id_user.'/p/'.$miproducto['id_default_image']);
+
+             //   $this->download_and_resize($url,$fp,0.3);
                 if(empty($product_type)){
                     $this->instance->product_mod->insert_product_data(array("id_product" => $my_product_get['id_product'], "id_type" => 1));
                 }
 
             }
 
-
+            if($config['combinations']=='on'):
                 foreach ($miproducto['combinations'] as $product_combination) {
 
                     foreach($product_combination['product_option_values'] as $productoptionvalues){
 
                     }
                 }
-
+            endif;
+            if($config['atributtes']=='on'):
                 foreach($miproducto['name'] as $product_name){
                     $my_product_get_lang = $this->instance->product_mod->get_product_ps_languaje($my_product_get['id_product']);
 
@@ -246,28 +282,25 @@ class Product_lib {
                     }
 
                }
-
+              endif;
 
 
 
         }
+        }
 
-        echo '  <pre>';
-        print_r($myproductsfull);
-        echo '  </pre>';
 
 
     }
 
     function download_and_resize($url,$dest,$quality){
         $porcentaje = $quality;
-        list($ancho, $alto) = getimagesize($url);
-        $nuevo_ancho = $ancho * $porcentaje;
-        $nuevo_alto = $alto * $porcentaje;
+        $nuevo_ancho = 300 * $porcentaje;
+        $nuevo_alto = 300 * $porcentaje;
 
         $imagen_p = imagecreatetruecolor($nuevo_ancho, $nuevo_alto);
         $imagen = imagecreatefromjpeg($url);
-        imagecopyresampled($imagen_p, $imagen, 0, 0, 0, 0, $nuevo_ancho, $nuevo_alto, $ancho, $alto);
+        imagecopyresampled($imagen_p, $imagen, 0, 0, 0, 0, $nuevo_ancho, $nuevo_alto, 300, 300);
         imagejpeg($imagen_p,$dest);
     }
 

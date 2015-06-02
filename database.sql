@@ -32,14 +32,15 @@ PRIMARY KEY (id_shop)
 )ENGINE=InnoDB;
 
 
-CREATE TABLE IF NOT EXISTS shop_user(
+CREATE TABLE IF NOT EXISTS shop_craftshop(
 id_shop_user int not null auto_increment,
 id_shop int,
-id_user int,
+id_craftshop int,
 key_api_shop VARCHAR(240),
+url_shop VARCHAR (240),
 PRIMARY KEY (id_shop_user),
  CONSTRAINT `fk_id_shop_user` FOREIGN KEY (`id_shop`) REFERENCES `shop` (`id_shop`) ON DELETE NO ACTION ON UPDATE NO ACTION,
- CONSTRAINT `fk_id_user_shop_user` FOREIGN KEY (`id_user`) REFERENCES `user` (`id_user`) ON DELETE NO ACTION ON UPDATE NO ACTION
+ CONSTRAINT `fk_id_user_shop_user` FOREIGN KEY (`id_craftshop`) REFERENCES `craftshop` (`id_craftshop`) ON DELETE NO ACTION ON UPDATE NO ACTION
 
 )ENGINE=InnoDB;
 

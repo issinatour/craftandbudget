@@ -29,7 +29,7 @@
 			 * @param	array
 			 * @return	void
 			 */
-				public function initialize($config = array(),$reset = TRUE){
+				public function initialize($config = '',$reset = TRUE){
 					//Upload default settings.
 					$defaults = array(
 									"max_size"			=> 0,

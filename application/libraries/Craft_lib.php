@@ -34,6 +34,17 @@ class Craft_lib {
 
     }
 
+    function  get_craftshop_shops_by_type($id_craftshop,$typename){
+        $this->instance->load->model('craft_mod');
+
+        $myshop = $this->instance->craft_mod->get_craftshop_shops_by_type($id_craftshop,$typename);
+        return $myshop;
+    }
+
+    function update_config_shop_user($prestaconfig,$userconfig){
+        $this->instance->load->model('craft_mod');
+        $this->instance->craft_mod->update_configuration_craftshop($prestaconfig,$userconfig);
+    }
 
     function register_craft_shop($datauser,$datacraftshop){
 
@@ -54,6 +65,7 @@ class Craft_lib {
     }
 
 }
+
 
 
 

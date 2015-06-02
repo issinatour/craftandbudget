@@ -18,13 +18,19 @@ class ps_api {
         $this->instance = &get_instance();
     }
 
-    public function get_products_prestashop(){
+    public function get_products_prestashop($config){
         $this->instance->load->library('PS-lib/PrestaShopWebservice');
         $myproducts = array();
         $webService = new PrestaShopWebservice($this->web, $this->ps_api_key, $this->debug);
 
         $opt['resource'] = 'products';
         $opt['display'] = 'full';
+
+        if(empty($config['limitp'])){
+
+        }else{
+            $opt['limit'] = $config['limitp'];
+        }
 
 
         $xml = $webService->get($opt);
@@ -139,6 +145,51 @@ class ps_api {
         }
 
         return $my_product_option_values;
+    }
+
+    function get_image_product_types(){
+        $image_types=array();
+        $this->instance->load->library('PS-lib/PrestaShopWebservice');
+        $webService = new PrestaShopWebservice($this->web, $this->ps_api_key, $this->debug);
+
+        $opt['resource'] = 'images/products';
+        $xml = $webService->get($opt);
+        $images = $xml->children()->image_types;
+
+
+        foreach ($images->children() as  $type)
+        {
+            $data_type =$this->get_image_type($type->attributes()->id->__toString());
+             $mytype= array(
+               "id"=>$type->attributes()->id->__toString(),
+               "name"=>$type->attributes()->name->__toString(),
+               "width" => $data_type['width'],
+               "height" => $data_type['height']
+           );
+            array_push($image_types,$mytype);
+
+        }
+
+        return $image_types;
+    }
+
+   function  get_image_type($id){
+       $this->instance->load->library('PS-lib/PrestaShopWebservice');
+       $webService = new PrestaShopWebservice($this->web, $this->ps_api_key, $this->debug);
+
+       $opt['resource'] = 'image_types';
+       $opt['id']=$id;
+       $xml = $webService->get($opt);
+       $images = $xml->image_type;
+
+       $data=array(
+           "width" => $images->width->__toString(),
+           "height" => $images->height->__toString(),
+            "products" => $images->products->__toString()
+
+       );
+
+       return $data;
     }
 
     function get_products_options_group(){

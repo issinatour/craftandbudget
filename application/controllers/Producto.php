@@ -192,13 +192,59 @@ class Producto extends CI_Controller{
     }
 
 
+    function importproducts(){
+
+        $this->load->library('Product_lib');
+        $data['header'] = array(
+            "title" => "Mi producto",
+            "css" => array(
+                "css/plugins/summernote/summernote.css",
+                "css/plugins/summernote/summernote-bs3.css",
+                "css/plugins/iCheck/custom.css"
+            )
+        );
+        $data['menu'] = array(
+            "full_width" =>1
+        );
+
+        $data['footer'] = array(
+            "script" => array(
+                "js/plugins/summernote/summernote.min.js",
+                "js/custom/customsummernote.js",
+                "js/plugins/iCheck/icheck.min.js"
+            )
+        );
+
+        $this->load->library('craft_lib');
+        $ps_config=$this->craft_lib->get_craftshop_shops_by_type($this->session->userdata('id_craftshop'),'prestashop');
+
+        $data['tipos'] = $this->product_lib->get_products_image_type($ps_config['url_shop'],$ps_config['apikey'],false);
+
+        $this->load->view('templates/import_products_tmp',$data);
+    }
+
     function pslib(){
-        $url="buhoplace.es";
-        $api_key='2RE9HIPQVCPP3N3RYLAQW79IW9XR1U34';
+
+        $product_imp_options = array(
+            "products" => $this->input->post("getproducts"),
+            "images" => $this->input->post('getimages'),
+            "atributtes" => $this->input->post('getatributtes'),
+            "combinations" => $this->input->post('getcombinations'),
+            "limitp" => $this->input->post('limitp'),
+            "radioimage"=> $this->input->post('radioimage')
+        );
+
+
+        print_r($product_imp_options);
+        die();
+        $this->load->library('craft_lib');
+        $ps_config=$this->craft_lib->get_craftshop_shops_by_type($this->session->userdata('id_craftshop'),'prestashop');
+
         $debug=false;
         $this->load->library('Product_lib');
+        $this->product_lib->import_presta_products_full($ps_config['url_shop'],$ps_config['apikey'],$debug,$product_imp_options);
 
-        $this->product_lib->import_presta_products_full($url,$api_key,$debug);
+        redirect('Producto/importproducts');
     }
 
 }
