@@ -189,9 +189,15 @@ class Product_lib {
     function get_products_image_type($web,$api,$debug){
         $this->instance->load->library('ps_api');
         $psapi= new ps_api($web,$api,$debug);
-          $mytypes=  $psapi->get_image_product_types();
+        $mytypes=  $psapi->get_image_types();
 
-       return $mytypes;
+        $product_type=array();
+        foreach($mytypes as $ptype){
+            if($ptype['products']==1){
+                array_push($product_type,$ptype);
+            }
+        }
+       return $product_type;
     }
 
 
@@ -216,11 +222,13 @@ class Product_lib {
                 $this->instance->product_mod->update_product_ps($productdata,$miproducto['id'],$myshop);
 
             if($config['images']=='on'):
-                $url = 'http://buhoplace.es/api/images/products/'.$miproducto['id']."/".$miproducto['id_default_image'].'&ws_key=2RE9HIPQVCPP3N3RYLAQW79IW9XR1U34';
+                $url = $web.'/api/images/products/'.$miproducto['id']."/".$miproducto['id_default_image'].'&ws_key=2RE9HIPQVCPP3N3RYLAQW79IW9XR1U34';
                 $fp ='uploads/'.$id_user."/p/".$miproducto['id_default_image'].'.jpg';
-
+                $url2=$web.'/'.$miproducto['id_default_image'].'-'.$config['radioimage'].'/'.str_replace(" ","-",$miproducto['name'][0]['name'].'.jpg');
                 //descargamos la imagen y reducimos tamaño y calidad (mas mejor!)
+                copy($url2,$fp);
 
+/*
                 $this->download_and_resize($url,$fp,0.1);
 
                 $media_product =$this->instance->product_mod->get_product_media($miproducto['id_default_image'].'.jpg',$my_product_get['id_product']);
@@ -234,7 +242,7 @@ class Product_lib {
                     $mmedia['id_insert_media']= $this->instance->product_mod->create_media(array("is_default" => 1,"file" => $miproducto['id_default_image'].'.jpg'));
                     $this->instance->product_mod->create_product_media(array("id_product"=>$my_product_get['id_product'],"id_media" =>$mmedia['id_insert_media']));
                 }
-
+*/
               endif;
             }else{
                 $productdata=array(

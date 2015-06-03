@@ -38,6 +38,16 @@ class Craft_mod extends CI_Model {
         return $query->row_array();
     }
 
+    function create_shop_ext($data){
+        $this->db->insert("shop", $data);
+        return $this->db->insert_id();
+    }
+
+    function create_shop_craftshop($data){
+        $this->db->insert("shop_craftshop", $data);
+        return $this->db->insert_id();
+    }
+
     function update_configuration_craftshop($data,$userdata){
         $this->db->where('id_shop_user', $userdata['id_craftshop_shop']);
         $this->db->update('shop_craftshop', $data);

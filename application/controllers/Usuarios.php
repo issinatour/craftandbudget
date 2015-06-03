@@ -43,6 +43,9 @@ class Usuarios extends CI_Controller {
         );
         $id_professional = $this->craft_lib->register_user($professional);
 
+        mkdir("uploads/".$id_professional, 0755, true);
+        mkdir("uploads/".$id_professional.'/p', 0755, true);
+
         $craft_shop = array(
             "name" => $this->input->post("shopname"),
             "description" => $this->input->post("descriptionshop")
@@ -108,8 +111,8 @@ class Usuarios extends CI_Controller {
 
         $this->load->library('craft_lib');
         $prestaconfig = array(
-            "url_shop" => $this->input->post("psurl"),
-            "key_api_shop" => $this->input->post("pskey"),
+            "url_shop" => trim($this->input->post("psurl")),
+            "key_api_shop" => trim($this->input->post("pskey")),
         );
         $userconfig=array(
             "id_craftshop" => $this->session->userdata('id_craftshop'),
@@ -118,6 +121,8 @@ class Usuarios extends CI_Controller {
          );
 
         $this->craft_lib->update_config_shop_user($prestaconfig,$userconfig);
+
+        redirect('usuarios/profile');
     }
 
 

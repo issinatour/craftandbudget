@@ -27,12 +27,12 @@
 </div>
 
     <div class="form-group">
-        <label class="col-sm-2 control-label">Checkboxes &amp; radios <br/><small class="text-navy">Custom elements</small></label>
+        <label class="col-sm-2 control-label">Tipo de imagen(miniatura)<br/><small class="text-navy">yeah</small></label>
 
         <div class="col-sm-10">
 
             <?php foreach($tipos as $tipo): ?>
-            <div class="radio i-checks"><label> <input <?php if($tipo['width']>400 && $tipo['height']>400): ?> disabled=""   <?php endif; ?>name="radioimage" type="radio" value="<?=$tipo['name']?>" > <i></i> <?=$tipo['name']?> </label></div>
+            <div class="radio i-checks"><label> <input <?php if($tipo['width']>800 && $tipo['height']>800): ?> disabled=""   <?php endif; ?>name="radioimage" type="radio" value="<?=$tipo['name']?>" > <i></i> <?=$tipo['name']?>, <?=$tipo['width']?>x<?=$tipo['height']?> </label></div>
 
             <?php endforeach; ?>
 

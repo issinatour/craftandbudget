@@ -18,8 +18,7 @@ CREATE TABLE IF NOT EXISTS user_rol(
     PRIMARY KEY(id_rol)
 )ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
-
-
+INSERT INTO user_rol (name, type) VALUES ('user', 1);
 
 
 CREATE TABLE IF NOT EXISTS shop (
@@ -27,22 +26,12 @@ id_shop int not null auto_increment,
 name varchar(80),
 image varchar(120),
 type  varchar(100),
+id_shop_ps int,
 PRIMARY KEY (id_shop)
 
 )ENGINE=InnoDB;
 
 
-CREATE TABLE IF NOT EXISTS shop_craftshop(
-id_shop_user int not null auto_increment,
-id_shop int,
-id_craftshop int,
-key_api_shop VARCHAR(240),
-url_shop VARCHAR (240),
-PRIMARY KEY (id_shop_user),
- CONSTRAINT `fk_id_shop_user` FOREIGN KEY (`id_shop`) REFERENCES `shop` (`id_shop`) ON DELETE NO ACTION ON UPDATE NO ACTION,
- CONSTRAINT `fk_id_user_shop_user` FOREIGN KEY (`id_craftshop`) REFERENCES `craftshop` (`id_craftshop`) ON DELETE NO ACTION ON UPDATE NO ACTION
-
-)ENGINE=InnoDB;
 
 
 
@@ -106,6 +95,18 @@ CREATE TABLE IF NOT EXISTS craftshop(
     PRIMARY KEY(id_craftshop)
 )ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+
+CREATE TABLE IF NOT EXISTS shop_craftshop(
+id_shop_user int not null auto_increment,
+id_shop int,
+id_craftshop int,
+key_api_shop VARCHAR(240),
+url_shop VARCHAR (240),
+PRIMARY KEY (id_shop_user),
+ CONSTRAINT `fk_id_shop_user` FOREIGN KEY (`id_shop`) REFERENCES `shop` (`id_shop`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+ CONSTRAINT `fk_id_user_shop_user` FOREIGN KEY (`id_craftshop`) REFERENCES `craftshop` (`id_craftshop`) ON DELETE NO ACTION ON UPDATE NO ACTION
+
+)ENGINE=InnoDB;
 
 
 CREATE TABLE IF NOT EXISTS craftshop_users(
@@ -176,6 +177,7 @@ id_type int NOT NULL AUTO_INCREMENT,
 name VARCHAR(120),
 PRIMARY KEY (id_type)
 )ENGINE=InnoDB;
+
 
 CREATE TABLE IF NOT EXISTS product_types(
 id_product_type int NOT NULL AUTO_INCREMENT,
@@ -278,4 +280,3 @@ CREATE TABLE IF NOT EXISTS `material_combination` (
   CONSTRAINT `fk_to_combination` FOREIGN KEY (`id_combination`) REFERENCES `combination` (`id_combination`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   PRIMARY KEY (`id_combination`,`id_material`)
   ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-

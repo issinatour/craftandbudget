@@ -235,8 +235,6 @@ class Producto extends CI_Controller{
         );
 
 
-        print_r($product_imp_options);
-        die();
         $this->load->library('craft_lib');
         $ps_config=$this->craft_lib->get_craftshop_shops_by_type($this->session->userdata('id_craftshop'),'prestashop');
 

@@ -147,24 +147,27 @@ class ps_api {
         return $my_product_option_values;
     }
 
-    function get_image_product_types(){
+    function get_image_types(){
         $image_types=array();
         $this->instance->load->library('PS-lib/PrestaShopWebservice');
         $webService = new PrestaShopWebservice($this->web, $this->ps_api_key, $this->debug);
 
-        $opt['resource'] = 'images/products';
+        $opt['resource'] = 'image_types';
+        $opt['display'] = 'full';
         $xml = $webService->get($opt);
-        $images = $xml->children()->image_types;
+        $images = $xml->children()->children();
 
 
-        foreach ($images->children() as  $type)
+        echo '<br>';
+        foreach ($images as  $type)
         {
-            $data_type =$this->get_image_type($type->attributes()->id->__toString());
              $mytype= array(
-               "id"=>$type->attributes()->id->__toString(),
-               "name"=>$type->attributes()->name->__toString(),
-               "width" => $data_type['width'],
-               "height" => $data_type['height']
+               "id"=>$type->id->__toString(),
+               "name"=>$type->name->__toString(),
+               "width" => $type->width->__toString(),
+               "height" => $type->height->__toString(),
+                 "products"=>$type->products->__toString()
+
            );
             array_push($image_types,$mytype);
 
