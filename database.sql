@@ -18,8 +18,6 @@ CREATE TABLE IF NOT EXISTS user_rol(
     PRIMARY KEY(id_rol)
 )ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
-INSERT INTO user_rol (name, type) VALUES ('user', 1);
-
 
 CREATE TABLE IF NOT EXISTS shop (
 id_shop int not null auto_increment,
@@ -280,3 +278,28 @@ CREATE TABLE IF NOT EXISTS `material_combination` (
   CONSTRAINT `fk_to_combination` FOREIGN KEY (`id_combination`) REFERENCES `combination` (`id_combination`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   PRIMARY KEY (`id_combination`,`id_material`)
   ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+CREATE TABLE IF NOT EXISTS material_product (
+  id_material_product int NOT NULL AUTO_INCREMENT,
+  `id_material` int(11) NOT NULL,
+  `id_product` int(11) NOT NULL,
+  `quantity` float NOT NULL,
+  CONSTRAINT `fk_to_material_combp` FOREIGN KEY (`id_material`) REFERENCES `material` (`id_material`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `fk_to_product_combp` FOREIGN KEY (`id_product`) REFERENCES `product` (`id_product`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  PRIMARY KEY (`id_material_product`)
+)ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+INSERT INTO `user_rol` (`id_rol`, `name`, `type`) VALUES
+(1, 'user', 1);
+
+
+INSERT INTO `types` (`id_type`, `name`) VALUES
+(1, 'prestashop'),
+(2, 'craftandbudget');
+
+INSERT INTO `measurement` (`id_measurement`, `name`) VALUES
+(1, 'metro'),
+(2, 'kilo');
+
+INSERT INTO `lang` (`id_lang`, `name`, `iso_code`, `lang_code`) VALUES
+(1, 'es', 'es', 'es');

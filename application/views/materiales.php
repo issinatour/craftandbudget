@@ -3,7 +3,7 @@
         <div class="col-lg-9">
             <div class="ibox float-e-margins">
                 <div class="ibox-title">
-                    <a  href="<?=base_url()?>Producto/miproducto" type="button" class="btn btn-w-m btn-primary">Crear producto</a>
+                    <a  href="<?=base_url()?>Materiales/mimaterial" type="button" class="btn btn-w-m btn-primary">Crear producto</a>
 
                 </div>
                 <div class="ibox-content">

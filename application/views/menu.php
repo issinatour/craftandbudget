@@ -18,7 +18,7 @@
         <ul class="nav" id="side-menu">
             <li class="nav-header">
                 <div class="dropdown profile-element"> <span>
-                            <img width="160" alt="image" class="img-circle" src="http://www.gravatar.com/avatar/<?=md5(strtolower(trim($name))).'?s=80&d='.urlencode( 'http://curiosidades.batanga.com/sites/curiosidades.batanga.com/files/imagecache/primera/Como-gira-la-cabeza-un-buho-1_0.jpg' )?>". />
+                            <img width="160" alt="image" class="img-circle" src="http://www.gravatar.com/avatar/<?=md5(strtolower(trim($email))).'?s=80&d='.urlencode( 'http://curiosidades.batanga.com/sites/curiosidades.batanga.com/files/imagecache/primera/Como-gira-la-cabeza-un-buho-1_0.jpg' )?>". />
                              </span>
                     <a data-toggle="dropdown" class="dropdown-toggle" href="#">
                             <span class="clear"> <span class="block m-t-xs"> <strong class="font-bold"><?=$name?></strong>

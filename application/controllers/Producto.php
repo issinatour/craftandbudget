@@ -71,9 +71,14 @@ class Producto extends CI_Controller{
         $this->load->view('templates/dashboardtemplate',$data);
     }
 
+    public function viewtable(){
+
+        $this->load->view('materiales/materiales_view_data');
+    }
 
     public function miproducto($id_product=0){
         $this->load->library('product_lib');
+        $this->load->library('material_lib');
 
         if($id_product==0){
 
@@ -107,8 +112,11 @@ class Producto extends CI_Controller{
                 "title" => "Mi producto",
                 "css" => array(
                     "css/plugins/summernote/summernote.css",
-                    "css/plugins/summernote/summernote-bs3.css"
+                    "css/plugins/summernote/summernote-bs3.css",
+                    "css/plugins/jQueryUI/jquery-ui-1.10.4.custom.min.css",
+                    "css/plugins/jqGrid/ui.jqgrid.css"
                 )
+
             );
                 $data['menu'] = array(
                     "full_width" =>1
@@ -117,10 +125,13 @@ class Producto extends CI_Controller{
                 $data['footer'] = array(
                 "script" => array(
                     "js/plugins/summernote/summernote.min.js",
-                    "js/custom/customsummernote.js"
+                    "js/custom/customsummernote.js",
+                    "js/plugins/jqGrid/i18n/grid.locale-es.js",
+                    "js/plugins/jqGrid/jquery.jqGrid.min.js",
+                    "js/plugins/peity/jquery.peity.min.js"
                 )
             );
-
+             $data['materiales']   =$this->material_lib->get_material_product($id_product);
 
             $data['productdata'] = $this->product_lib->get_product_data($id_craftshop_of_user, $id_product);
         }else{
@@ -192,6 +203,52 @@ class Producto extends CI_Controller{
     }
 
 
+    function get_material_product($id){
+
+        $this->load->library('material_lib');
+        $response =$this->material_lib->get_material_product($id);
+        $this->output
+            ->set_content_type('application/json')
+            ->set_output(json_encode($response));
+        return;
+    }
+
+    function get_materials_craftshop($id){
+        $this->load->library('material_lib');
+        $response =$this->material_lib->get_all_materials($id);
+
+        foreach ( $response as $k=>$v )
+        {
+            $response[$k] ['mname'] = $response[$k] ['name'];
+            unset($response[$k]['name']);
+            $response[$k] ['measurename'] = $response[$k] ['measurement_type'];
+            unset($response[$k]['measurement_type']);
+            $response[$k] ['mprice'] = $response[$k] ['price'];
+            unset($response[$k]['price']);
+        }
+
+        foreach($response as &$material){
+            unset($material['quantity']);
+        }
+
+        $this->output
+            ->set_content_type('application/json')
+            ->set_output(json_encode($response));
+    }
+
+    function delete_material_product(){
+        $this->load->library('material_lib');
+      $myid=  $this->input->post("myids");
+
+foreach($myid as $id){
+    $this->material_lib->delete_product_material($id['id_material'],$id['id_producto']);
+}
+    }
+
+    function save_material_product($id_material,$id_product,$quantity){
+        $this->load->library('material_lib');
+        $this->material_lib->save_material_product($id_material,$id_product,$quantity);
+    }
     function importproducts(){
 
         $this->load->library('Product_lib');

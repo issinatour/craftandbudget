@@ -65,33 +65,44 @@ class Materiales extends CI_Controller
 
     public function mimaterial($id=0)
     {
-
         $this->load->library('Material_lib');
+        $data['header'] = array(
+            "title" => "Mi producto",
+            "css" => array(
+                "css/plugins/summernote/summernote.css",
+                "css/plugins/summernote/summernote-bs3.css",
+                "css/plugins/chosen/chosen.css"
+            )
+        );
+        $data['menu'] = array(
+            "full_width" =>1
+        );
+
+        $data['footer'] = array(
+            "script" => array(
+                "js/plugins/summernote/summernote.min.js",
+                "js/custom/customsummernote.js",
+                "js/plugins/chosen/chosen.jquery.js",
+            )
+        );
+
+
         if($id==0){
-            redirect("Material");
-        }else{
-            $data['header'] = array(
-                "title" => "Mi producto",
-                "css" => array(
-                    "css/plugins/summernote/summernote.css",
-                    "css/plugins/summernote/summernote-bs3.css",
-                    "css/plugins/chosen/chosen.css"
-                )
-            );
-            $data['menu'] = array(
-                "full_width" =>1
+            $data['measurements'] = $this->material_lib->get_measurements();
+            $data['material']=array(
+                "name" => '',
+                "price" => '',
+                "id_material"=>0
             );
 
-            $data['footer'] = array(
-                "script" => array(
-                    "js/plugins/summernote/summernote.min.js",
-                    "js/custom/customsummernote.js",
-                    "js/plugins/chosen/chosen.jquery.js"
-                )
-            );
+        }else{
+
+
             $data['measurements'] =  $this->material_lib->get_material_measurements_selected($id);
             $data['material'] = $this->material_lib->get_material_data($id);
+
         }
+
 
         $this->load->view('templates/materialviewtemplate', $data);
 

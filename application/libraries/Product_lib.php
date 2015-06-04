@@ -224,12 +224,11 @@ class Product_lib {
             if($config['images']=='on'):
                 $url = $web.'/api/images/products/'.$miproducto['id']."/".$miproducto['id_default_image'].'&ws_key=2RE9HIPQVCPP3N3RYLAQW79IW9XR1U34';
                 $fp ='uploads/'.$id_user."/p/".$miproducto['id_default_image'].'.jpg';
-                $url2=$web.'/'.$miproducto['id_default_image'].'-'.$config['radioimage'].'/'.str_replace(" ","-",$miproducto['name'][0]['name'].'.jpg');
+                $url2= 'http://'.$web.'/'.$miproducto['id_default_image'].'-'.$config['radioimage'].'/'.str_replace(" ","-",$miproducto['name'][0]['name'].'.jpg');
                 //descargamos la imagen y reducimos tamaño y calidad (mas mejor!)
-                copy($url2,$fp);
 
-/*
-                $this->download_and_resize($url,$fp,0.1);
+
+                copy('',$fp);
 
                 $media_product =$this->instance->product_mod->get_product_media($miproducto['id_default_image'].'.jpg',$my_product_get['id_product']);
                 if(empty($media_product)){
@@ -242,7 +241,7 @@ class Product_lib {
                     $mmedia['id_insert_media']= $this->instance->product_mod->create_media(array("is_default" => 1,"file" => $miproducto['id_default_image'].'.jpg'));
                     $this->instance->product_mod->create_product_media(array("id_product"=>$my_product_get['id_product'],"id_media" =>$mmedia['id_insert_media']));
                 }
-*/
+
               endif;
             }else{
                 $productdata=array(

@@ -81,8 +81,9 @@ if(isset($menu)){
                                                             <div class="input-group">
                                                                 <select data-placeholder="Medida" name="chose" class="chosen-select" style="width:350px;" tabindex="5">
 
-                                                                    <?php foreach($measurements as $measuement){ ?>
-                                                                        <option <?php if($measuement['is_selected']==1){?>  selected   <?php }else {?>  <?php }?> value="<?=$measuement['id_measurement']?>"><?=strtoupper($measuement['measurement_type']);?></option>
+                                                                    <?php  foreach($measurements as $measuement){ ?>
+
+                                                                        <option value="<?=$measuement['id_measurement']?>"><?=strtoupper($measuement['measurement_type']);?></option>
                                                                     <?php } ?>
 
 

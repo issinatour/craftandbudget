@@ -19,5 +19,11 @@
     <link href="<?=base_url()?>assets/backtheme/css/plugins/iCheck/custom.css" rel="stylesheet">
     <link href="<?=base_url()?>assets/backtheme/css/plugins/steps/jquery.steps.css" rel="stylesheet">
 
-
+    <style>
+        /* Additional style to fix warning dialog position */
+        #alertmod_table_list_2 {
+            top: 900px !important;
+        }
+    </style>
 </head>
+
