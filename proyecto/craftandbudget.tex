@@ -1,4 +1,4 @@
-% Created 2015-06-05 Fri 06:52
+% Created 2015-06-05 Fri 16:41
 \documentclass[11pt]{article}
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
@@ -16,6 +16,7 @@
 \usepackage{amssymb}
 \usepackage{hyperref}
 \tolerance=1000
+\author{Nicolas Alphonse}
 \date{\today}
 \title{craftandbudget}
 \hypersetup{
@@ -27,78 +28,184 @@
 \maketitle
 \tableofcontents
 
-\section{Implementación de la bases de datos}
+\section{codeigniter librería SimpleLoginSecure}
 \label{sec-1}
+\section{Implementación de la bases de datos}
+\label{sec-2}
+\subsection{Introducción a nuestra base de datos}
+\label{sec-2-1}
 Se ha tratado de implementar una base de datos los más completa y
-escalable posible. Como se puede apreciar en el modelo, se ha dado
-la funcionalidad a la app de que se puedan dar de alta varios
-usuarios a la vez en una misma tienda. Para ello se ha creado una
+escalable posible. 
+\subsection{Tiendas}
+\label{sec-2-2}
+La aplicación va a ser multitienda. Un artesano puede usar a la
+misma vez y de forma sincronizada diferentes tiendas online en
+craft\&budget. Para ello, se ha creado la tabla "craftshop" en la
+que se detallan los datos genéricos que el usuario quiere para
+todas sus tiendas online. Cada tienda virtual se importará en la
+tabla "shop". En ella se detalla información de esa tienda en
+concreto, como el nombre de ésta, o el logo de la tienda. Para
+conseguir que en una misma aplicación craft\&budget haya varias
+tiendas se crea la tabla de relacion n-n "shop$_{\text{craftshop}}$". En
+cuanto a la tienda al que se conecta, como se puede apreciar en la
+tabla "shop" se necesita almacenar el api key de la web a la que
+pertence. Esta api key, permite privilegios CRUD en la base de
+datos original usando la web api de prestsashop o de la tienda en
+cuestión.
+
+Se consigue así que los artesanos puedan utilizar craft\&shop para
+  sincronizar todas sus tiendas online, y saber cuantos y que
+  productos tienen online en cada tienda. Para esta situación cuando
+  los usuarios sepan rápidamente de que tienda es cada producto, se ha
+  decidido no solo especificar una columna para el nombre de la tienda
+  virtual, sino que también se ha creado una columna para almacenar el
+  logo de la tienda. Así, cuando el usuario este visualizando todos
+  los productos que tiene a la venta, podrá saber a que tienda
+  pertence cada uno solo con ver la imagen. 
+
+Para relacionar cada producto del artesano con la tienda a la que
+pertenece, se usan la tabla "types". Evitando así la duplicación de
+datos del nombre de la tienda y del logo de esta. Como se puede ver
+en la diagrama de la base de datos, la tabla "shop" hace referencia
+al id de la tabla "types".
+
+
+
+\subsection{Manejo de usuarios}
+\label{sec-2-3}
+Como se puede apreciar en el modelo, se ha dado la funcionalidad a
+la app de que se puedan dar de alta varios usuarios a la vez en una
+misma aplicación craft\&budget. La información básica de los usuarios
+se encuentra en la tabla "user". Así mismo, los usuarios pueden tener
+o un rol de administrador, o un rol de usuario normal. Los usuarios
+con rol de administrador son los únicos usuarios que pueden importar
+e exportar datos hacia las tiendas online. Los tipos de roles están
+especificados en la talba "user$_{\text{rol}}$". Finalmente, se ha creado una
 tabla "craftshop$_{\text{users}}$" en la que se relacionan un usuario de la
 tabla "user", con un rol de usuario de la tabla "user$_{\text{rol}}$" y con una
-tienda. De está manera, además de que puedan haber varios usuarios
-en una tienda, se les pueden asignar roles. Siendo el de
-administrador el más importante, ya que este será el que tenga los
-máximos privilegios. \{\{diferencia entre roles de usuarios\}\}
+tienda de la tabla "shop".
 
-En cuanto a la tienda al que se conecta, como se puede apreciar en
-la tabla "shop" se necesita almacenar el api key de la web a la que
-pertence. Esta api key, permite privilegios CRUD en la base de datos
-original usando la web api de prestsashop o de la tienda en
-cuestión. En nuestra base de datos hay dos tipos de tiendas, las
-tiendas virtuales que tienen los ususario online, y la tienda
-craftshop. Un usuario puede tener varias tiendas online, pero solo
-puede tener una tienda craftshop. Se consigue así que los artesanos
-puedan utilizar craft\&shop para sincronizar todas sus tiendas
-online, y saber cuantos y que productos tienen online en cada
-tienda. Para que cuando los usuarios sepan rápidamente de que tienda
-es cada producto, se ha decidido no solo especificar una columna
-para el nombre de la tienda virtual, sino que también se ha creado
-una columna para almacenar el logo de la tienda. Así, cuando el
-usuario este visualizando todos los productos que tiene a la venta,
-podrá saber a que tienda pertence cada uno solo con ver la imágen.
-
+\subsection{Multilenguaje}
+\label{sec-2-4}
 Se ha decidido también implementar una página multilenguaje para así
 tener más usuarios potenciales. Para ello, se ha creado una tabla
-"lang" en donde se especifica cada lenguaje que aceptará craft\&shop
-\{\{lista total o parcial\}\}. Se relacionará cada usuario con un o
-varios lenguajes. Para saber que lenguajes tiene disponible un
-usuario, se usará la web api de prestashop, ya que en su base de
-datos se almacena los lenguajes que tiene el usuario. La parte la
-página web que será multilenguaje será la referente a los
-productos. La idea de implantar está funcionalidad es que muchos
-artesanos traducen sus productos al inglés o a otro idioma para
-conseguir más clientes. Desde prestashop no es posible averiguar
-cuál es su lenguaje principal, así que se optó por descargar todos
-sus productos en todos los lenguajes que tenga especificado, y que
-sea el propio usuario quien eliga su lenguaje a través de una
-pantalla de configuración. Se ha considerado que las únicas partes
-multilenguaje de nuestra aplicacón sea los productos, y los datos
-estáticos de la página, es decir, los menús y mensajes de
-información. Los materiales, y proveedores solo se almacenarán en la
-base de datos en un solo lenguaje, ya que nuestra app será un back
-office para los artesanos, no un producto final para la vista de los
-clientes. Tiene más sentido que la información insertada por el
-usuario se almacena tan solo en un lenguaje, el lenguaje principal
-del usuario. La tabla que se encargará de almacenar los diferentes
-lenguajes de cada producto sera la tabla "product$_{\text{language}}$". Esta
-tabla es la relación n-n entre la tabla "product" y  la tabla "lang".
+"lang" en donde se especifica cada lenguaje que aceptará
+craft\&shop. En esta tabla se insertarán todos los valores estándar
+iso 639-2 de todos los lenguajes disponibles. Estos lenguajes están
+escritos en tres columnas, una para el nombre del lenguaje, otra
+para código numérico del lenguaje, y la última para el código
+alfabético. Se relacionará cada usuario con un o varios
+lenguajes. Para saber que lenguajes tiene disponible un usuario, se
+usará la web api de prestashop, ya que en su base de datos se
+almacena los lenguajes que tiene el usuario. La idea de implantar
+está funcionalidad es que muchos artesanos traducen sus productos al
+inglés o a otro idioma para conseguir más clientes. Desde prestashop
+no es posible averiguar cuál es su lenguaje principal, así que se
+optó por descargar todos sus productos en todos los lenguajes que
+tenga especificado, y que sea el propio usuario quien eliga su
+lenguaje a través de una pantalla de configuración. Se ha
+considerado que las mejores partes en las incorporar multilenguaje
+de nuestra aplicacón sea los productos, y los datos estáticos de la
+página, es decir, los menús y mensajes de información. Los
+materiales, y proveedores solo se almacenarán en la base de datos en
+un solo lenguaje, debido a que nuestra app será un back office para los
+artesanos, no un producto final para la vista de los clientes. Tiene
+más sentido que la información insertada por el usuario se almacena
+tan solo en un lenguaje, el lenguaje principal del usuario. La tabla
+que se encargará de almacenar los diferentes lenguajes de cada
+producto sera la tabla "product$_{\text{language}}$". Esta tabla es la relación
+n-n entre la tabla "product" y la tabla "lang". Un producto puede
+estar traducido a muchos lenguajes, y un lenguaje puede estar siendo
+usado en muchos productos. 
 
-Los materiales se almacenan en la tabla "materiales". Como se ha
+
+\subsection{Materiales}
+\label{sec-2-5}
+Los materiales se almacenarán en una tabla "materiales". Como se ha
 dicho anteriormente, los materiales son los materias necesarias para
-porder fabricar los productos de los artesanos. Estos materiales
+poder fabricar los productos de los artesanos. Estos materiales
 tendrá que ser introducidos por los artesanos, ya que no existen en
-las tiendas virtuales. Para que los artesanos puedan tener más
-organizado el stock de materiales, se ha optado por relacionar a
-cada material con una categoría. Así, los usuarios podrán saber
-todos los materiales disponibles de una categoría dada, y podrán
-buscar de manera eficiente el stock de materiales. Como nuestro
-sistema va a ser multiusuario para una misma tienda, se ha optado
-por relacionar cada material no con un usuario, pero con la tienda
-craft\&budget que comparten todos los usuarios de una misma
-tienda. 
+las tiendas virtuales. Como nuestro sistema va a ser multiusuario
+para una misma tienda craft\&budget, se ha optado por relacionar cada
+material no con un usuario, pero con la tienda craft\&budget que
+comparten todos los usuarios de una misma tienda. Para que los
+artesanos puedan tener más organizado el stock de materiales, se ha
+optado por relacionar a cada material con una categoría. La columna
+"id$_{\text{category}}$" de la tabla "material" hace referencia a la tabla
+donde se guardan todas las categorías de la base de datos, en la
+tabla "category". De esta manera, los usuarios podrán saber todos los
+materiales disponibles de una categoría dada, y podrán buscar de
+manera eficiente el stock de materiales. Esta última información se
+encuentra en la tabla "stock$_{\text{material}}$".
 
-Estos materiales no solo tiene la funcionalidad de especificar
-cuantos materiales tiene un usuario, sino que también sirven para
-saber cuantos materiales son necesarios para fabricar un producto.
+Los materiales no solo tiene la funcionalidad de especificar cuantos
+materiales tiene un usuario, sino que también sirven para saber
+cuantos materiales son necesarios para fabricar un producto.  La
+tabla materiales representa los datos de los materiales, no el stock
+que hay de dicho materia. Para hacer ello se ha decidido crear en la tabla
+"materiales" un dato "id$_{\text{measurement}}$", el cual hace referencia a la
+tabla "measurement". En esta tabla lo que se almacena es el tipo de
+medidas de los materiales, es decir si están especificados en kg, g,
+l, metros cuadrados, etc\ldots{}  Para tener costancia de la cantidad de
+cada material, se ha creado la tabla "stock$_{\text{material}}$".
+
+\subsection{Proveedores}
+\label{sec-2-6}
+En cuanto a los proveedores, estos es almacenan en la tabla
+"supplier". De estos se almacenará la dirección, y el nombre. Además
+para saber que materiales tiene que proveedor, se ha creado la tabla
+"material$_{\text{supplier}}$". Es una relación n-n, en donde un material puede
+ser comprado por varios proveedores. Lo hemos creído conveniente
+hacerlo así, para dar la oportunidad a los artesanos a poder tener
+en su base de datos varios proveedores para un mismo material, por
+si en algún futuro alguno de sus proveedore falla.
+
+\subsection{Productos}
+\label{sec-2-7}
+ En cuanto a los productos, estos se cogen directamente de la
+tienda online del artesano. Se almacenarán en la tabla "product". Se
+ ha decidido que cada producto solo puede ser de una tienda online. A
+ pesar de que en la realidad se pueda tener un mismo producto
+ publicitado en varias tienda, hemos considerado más adecuado que si
+ son de tiendas separadas, el producto en nuestra bases de datos es
+ diferente. Ya que podría darse el case de que el artesano quisiera
+ diferentes precios dependiendo de la tienda.
+
+Además también se almacena una imagen de cada material. En realidad,
+según nuestra base de datos se podría almacenar más de una imagen,
+pero ya que la imagen solo tiene sirve para facilitar la lectura de
+productos desde las tablas, no para mostrar la mercancía a clientes,
+se ha decidido que lo más conveniente es tan solo cargar la imagen
+principal del producto desde prestashop. Se ha optado por no guardar
+la imágen en formato binario en la base de datos, sino guardar el
+nombre de la imagen desde la ruta relativa en nuestro sistema de
+ficheros. Estas rutas se almacenarán en la tabla "product$_{\text{media}}$" y 
+todas las imágenes se guardarán en la carpeta assets/images. De está
+manera, es mucho más fácil guardar imágenes, pues tan solo hay que
+llamar a la libreria FileUpload de codeigniter, y este se encargá de
+guardarlos en el sistema de ficheros, tan solo habría que almacenar
+el string del nombre de la imagen.
+
+Como es una aplicación destinada vendedores de artesanía, y los
+productos que venden suelen estar hechos a medida, o al menos están
+en varios colores, tamaños, materiales, etc\ldots{} Se ha implementado la
+base de datos de manera que se pueda permitir a los artesanos poder
+almacernar sus materiales y productos de forma dinámica. Para ellos,
+se ha creado la tabla "combination", la que sirve como referencia
+para determinar una variedad de un determinado producto. Por
+ejemplo, si una mesa es XXL, si está pintada de color azul,
+etc.. Esta combinación tendrá un stock y un precio. Para almacenar
+en la base de datos las características de dicha combinación, hemos
+creado otra tabla, la tabla "attributes". Finalmente, para
+relacionar una combinación de un producto con un atributo
+determinado, se ha creado la tabla "combination$_{\text{attribute}}$".
+
+Cabe destacar, que los materiales se relacionan con los productos,
+no a través de la tablas "productos" y "materiales", sino a través
+de la tabla "combinación", "materiales". Esto es así, porque
+dependiendo de los atributos de un producto, este necesitará un tipo
+de material u otro. Si tienes una mesa, y esta tiene el atributo
+rojo; interesa relacionar el atributo "pintura roja para mesas" a la
+combinación, y no al producto mesa.
 % Emacs 24.5.1 (Org mode 8.2.10)
 \end{document}

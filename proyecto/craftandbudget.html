@@ -4,7 +4,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
 <title>craftandbudget</title>
-<!-- 2015-06-02 Tue 11:03 -->
+<!-- 2015-06-05 Fri 16:39 -->
 <meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta  name="generator" content="Org-mode" />
 <meta  name="author" content="Nicolas Alphonse" />
@@ -142,654 +142,254 @@ for the JavaScript code in this tag.
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#sec-1">1. vision general</a>
+<li><a href="#sec-1">1. codeigniter librería SimpleLoginSecure</a></li>
+<li><a href="#sec-2">2. Implementación de la bases de datos</a>
 <ul>
-<li><a href="#sec-1-1">1.1. resumen</a></li>
-<li><a href="#sec-1-2">1.2. abstract</a></li>
+<li><a href="#sec-2-1">2.1. Introducción a nuestra base de datos</a></li>
+<li><a href="#sec-2-2">2.2. Tiendas</a></li>
+<li><a href="#sec-2-3">2.3. Manejo de usuarios</a></li>
+<li><a href="#sec-2-4">2.4. Multilenguaje</a></li>
+<li><a href="#sec-2-5">2.5. Materiales</a></li>
+<li><a href="#sec-2-6">2.6. Proveedores</a></li>
+<li><a href="#sec-2-7">2.7. Productos</a></li>
 </ul>
 </li>
-<li><a href="#sec-2">2. Agradecimientos</a></li>
-<li><a href="#sec-3">3. Introducción</a>
-<ul>
-<li><a href="#sec-3-1">3.1. Objetivos</a>
-<ul>
-<li><a href="#sec-3-1-1">3.1.1. Entender la importancia de escoger una tecnología backend apropiada</a></li>
-<li><a href="#sec-3-1-2">3.1.2. Como realizar un página web responsive</a></li>
-<li><a href="#sec-3-1-3">3.1.3. Alternativas de web hosting, hacer una aplicación SEO friendly.</a></li>
-</ul>
-</li>
-<li><a href="#sec-3-2">3.2. Motivación</a></li>
-<li><a href="#sec-3-3">3.3. Antecedentes</a></li>
-</ul>
-</li>
-<li><a href="#sec-4">4. Desarrollo de la práctica</a>
-<ul>
-<li><a href="#sec-4-1">4.1. Material</a>
-<ul>
-<li><a href="#sec-4-1-1">4.1.1. PHP y MySQL</a></li>
-<li><a href="#sec-4-1-2">4.1.2. Framework codeigniter php</a></li>
-<li><a href="#sec-4-1-3">4.1.3. twitter bootstrap</a></li>
-<li><a href="#sec-4-1-4">4.1.4. api rest</a></li>
-<li><a href="#sec-4-1-5">4.1.5. base de datos en prestashop</a></li>
-<li><a href="#sec-4-1-6">4.1.6. comunicarse con prestashop mediante su web api</a></li>
-</ul>
-</li>
-<li><a href="#sec-4-2">4.2. Planificación</a></li>
-<li><a href="#sec-4-3">4.3. Descripción del trabajo realizado</a></li>
-<li><a href="#sec-4-4">4.4. Resultados y validación</a></li>
-</ul>
-</li>
-<li><a href="#sec-5">5. Conclusiones</a>
-<ul>
-<li><a href="#sec-5-1">5.1. Aportaciones</a></li>
-<li><a href="#sec-5-2">5.2. Trabajo futuro</a></li>
-</ul>
-</li>
-<li><a href="#sec-6">6. Bibliografía y webgrafía</a></li>
 </ul>
 </div>
 </div>
 <div id="outline-container-sec-1" class="outline-2">
-<h2 id="sec-1"><span class="section-number-2">1</span> vision general</h2>
-<div class="outline-text-2" id="text-1">
-</div><div id="outline-container-sec-1-1" class="outline-3">
-<h3 id="sec-1-1"><span class="section-number-3">1.1</span> resumen</h3>
-<div class="outline-text-3" id="text-1-1">
-<p>
-   Craft&amp;budget es una web app destinada para que aquellos artesanos
-que tengan una tienda online en el CMS prestashop puedan manejar el
-stock de su tienda. Podrán tanto manejar el stock de los productos que
-tengan en venta, como el stock de los materiales que usan para crear
-sus productos. Con craft and budget podrán además gestionar la
-creación de sus productos sabiendo cuantos materiales necesitan para
-crear sus productos y cuántos productos pueden crear con los
-materiales de los que disponen. Finalmente también dispondrán de una
-libreta de dirección para almacenar todos sus proveedores.
-</p>
-
-<p>
-El stock de los materiales no se encuentra en la base de datos de
-prestashop, sino que los artesanos tendrán que crearlo con los
-materiales de que dispongan materiales.
-</p>
-
-<p>
-La primera versión se conectará con prestashop únicamente, pero en un
-futuro p2odrá conectarse con otras tiendas online. Para conectarse,
-craft and budget se comunica con prestashop mediante una api rest por
-la cual se descargá todos los productos que el artesano tiene en la
-tienda. Usaremos una base de datos mysql para guardar todos los
-productos y los materiales.
-</p>
+<h2 id="sec-1"><span class="section-number-2">1</span> codeigniter librería SimpleLoginSecure</h2>
 </div>
-</div>
-
-
-<div id="outline-container-sec-1-2" class="outline-3">
-<h3 id="sec-1-2"><span class="section-number-3">1.2</span> abstract</h3>
-</div>
-</div>
-
 <div id="outline-container-sec-2" class="outline-2">
-<h2 id="sec-2"><span class="section-number-2">2</span> Agradecimientos</h2>
-</div>
-
-<div id="outline-container-sec-3" class="outline-2">
-<h2 id="sec-3"><span class="section-number-2">3</span> Introducción</h2>
-<div class="outline-text-2" id="text-3">
+<h2 id="sec-2"><span class="section-number-2">2</span> Implementación de la bases de datos</h2>
+<div class="outline-text-2" id="text-2">
+</div><div id="outline-container-sec-2-1" class="outline-3">
+<h3 id="sec-2-1"><span class="section-number-3">2.1</span> Introducción a nuestra base de datos</h3>
+<div class="outline-text-3" id="text-2-1">
 <p>
-Nuestro proyecto de fin de ciclo trata sobre una solución web
-multiplataforma para que aquellos artesanos que venden sus productos
-a través de prestashop puedan manejar su stock de materiales de una
-manera cómoda y sencilla y que además esté sincronizada con su
-tienda. En nuestra aplicación web, los artesanos podrán tanto añadir
-como quitar materiales de su inventario, dependiendo de si fabrican
-o compran materiales para sus productos. También podrán crear una
-lista de contactos de sus proveedores, para poder tenerlos a mano
-cuando los necesiten.
-</p>
-
-<p>
-Prestashop es un CRM open source, de fácil uso, para la creación de
-tiendas online. Actualmente se estima que hay en la red alrededor de
-125000 tiendas onlines que usan prestashop y cada vez se está haciendo
-más popular.
-</p>
-
-<p>
-Además es de fácil uso y está destinado a personas que tiene tiendas
-de tamaño pequeño-medio, de entre 500/1000 unidades a la venta. Estas
-fueron las principales razones por las que en un principio nos
-decidimos a crear un módulo para este. Es open source, es de fácil uso
-y está destinado a pequeñas tiendas. El principal problema que nos
-encontramos cuando estábamos creando el módulo es la escasa
-documentación que hay sobre como hacerlo, ya que aunque prestashop es
-open source, gana dinero de dos maneras: mediante servicios de
-hosting, y mediante cursos para que los usuarios aprendan cómo usarlo
-y que los desarrolladores aprendan cómo funciona.
-</p>
-
-<p>
-Fue entonces cuando decidimos que en vez de crear un módulo deberíamos
-crear una web app que se comunicará con prestashop mediante su web
-service. Al final fue una buena decisión, ya que haciendo una página
-web ajena a prestashop no solo implicaba no tener que usar sus
-librerías php, las cuales como ya hemos dicho tienen una documentación
-justa, sino que también nos abría las puertas con otras posibilidades
-que no están contempladas en ellas. Por ejemplo, hacer que nuestra app
-no solo se comunique con prestashop, sino con otros CRM también
-destinados a la creación de tiendas online. De ésta manera,
-multiplicamos nuestros usuarios potenciales.
-</p>
-
-<p>
-Además, si nos hubiésemos ceñido a crear el módulo, tan sólo habríamos
-usado php, html y css. Creando nuestra propia web desde cero no solo
-íbamos a aprender esas tres, sino que también nos veríamos obligados a
-usar tecnologías que están en boga tales como javascript y jquery, y
-lo más importante, aprender cómo crear páginas web para que se puedan
-ver bien en cualquier dispositivo.
-</p>
-</div>
-
-<div id="outline-container-sec-3-1" class="outline-3">
-<h3 id="sec-3-1"><span class="section-number-3">3.1</span> Objetivos</h3>
-<div class="outline-text-3" id="text-3-1">
-<p>
-Los perfiles de programadores web están muy solicitados. De hecho, a
-la hora de crear aplicaciones para dispositivos móviles, muchas
-empresas optan por realizarlas en html5 y de ahí exportarlas
-utilizando algún framework como phonegap. Estas tecnologías se están
-desarrollando muy rápido y cada vez se puede acceder a más
-funcionalidades de los dispositivos móviles, algunas de las cuales se
-consideraban inviables en un pasado.<a href="#phonegapinfo">6</a>
-  <img src="./img/phone_gap_features.png" alt="phone_gap_features.png" />
-</p>
-
-<p>
-Durante los dos años que han durado los estudios nos hemos centrado en
-la programación java. Consideramos interesante y de un valor añadido
-el aprender a realizar aplicaciones webs multidispositivo.
-</p>
-
-<p>
-El objetivo principal que perseguimos al empezar el proyecto era el
-de tener una visión general del proceso de creación de páginas webs,
-así de las tecnologías más usadas y las ventajas de unas respecto de
-otra.  También las ventajas que ofrece el encapsular tu aplicación
-desde html5 en vez de crearla directamente con tecnologías nativas.
-</p>
-
-<ul class="org-ul">
-<li>Investigación sobre las diferentes tecnologías que hay para
-realizar el back end de un página web, cuales son las ventajas y
-desventajas de usar unos frente a otros. Porque es ampliamente
-usado PHP
-</li>
-<li>Como maquetar para que la págian web pueda verse correctamente en
-diferentes tamaños de pantallas.
-</li>
-<li>Las diferentes plataformas de web hosting que hay disponibles y
-cuales son los puntos en los que tienes que centrar para escoger
-uno u otro.
-</li>
-<li>Que tecnologías existen hay para exportar tu página web a
-aplicaciones nativas de android e IOs.
-</li>
-<li>XAMPP 
-</li>
-</ul>
-</div>
-<div id="outline-container-sec-3-1-1" class="outline-4">
-<h4 id="sec-3-1-1"><span class="section-number-4">3.1.1</span> Entender la importancia de escoger una tecnología backend apropiada</h4>
-<div class="outline-text-4" id="text-3-1-1">
-<p>
-Una de las decisiones mas importantes a la hora de crear un
-producto, es escoger la pila de tecnologías en la que te vas a
-basar.  El backend de una aplicación es la capa de software que el
-usario final no ve, pero no por ello es menos importante.  El
-backend de la aplicación es la parte del código de la página web
-que se encarga de la manipulación y flujo de los
-datos. Generalmente está compuesta de tres elementos: un servidor,
-una aplicación y una base de datos. Para enlazar estos tres
-elementos se usan lenguajes especializados que se ejecutan desde
-el lado del servidor.  A la hora de escoger que tecnología backend
-es importante escoger una que te permita escalar y operar a un
-precio bajo. 
-</p>
-
-<p>
-Para realizar nuestra aplicación, nos hemos decantado por el
-lenguaje de script PHP. Acutalmente, según
-W3tech<a href="#porcentajewebsphp">6</a>, PHP es usado por el 81.9% de páginas web
-del plantea. 
-</p>
-
-<p>
-En el mundo profesiona generalmente se usa php mediante un
-framework para facilitar el proceso de creción de software. Por
-ello decidimos usar uno para experimentar de primera mano la
-ventajas que ofrece. Finalmente elegimos el framework Codeigniter
-el cual esta basado en MVC. A pesar de que hayan aparecido nuevos
-frameworks muy potentes como laravel, hemos decidido realizar el
-proyecto en codeigniter porque es rápido, fácil de instalar y
-configurar, está bien documentado y nos aporta una buena
-introducción a la convenciones de MVC en php. Además tiene un
-sistema de ruteo fácil, es fácil de extender y existentes una
-amplia base de librerías.
-<a href="#phpframeworkgraph">6</a>
-</p>
-
-<div class="figure">
-<p><img src="./img/php_framework_overview.png" alt="php_framework_overview.png" width="700" />
-</p>
-</div>
-
-<p>
-En cuanto a nuestra base de datos, nuestra aplicación correrá en
-una base de datos MySQL. En un principio habíamos decidido
-utilizar mongodb, pero existía el problema que casi ninguno de los
-proveedores que barajeabamos para albergar nuestra aplicación
-ofrecía mongodb como una solución por defecto, sino que era de
-pago. Mongodb nos parecía una buena solución ya que nuestra app
-necesitaba una base de datos dinámica, en la que no es necesario
-seguir ningún esquema. Por ejemplo, los productos que los artesanos
-venden en la tienda, pueden tener una gran variedad de
-materiales. Y además un mismo material puede proveenir de distintos
-proveedores. Usando mongodb podríamos haber conseguido una base de
-datos dinámica y menos rígida más apropiada para la gestión de
-materiales de artesanos a pequeña escala.
-</p>
-
-<p>
-Finalmente nos decidimos por MySQL, ya que esta está
-disponible en la mayoría de los servidores de hosting, PHP se
-integra bien con éste, y es rápido. Además es la segunda de bases de
-datos más usada hasta el momento, lo que quiere decir que está muy
-demandada en el mundo profesional.<a href="#basesdatosranking">6</a>
+Se ha tratado de implementar una base de datos los más completa y
+escalable posible. 
 </p>
 </div>
 </div>
-
-<div id="outline-container-sec-3-1-2" class="outline-4">
-<h4 id="sec-3-1-2"><span class="section-number-4">3.1.2</span> Como realizar un página web responsive</h4>
-<div class="outline-text-4" id="text-3-1-2">
+<div id="outline-container-sec-2-2" class="outline-3">
+<h3 id="sec-2-2"><span class="section-number-3">2.2</span> Tiendas</h3>
+<div class="outline-text-3" id="text-2-2">
 <p>
-A la hora de realizar la maquetación web, deberías de ser capaz de
-diseñar, maquetar, cambiar colores etc. con relativa
-facilidad. Para ello es importante escoger un framework que te
-permita crear una aplicación agradable y fácil de usar sin mucha
-dificultad. Además, nosotros hemos decidido que nuestra aplicación
-debe ser responsive, es decir, que pueda ser utilizada en
-diferentes dispositivos sin que la usabilidad se vea
-perjudicada. En nuestro proyecto es más importante si cabe, ya que
-está enfocada a artesanos, y estos no siempre tendrán a mano un
-ordenador para gestionar sus materiales cuando estén fabricando
-sus productos, pero un móvil si que es posile que lo tenga a mano.
+La aplicación va a ser multitienda. Un artesano puede usar a la
+misma vez y de forma sincronizada diferentes tiendas online en
+craft&amp;budget. Para ello, se ha creado la tabla "craftshop" en la
+que se detallan los datos genéricos que el usuario quiere para
+todas sus tiendas online. Cada tienda virtual se importará en la
+tabla "shop". En ella se detalla información de esa tienda en
+concreto, como el nombre de ésta, o el logo de la tienda. Para
+conseguir que en una misma aplicación craft&amp;budget haya varias
+tiendas se crea la tabla de relacion n-n "shop<sub>craftshop</sub>". En
+cuanto a la tienda al que se conecta, como se puede apreciar en la
+tabla "shop" se necesita almacenar el api key de la web a la que
+pertence. Esta api key, permite privilegios CRUD en la base de
+datos original usando la web api de prestsashop o de la tienda en
+cuestión.
 </p>
 
+<p>
+Se consigue así que los artesanos puedan utilizar craft&amp;shop para
+  sincronizar todas sus tiendas online, y saber cuantos y que
+  productos tienen online en cada tienda. Para esta situación cuando
+  los usuarios sepan rápidamente de que tienda es cada producto, se ha
+  decidido no solo especificar una columna para el nombre de la tienda
+  virtual, sino que también se ha creado una columna para almacenar el
+  logo de la tienda. Así, cuando el usuario este visualizando todos
+  los productos que tiene a la venta, podrá saber a que tienda
+  pertence cada uno solo con ver la imagen. 
+</p>
 
 <p>
-Para la maquetación usaremos el lenguaje de marcas
-HTML junto con css. De igual modo, que para el backend, para
-facilitar el proceso de diseño de esta usaremos el framework
-twitter bootstrap.
+Para relacionar cada producto del artesano con la tienda a la que
+pertenece, se usan la tabla "types". Evitando así la duplicación de
+datos del nombre de la tienda y del logo de esta. Como se puede ver
+en la diagrama de la base de datos, la tabla "shop" hace referencia
+al id de la tabla "types".
 </p>
 </div>
 </div>
 
 
-<div id="outline-container-sec-3-1-3" class="outline-4">
-<h4 id="sec-3-1-3"><span class="section-number-4">3.1.3</span> Alternativas de web hosting, hacer una aplicación SEO friendly.</h4>
-<div class="outline-text-4" id="text-3-1-3">
-<p>
-A la hora de sacar al mercado una página web, sino puedes usar tus
-propios servidores, seleccionar un servicio hosting que se ajuste
-a tus espectativas es vital. Con este proyecto queremos investigar
-cuales son las alternativas existentes en el mercado actual en lo
-referente a estos servicios, así como aprender a distinguir a
-servicios de mala calidad de los que ofrecen una buena. 
-</p>
 
+<div id="outline-container-sec-2-3" class="outline-3">
+<h3 id="sec-2-3"><span class="section-number-3">2.3</span> Manejo de usuarios</h3>
+<div class="outline-text-3" id="text-2-3">
 <p>
-Para que tu aplicación web tenga éxito, también es importante el
-tener en cuenta como incrementar tu SEO. Nuestro objetivo es
-también por tanto, el crear una aplicación lo mas 'SEO friendly'
-posible. Para ello, vamos a realizar estudiar cuales son los
-puntos más importantes que usan los buscadores para determinar tu
-SEO.
-</p>
-</div>
-</div>
-</div>
-
-<div id="outline-container-sec-3-2" class="outline-3">
-<h3 id="sec-3-2"><span class="section-number-3">3.2</span> Motivación</h3>
-<div class="outline-text-3" id="text-3-2">
-<p>
-Cada vez son más las personas que se animan a crear artseanías y
-venderlas en internet. Existen varios tiendas online en las que los
-artesanos pueden publicar sus productos, el problema de estás es
-que cobran un porcentaje por cada venta que hagas. Por ello, muchos
-artesanos optan por crearse sus propias tiendas online para asi
-evitar pérdidas.
-</p>
-
-<p>
-Existen muchos CMS especializados en la creación de tiendas
-online. Shopify, bigcommerce, 3dcart. Todas estas tiene el
-inconveniente que son de pago. Entre todos ellas esta teniendo
-mucho éxito prestashop, la cuál es gratuita y open source. Es de
-fácil uso y cada vez es más usada, sobre todo por gente que no
-tiene conocimientos de programación. Está basado en módulos, los
-hay gratuitos y otros de pago, por los cuales puedes extender la
-funcionalidad de tu tienda.
-</p>
-
-<p>
-El problema con prestashop, es que no tiene ningún módulo para
-ayudar a la creación de productos para los artesanos. No tiene
-ningún módulo para facilitar el proceso de creación de
-artesanías. En un principio teníamos pensado crear un módulo, pero
-decidimos sincronizarlo con prestashop a través de su api web
-basada en api rest. Tomamos esta decisión para así también poder
-sincronizar nuestra aplicación web con otra tiendas online que no
-sean prestashop. La idea es que en un futuro craft and budget sea
-una herramienta de gestión para los artesanos en los que pueden
-exportar e importar sus prodcutor a diferentes tiendas online. De
-esta manera tendríamos mas usuario potenciales.
-</p>
-
-<p>
-Además de sincronizar nuestra app con tiendas personales creadas
-por los artesanos, también vemos lógico sincronizarla con portales
-e-commerce. Estos portales, a diferencia de las tiendas personales
-donde solo están disponibles productos propios del artesano, son
-tiendas virtuales masivas donde artesanos pueden subir sus
-productos para que gente interesada pueda comprarlos. Los dos
-portales ecommerce enfocados para artesanos más importantes en
-estos momentos y en los que teníamos pensado sincronizarlas son
-etsy, dawanda. Ambas disponen de web appi basadas en rest api,
-iguales que prestashop.
+Como se puede apreciar en el modelo, se ha dado la funcionalidad a
+la app de que se puedan dar de alta varios usuarios a la vez en una
+misma aplicación craft&amp;budget. La información básica de los usuarios
+se encuentra en la tabla "user". Así mismo, los usuarios pueden tener
+o un rol de administrador, o un rol de usuario normal. Los usuarios
+con rol de administrador son los únicos usuarios que pueden importar
+e exportar datos hacia las tiendas online. Los tipos de roles están
+especificados en la talba "user<sub>rol</sub>". Finalmente, se ha creado una
+tabla "craftshop<sub>users</sub>" en la que se relacionan un usuario de la
+tabla "user", con un rol de usuario de la tabla "user<sub>rol</sub>" y con una
+tienda de la tabla "shop".
 </p>
 </div>
 </div>
 
-<div id="outline-container-sec-3-3" class="outline-3">
-<h3 id="sec-3-3"><span class="section-number-3">3.3</span> Antecedentes</h3>
-<div class="outline-text-3" id="text-3-3">
+<div id="outline-container-sec-2-4" class="outline-3">
+<h3 id="sec-2-4"><span class="section-number-3">2.4</span> Multilenguaje</h3>
+<div class="outline-text-3" id="text-2-4">
 <p>
-Después de investigar diferentes tecnologías
-disponibles, más tarde expondremos cuales, nos decantamos por las
-siguientes:
+Se ha decidido también implementar una página multilenguaje para así
+tener más usuarios potenciales. Para ello, se ha creado una tabla
+"lang" en donde se especifica cada lenguaje que aceptará
+craft&amp;shop. En esta tabla se insertarán todos los valores estándar
+iso 639-2 de todos los lenguajes disponibles. Estos lenguajes están
+escritos en tres columnas, una para el nombre del lenguaje, otra
+para código numérico del lenguaje, y la última para el código
+alfabético. Se relacionará cada usuario con un o varios
+lenguajes. Para saber que lenguajes tiene disponible un usuario, se
+usará la web api de prestashop, ya que en su base de datos se
+almacena los lenguajes que tiene el usuario. La idea de implantar
+está funcionalidad es que muchos artesanos traducen sus productos al
+inglés o a otro idioma para conseguir más clientes. Desde prestashop
+no es posible averiguar cuál es su lenguaje principal, así que se
+optó por descargar todos sus productos en todos los lenguajes que
+tenga especificado, y que sea el propio usuario quien eliga su
+lenguaje a través de una pantalla de configuración. Se ha
+considerado que las mejores partes en las incorporar multilenguaje
+de nuestra aplicacón sea los productos, y los datos estáticos de la
+página, es decir, los menús y mensajes de información. Los
+materiales, y proveedores solo se almacenarán en la base de datos en
+un solo lenguaje, debido a que nuestra app será un back office para los
+artesanos, no un producto final para la vista de los clientes. Tiene
+más sentido que la información insertada por el usuario se almacena
+tan solo en un lenguaje, el lenguaje principal del usuario. La tabla
+que se encargará de almacenar los diferentes lenguajes de cada
+producto sera la tabla "product<sub>language</sub>". Esta tabla es la relación
+n-n entre la tabla "product" y la tabla "lang". Un producto puede
+estar traducido a muchos lenguajes, y un lenguaje puede estar siendo
+usado en muchos productos. 
 </p>
-</div>
-</div>
-</div>
-<div id="outline-container-sec-4" class="outline-2">
-<h2 id="sec-4"><span class="section-number-2">4</span> Desarrollo de la práctica</h2>
-<div class="outline-text-2" id="text-4">
-<p>
-En esta sección vamos a ofrecer información sobre la realización del
-trabajo en sí. En esta parte se describe lo que se ha hecho, cómo se
-ha llevado a cabo, por qué se ha hecho así y no de otra manera, qué
-materiales o herramientas han sido necesario utilizar, qué
-metodología de trabajo y validación se ha utilizado.
-</p>
-</div>
-
-<div id="outline-container-sec-4-1" class="outline-3">
-<h3 id="sec-4-1"><span class="section-number-3">4.1</span> Material</h3>
-<div class="outline-text-3" id="text-4-1">
-<p>
-A continuación vamos a detallar cada tecnología que ha estado
-implicada en la realización de nuestro proyecto. 
-Abrir una sección por cada tecnología usada o implicada en la
-realización del trabajo (ej.: BDs, Java, Android, etc.). En este
-capítulo se pretende ofrecer un resumen destinado a lectores no
-familiarizados con la tecnología utilizada. Destinar más páginas según
-la importancia en el trabajo, de dos a cuatro páginas cada sección con
-todas las referencias bibliográficas que se consideren oportunas.
-</p>
-</div>
-<div id="outline-container-sec-4-1-1" class="outline-4">
-<h4 id="sec-4-1-1"><span class="section-number-4">4.1.1</span> PHP y MySQL</h4>
-<div class="outline-text-4" id="text-4-1-1">
-<p>
-PHP es el lenguaje de lado servidor más extendido en la web. Nacido en
-1994, se trata de un lenguaje de creación relativamente reciente,
-aunque con la rapidez con la que evoluciona Internet parezca que ha
-existido toda la vida. Es un lenguaje que ha tenido una gran
-aceptación en la comunidad de desarrolladores, debido a la potencia y
-simplicidad que lo caracterizan, así como al soporte generalizado en
-la mayoría de los servidores de hosting.
-</p>
-
-<p>
-PHP nos permite embeber su pequeños fragmentos de código dentro de
-la página HTML y realizar determinadas acciones de una forma fácil
-y eficaz, combinando lo que ya sabemos del desarrollo HTML. Es
-decir, con PHP escribimos scripts dentro del código HTML, con el
-que se supone que ya estamos familiarizados. Por otra parte, y es
-aquí donde reside su mayor interés, PHP ofrece un sinfín de
-funciones para la explotación de bases de datos de una manera
-llana, sin complicaciones.
-</p>
-
-<p>
-PHP es el acrónimo de HyperText Preprocessor. Para crear páginas web
-dinámicas, es necesario recuperar datos y mostrarlos en la página web.
-Para almacenar los datos hemos escogido MySql, el cual es un  sistema
-gestor de bases de datos gratuito y popular, que se integra
-perfectamente con php con el fin de crear páginas webs dinámica y
-funcionales. MySQL una base de datos RDBMS (Relational
-database managment system) rápida, y fácil de usar que se usa en
-la mayoría de páginas web.
-</p>
-
-<p>
-Las principales razones por las que nos hemos decidido ha escoger
-php y MySQL como backend de nuestra aplicación son:
-</p>
-
-<ul class="org-ul">
-<li>Son gratuitas. La mejor opción de coste-eficiencia.
-</li>
-<li>Son orientadas a la creación de páginas webs. Ambos fueron
-creados específicamente para ser usados en la programación de
-páginas webs dinámicas.
-</li>
-<li>Son fáciles de usar. Ambos fueron creados para crear webs
-rápidamente.
-</li>
-<li>Son rápidas. Fueron diseñados para que fuesen rápidos. Juntos
-proveen una de las maneras más rápidas de crear páginas webs
-dinámicas.
-</li>
-<li>Se comunican bien entre si. PHP tiene caracterísitcas integradas
-para comunicarse con MySql. No es necesario tener un
-conocimiento de los detalles técnicos, PHP se encarga de ellos.
-</li>
-<li>Ambos tienen una amplia comunidad de desarrolladores. Tiene una
-amplia base de soporte técnico, además, como se suelen usar
-juntos, comparten la misma comunidad de desarrolladores.
-</li>
-<li>Al ser ambos de código abierto, son customizables. Permiten a
-los programadores modificar el software PHP y MySQL para que se
-ajusten a sus necesidades particulares.
-</li>
-</ul>
 </div>
 </div>
 
-<div id="outline-container-sec-4-1-2" class="outline-4">
-<h4 id="sec-4-1-2"><span class="section-number-4">4.1.2</span> Framework codeigniter php</h4>
-<div class="outline-text-4" id="text-4-1-2">
+
+<div id="outline-container-sec-2-5" class="outline-3">
+<h3 id="sec-2-5"><span class="section-number-3">2.5</span> Materiales</h3>
+<div class="outline-text-3" id="text-2-5">
 <p>
-Para la parte del servidor, decidimos usar el framework de php
-codeigniter. Queríamos asegurarnos de que desarrollabamos una
-página web estructurada, de fácil mantenimiento y
-legibilidad. Usar un framework te garantiza todo eso. 
+Los materiales se almacenarán en una tabla "materiales". Como se ha
+dicho anteriormente, los materiales son los materias necesarias para
+poder fabricar los productos de los artesanos. Estos materiales
+tendrá que ser introducidos por los artesanos, ya que no existen en
+las tiendas virtuales. Como nuestro sistema va a ser multiusuario
+para una misma tienda craft&amp;budget, se ha optado por relacionar cada
+material no con un usuario, pero con la tienda craft&amp;budget que
+comparten todos los usuarios de una misma tienda. Para que los
+artesanos puedan tener más organizado el stock de materiales, se ha
+optado por relacionar a cada material con una categoría. La columna
+"id<sub>category</sub>" de la tabla "material" hace referencia a la tabla
+donde se guardan todas las categorías de la base de datos, en la
+tabla "category". De esta manera, los usuarios podrán saber todos los
+materiales disponibles de una categoría dada, y podrán buscar de
+manera eficiente el stock de materiales. Esta última información se
+encuentra en la tabla "stock<sub>material</sub>".
 </p>
 
 <p>
-Codeigniter te permite ahorrar tiempo, ya que este
-se encargar de la sanitazión de los datos, manejor de errores,
-procesos de logeo, proceso de registro, y manejo de las
-sesiones. También cuenta con multitud de librerías que te
-facilitan tareas como enviar e-mails, validación de informes,
-subida de ficheros a la base de datos. Sin todas estas librerías
-el desarrollo de la página web habría sido mucho mas lenta,
-tediosa e insecura.
+Los materiales no solo tiene la funcionalidad de especificar cuantos
+materiales tiene un usuario, sino que también sirven para saber
+cuantos materiales son necesarios para fabricar un producto.  La
+tabla materiales representa los datos de los materiales, no el stock
+que hay de dicho materia. Para hacer ello se ha decidido crear en la tabla
+"materiales" un dato "id<sub>measurement</sub>", el cual hace referencia a la
+tabla "measurement". En esta tabla lo que se almacena es el tipo de
+medidas de los materiales, es decir si están especificados en kg, g,
+l, metros cuadrados, etc&#x2026;  Para tener costancia de la cantidad de
+cada material, se ha creado la tabla "stock<sub>material</sub>".
+</p>
+</div>
+</div>
+
+<div id="outline-container-sec-2-6" class="outline-3">
+<h3 id="sec-2-6"><span class="section-number-3">2.6</span> Proveedores</h3>
+<div class="outline-text-3" id="text-2-6">
+<p>
+En cuanto a los proveedores, estos es almacenan en la tabla
+"supplier". De estos se almacenará la dirección, y el nombre. Además
+para saber que materiales tiene que proveedor, se ha creado la tabla
+"material<sub>supplier</sub>". Es una relación n-n, en donde un material puede
+ser comprado por varios proveedores. Lo hemos creído conveniente
+hacerlo así, para dar la oportunidad a los artesanos a poder tener
+en su base de datos varios proveedores para un mismo material, por
+si en algún futuro alguno de sus proveedore falla.
+</p>
+</div>
+</div>
+
+<div id="outline-container-sec-2-7" class="outline-3">
+<h3 id="sec-2-7"><span class="section-number-3">2.7</span> Productos</h3>
+<div class="outline-text-3" id="text-2-7">
+<p>
+ En cuanto a los productos, estos se cogen directamente de la
+tienda online del artesano. Se almacenarán en la tabla "product". Se
+ ha decidido que cada producto solo puede ser de una tienda online. A
+ pesar de que en la realidad se pueda tener un mismo producto
+ publicitado en varias tienda, hemos considerado más adecuado que si
+ son de tiendas separadas, el producto en nuestra bases de datos es
+ diferente. Ya que podría darse el case de que el artesano quisiera
+ diferentes precios dependiendo de la tienda.
 </p>
 
 <p>
-Además al usar un framework, es difícil que acabes con una
-estructura de directorio poco organizada, ya que la mayoría de
-estos viene con una estructura predefinida para usar. En concreto,
-codeigniter usa el modelo MVC (modelo vista controlador), el cual
-te permite separa la lógica de las interfaces de usuario de manera
-que la páginas web contienen pocos scripts. En el caso de
-codeigniter, el modelo representa la estructura de datos. Es donde
-se realizan las conexiones con las bases de datos y donde se
-encuentran las funciones que permiten insertar, coger, y
-actualizar los datos. La vista es donde se presenta la información
-al usuario. Generalmente, en codeingniter se suelen separa en
-footer, body y el header para no repetir código. Por último el
-controlador es un intermediario entre la la vista y el
-modelo. Además es el encargado de procesar las request de http
-como los get y post de los formularios. También es el encargado de
-generar las vistas.
+Además también se almacena una imagen de cada material. En realidad,
+según nuestra base de datos se podría almacenar más de una imagen,
+pero ya que la imagen solo tiene sirve para facilitar la lectura de
+productos desde las tablas, no para mostrar la mercancía a clientes,
+se ha decidido que lo más conveniente es tan solo cargar la imagen
+principal del producto desde prestashop. Se ha optado por no guardar
+la imágen en formato binario en la base de datos, sino guardar el
+nombre de la imagen desde la ruta relativa en nuestro sistema de
+ficheros. Estas rutas se almacenarán en la tabla "product<sub>media</sub>" y 
+todas las imágenes se guardarán en la carpeta assets/images. De está
+manera, es mucho más fácil guardar imágenes, pues tan solo hay que
+llamar a la libreria FileUpload de codeigniter, y este se encargá de
+guardarlos en el sistema de ficheros, tan solo habría que almacenar
+el string del nombre de la imagen.
 </p>
 
 <p>
-Codeigniter ofrece también flexibilidad a la hora de cambiar la
-plataforma de la base de datos. Tan solo tienes que cambiar
-algunos archivos de configuración y ya está lista para cambiar la
-plataforma en la que corre tu aplicaición. 
+Como es una aplicación destinada vendedores de artesanía, y los
+productos que venden suelen estar hechos a medida, o al menos están
+en varios colores, tamaños, materiales, etc&#x2026; Se ha implementado la
+base de datos de manera que se pueda permitir a los artesanos poder
+almacernar sus materiales y productos de forma dinámica. Para ellos,
+se ha creado la tabla "combination", la que sirve como referencia
+para determinar una variedad de un determinado producto. Por
+ejemplo, si una mesa es XXL, si está pintada de color azul,
+etc.. Esta combinación tendrá un stock y un precio. Para almacenar
+en la base de datos las características de dicha combinación, hemos
+creado otra tabla, la tabla "attributes". Finalmente, para
+relacionar una combinación de un producto con un atributo
+determinado, se ha creado la tabla "combination<sub>attribute</sub>".
 </p>
 
 <p>
-Los framework ofrecen por defectos buenas medidas de
-seguridad. Por ejemplo, codeigniter ofrece las siguientes
-funcionalidades por defecto: 
+Cabe destacar, que los materiales se relacionan con los productos,
+no a través de la tablas "productos" y "materiales", sino a través
+de la tabla "combinación", "materiales". Esto es así, porque
+dependiendo de los atributos de un producto, este necesitará un tipo
+de material u otro. Si tienes una mesa, y esta tiene el atributo
+rojo; interesa relacionar el atributo "pintura roja para mesas" a la
+combinación, y no al producto mesa.
 </p>
-
-<ul class="org-ul">
-<li>Cada valor que a un objeto de la base de datos es filtrado
-contra ataques SQL de inyección. 
-</li>
-<li>Todas las funciones generadoras de HTML, como las de formularios
-y URL filtran los datos de salida automaticamente.
-</li>
-</ul>
-<p>
--Todo dato ingresado por el usuario puede ser filtrado contra
-XSS. 
-</p>
-<ul class="org-ul">
-<li>Posibildad de encriptar cookies automáticamente tan solo
-cambiando opciones de configuración.
-</li>
-</ul>
-
-<p>
-Optimización de seo por defecto. Las URLs generados por
-codeigniter son limpias y amigables con los sistemas de búsqueda
-online. Lo consigue porque en vez de usar direccionamiento de URL
-standard, por ejemplo
-"<a href="http://www.example.com/catalog.asp?itemid=232&template=fresh&crcat=ppc&crsource=google&crkw=buy-a-lot">http://www.example.com/catalog.asp?itemid=232&template=fresh&crcat=ppc&crsource=google&crkw=buy-a-lot</a>"
-usa un sistema personalizado en el que es mucho mas legible, y es
-comprensible lo que hace la url, ya que como ya se detallarás más
-adelante, codeigniter usa query string del tipoe
-"example.com/news/article/345" en donde:
-</p>
-
-<ul class="org-ul">
-<li>example.com: Dominio de la web.
-</li>
-<li>news: controlador que se esta utilizando
-</li>
-<li>article: método dentro del controlador que se esta llamando.
-</li>
-<li>345: parámetro que se le esta pasando al controlador.
-</li>
-</ul>
 </div>
-</div>
-<div id="outline-container-sec-4-1-3" class="outline-4">
-<h4 id="sec-4-1-3"><span class="section-number-4">4.1.3</span> twitter bootstrap</h4>
-</div>
-<div id="outline-container-sec-4-1-4" class="outline-4">
-<h4 id="sec-4-1-4"><span class="section-number-4">4.1.4</span> api rest</h4>
-</div>
-<div id="outline-container-sec-4-1-5" class="outline-4">
-<h4 id="sec-4-1-5"><span class="section-number-4">4.1.5</span> base de datos en prestashop</h4>
-</div>
-<div id="outline-container-sec-4-1-6" class="outline-4">
-<h4 id="sec-4-1-6"><span class="section-number-4">4.1.6</span> comunicarse con prestashop mediante su web api</h4>
-</div>
-</div>
-<div id="outline-container-sec-4-2" class="outline-3">
-<h3 id="sec-4-2"><span class="section-number-3">4.2</span> Planificación</h3>
-</div>
-<div id="outline-container-sec-4-3" class="outline-3">
-<h3 id="sec-4-3"><span class="section-number-3">4.3</span> Descripción del trabajo realizado</h3>
-</div>
-<div id="outline-container-sec-4-4" class="outline-3">
-<h3 id="sec-4-4"><span class="section-number-3">4.4</span> Resultados y validación</h3>
-</div>
-</div>
-<div id="outline-container-sec-5" class="outline-2">
-<h2 id="sec-5"><span class="section-number-2">5</span> Conclusiones</h2>
-<div class="outline-text-2" id="text-5">
-</div><div id="outline-container-sec-5-1" class="outline-3">
-<h3 id="sec-5-1"><span class="section-number-3">5.1</span> Aportaciones</h3>
-</div>
-<div id="outline-container-sec-5-2" class="outline-3">
-<h3 id="sec-5-2"><span class="section-number-3">5.2</span> Trabajo futuro</h3>
-</div>
-</div>
-<div id="outline-container-sec-6" class="outline-2">
-<h2 id="sec-6"><span class="section-number-2">6</span> Bibliografía y webgrafía</h2>
-<div class="outline-text-2" id="text-6">
-<p>
-<a href="http://phonegap.com/">http://phonegap.com/</a><a id="phonegapinfo" name="phonegapinfo"></a>
-</p>
-
-<p>
-<a href="http://w3techs.com/technologies/overview/programming_language/all">http://w3techs.com/technologies/overview/programming_language/all</a><a id="porcentajewebsphp" name="porcentajewebsphp"></a>
-</p>
-
-<p>
-<a href="http://www.sitepoint.com/best-php-framework-2015-sitepoint-survey-results/">http://www.sitepoint.com/best-php-framework-2015-sitepoint-survey-results/</a><a id="phpframeworkgraph" name="phpframeworkgraph"></a>
-</p>
-
-<p>
-<a href="http://db-engines.com/en/ranking">http://db-engines.com/en/ranking</a><a id="basesdatosranking" name="basesdatosranking"></a>
-</p>
-
-<p>
-<a href="http://web2.0entrepreneur.com/7/why-you-should-use-a-web-application-framework.html">http://web2.0entrepreneur.com/7/why-you-should-use-a-web-application-framework.html</a>
-</p>
-
-<p>
-<a href="http://es.wikipedia.org/wiki/Inyecci%C3%B3n_SQL">http://es.wikipedia.org/wiki/Inyecci%C3%B3n_SQL</a>
-</p>
-
-<p>
-<a href="http://www.codeigniter.com/user_guide/">http://www.codeigniter.com/user_guide/</a>
-</p>
-
-<p>
-<a href="http://www.smartec.la/blog/por-que-usar-un-framework">http://www.smartec.la/blog/por-que-usar-un-framework</a>((imagenes de frameworks))
-</p>
 </div>
 </div>
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: Nicolas Alphonse</p>
-<p class="date">Created: 2015-06-02 Tue 11:03</p>
+<p class="date">Created: 2015-06-05 Fri 16:39</p>
 <p class="creator"><a href="http://www.gnu.org/software/emacs/">Emacs</a> 24.5.1 (<a href="http://orgmode.org">Org</a> mode 8.2.10)</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
