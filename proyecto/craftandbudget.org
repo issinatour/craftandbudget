@@ -29,7 +29,6 @@
 
   
   
-
 * Implementación de la bases de datos
 ** Introducción a nuestra base de datos
   Se ha tratado de implementar una base de datos los más completa y
@@ -200,4 +199,48 @@ Se consigue así que los artesanos puedan utilizar craft&shop para
   rojo; interesa relacionar el atributo "pintura roja para mesas" a la
   combinación, y no al producto mesa.
   
+   
+  
+* Apartado 3. Conclusiones
+  En la realización de esta práctica nos hemos dado cuenta de la
+  importancia que tienen las apis a la hora de crear tus propias
+  aplicaciones. No solo de las api de tiendas online, sino también de
+  apis que te ayudan a que tus servicios web sean más completos, por
+  ejemplo, que se cargue por defecto una imagen cuando te das de alta
+  con un correo eléctronico mediante gravatar. A través de estas apis, los
+  programadores tienen la posibilidad de crear nuevos servicios web
+  juntando partes de apis. 
+  
+  También resulta interesante conocer las diferentes metodologías a la
+  hora de abordar la creación aplicaciones para dispositivos
+  móviles mediante tecnologías de programación web. Cada vez está
+  siendo más usado tecnologías sustituvas de las nativas para crear
+  aplicaciones móviles como phonegap/cordoba.
+  
+  Uno de los apartados en los que más hemos encontrado problemas ha
+  sido a la hora de la planificación y de la gestión del tiempo. A
+  menudo, tareas que en principio parecían  sencillas de implementar se
+  convertian en tareas díficiles de llevar a cabo que se demoraban en
+  el tiempo. También, en la propia viabilidad del proyecto. Han habido
+  funcionalidades que nos parecieron implementables pero que después
+  de pensarlas mejor nos dábamos cuenta de que eran tremendamente
+  difíciles de llevarlas a cabo. 
+
+** Apartado 3.2 Trabajo futuro
+   Para un futuro, pensamos que craft and budget debería de tomar un
+   camino en el cual ésta se integrase con la mayoría de las tienda
+   online del mercado. No solo tiendas online personales creadas a
+   partir de un CRM como, lo que hemos hecho con prestashop o otras
+   como magento. Sino también integrarlas con tiendas online de
+   terceros como ebay, u otras destinadas a artesanos en concreto como
+   dwanda.
+   
+   También consideramos, que a parte de que nuestra página web sea
+   multidispositivo mediante el framework twitter bootstrap, sería un
+   plus el conseguir convertirla en una web app. De está manera
+   podríamos ponerla a la venta en las tiendas de aplicaciones play
+   store o apple store. Además, de está manera podríamos dar una mejor 
+   experiencia de usuario a los clientes, ya que estos no tendría que
+   abrir el navegador web para usar craft and budget, sino que podrían
+   abrilo como una aplicación más de su dispositivo móvil.
    
