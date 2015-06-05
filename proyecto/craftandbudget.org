@@ -1,3 +1,44 @@
+* resumen
+  Craft&budget es una web app destinada para que aquellos artesanos que tengan una 
+  tienda online en el CMS prestashop puedan manejar el stock de su tienda. Podrán 
+  tanto manejar el stock de los productos que tengan en venta, como el stock de los 
+  materiales que usan para crear sus productos. Con craft and budget podrán además 
+  gestionar la creación de sus productos sabiendo cuantos materiales necesitan para 
+  crear sus productos y cuántos productos pueden crear con los materiales de los 
+  que disponen. Finalmente también dispondrán de una libreta de dirección para 
+  almacenar todos sus proveedores.
+  
+  El stock de los materiales no se encuentra en la base de datos de prestashop, 
+  sino que los artesanos tendrán que crearlo con los materiales de que dispongan 
+  materiales.
+  
+  La primera versión se conectará con prestashop únicamente, pero en un futuro 
+  podrá conectarse con otras tiendas online. Para conectarse, craft and budget se 
+  comunica con prestashop mediante una api rest por la cual se descargá todos los 
+  productos que el artesano tiene en la tienda. Usaremos una base de datos mysql 
+  para guardar todos los productos y los materiales.
+
+* abstract
+  Craft and budget is a web app destined to the artisans that they
+  have an online shop in the CMS prestashop. With craft and budget
+  they can manage the stock of the products that they have for sale,
+  and the stock of the materials that they use to build those
+  products. With craft and budget they also can manage the creation of
+  their products by knowing how much material is needed to build a
+  product. They also can know how many products they can build with
+  the materials they have in their warehouse. Finally, they will also
+  have the addresses of the supplier of each material.
+
+  The stock of materials it is not on the data base of prestashop, the
+  user will have to create them with the materials that they have.
+
+  The first version of our web app, it will be syncronyzed with
+  prestashop only. For that connection, craft and budget will be use
+  a RESTful api. With that api, the web app will download all the
+  products that the artisan have in prestashop. For saving all the
+  products, materials and suppliers we will use a mysql database.
+
+
 * Codeigniter librería SimpleLoginSecure
   Para la realización del login se ha recurrido a una librería libre
   de codeigniter para php hecha por Stéphane Bourzeix. Se ha
@@ -200,7 +241,6 @@ Se consigue así que los artesanos puedan utilizar craft&shop para
   combinación, y no al producto mesa.
   
    
-  
 * Apartado 3. Conclusiones
   En la realización de esta práctica nos hemos dado cuenta de la
   importancia que tienen las apis a la hora de crear tus propias
