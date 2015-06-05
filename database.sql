@@ -170,6 +170,14 @@ CREATE TABLE IF NOT EXISTS `product` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 
+CREATE TABLE IF NOT EXISTS `shop_product` (
+`id_shop_product` int(11) NOT NULL,
+  `id_shop_ps` int(11) DEFAULT NULL,
+  `id_product_ps` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+
+
 CREATE TABLE IF NOT EXISTS types(
 id_type int NOT NULL AUTO_INCREMENT,
 name VARCHAR(120),

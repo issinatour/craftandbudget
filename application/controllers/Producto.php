@@ -18,8 +18,6 @@ class Producto extends CI_Controller{
         }
 
 
-
-
     }
 
 
@@ -299,7 +297,7 @@ foreach($myid as $id){
         $this->load->library('Product_lib');
         $this->product_lib->import_presta_products_full($ps_config['url_shop'],$ps_config['apikey'],$debug,$product_imp_options);
 
-        redirect('Producto/importproducts');
+     //   redirect('Producto/importproducts');
     }
 
 }

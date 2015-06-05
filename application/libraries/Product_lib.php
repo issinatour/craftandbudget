@@ -208,6 +208,9 @@ class Product_lib {
         $id_user = $this->instance->session->userdata('id');
      //   $psapi= new ps_api($web,$api,$debug);
         $myproductsfull = $this->get_products_ps_full($web,$api,$debug,$config);
+        echo '<pre>';
+        print_r($myproductsfull);
+        echo '</pre>';
         set_time_limit(800);
 
         if($config['products']=='on'){
@@ -290,6 +293,7 @@ class Product_lib {
 
                }
               endif;
+
 
 
 
