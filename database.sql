@@ -23,12 +23,11 @@ CREATE TABLE IF NOT EXISTS shop (
 	id_shop int not null auto_increment,
 	name varchar(80),
 	image varchar(120),
-	type  varchar(100),
+	id_type  int,
 	id_shop_ps int,
 	PRIMARY KEY (id_shop)
-
-	)ENGINE=InnoDB;
-
+	CONSTRAINT `fk_shop_type_types` FOREIGN KEY (id_type) REFERENCES `types` (`id_type`) ON DELETE NO ACTION ON UPDATE NO ACTION
+	)ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 
 CREATE TABLE IF NOT EXISTS lang(
