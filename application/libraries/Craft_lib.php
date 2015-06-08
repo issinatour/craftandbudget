@@ -53,7 +53,7 @@ class Craft_lib {
         $datauser['id_rol']=1;
 
         if ($datauser['id_craftshop'] = $this->instance->craft_mod->create_craft_shop($datacraftshop)) {
-          $id_shop=  $this->instance->craft_mod->create_shop_ext(array("name"=>"mi presta","type"=>1));
+          $id_shop=  $this->instance->craft_mod->create_shop_ext(array("name"=>"mi presta","id_type"=>1));
 
 
             $datashopcraftshop=array(

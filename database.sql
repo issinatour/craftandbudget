@@ -10,6 +10,12 @@ CREATE TABLE IF NOT EXISTS user (
 	)ENGINE=InnoDB ;
 
 
+CREATE TABLE IF NOT EXISTS types(
+	id_type int NOT NULL AUTO_INCREMENT,
+	name VARCHAR(120),
+	PRIMARY KEY (id_type)
+	)ENGINE=InnoDB;
+
 
 CREATE TABLE IF NOT EXISTS user_rol(
 	id_rol int not null auto_increment,
@@ -25,7 +31,7 @@ CREATE TABLE IF NOT EXISTS shop (
 	image varchar(120),
 	id_type  int,
 	id_shop_ps int,
-	PRIMARY KEY (id_shop)
+	PRIMARY KEY (id_shop),
 	CONSTRAINT `fk_shop_type_types` FOREIGN KEY (id_type) REFERENCES `types` (`id_type`) ON DELETE NO ACTION ON UPDATE NO ACTION
 	)ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -172,12 +178,6 @@ CREATE TABLE IF NOT EXISTS `shop_product` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 
-
-CREATE TABLE IF NOT EXISTS types(
-	id_type int NOT NULL AUTO_INCREMENT,
-	name VARCHAR(120),
-	PRIMARY KEY (id_type)
-	)ENGINE=InnoDB;
 
 
 CREATE TABLE IF NOT EXISTS product_types(

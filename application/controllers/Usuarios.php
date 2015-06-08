@@ -12,7 +12,7 @@ class Usuarios extends CI_Controller {
     function  index(){
 
 
-       redirect('usuarios/login');
+        redirect('usuarios/login');
 
 
     }
@@ -43,8 +43,9 @@ class Usuarios extends CI_Controller {
         );
         $id_professional = $this->craft_lib->register_user($professional);
 
-        mkdir("uploads/".$id_professional, 0755, true);
-        mkdir("uploads/".$id_professional.'/p', 0755, true);
+
+        mkdir("uploads/".$id_professional, 0777, true);
+        mkdir("uploads/".$id_professional.'/p', 0777, true);
 
         $craft_shop = array(
             "name" => $this->input->post("shopname"),
@@ -57,15 +58,15 @@ class Usuarios extends CI_Controller {
         $idshop = $this->craft_lib->register_craft_shop($data,$craft_shop);
 
 
-      redirect('usuarios');
+        redirect('usuarios');
 
-}
+    }
 
     public function do_login()
     {
         $login = $this->simpleloginsecure->login($this->input->post("user"), $this->input->post("pass"));
-   
-       if($login) {
+
+        if($login) {
             redirect("dashboard");
         }else{
             redirect("usuarios");
@@ -99,7 +100,7 @@ class Usuarios extends CI_Controller {
         );
 
         $data['psshop'] = $this->craft_lib->get_craftshop_shops_by_type($this->session->userdata('id_craftshop'),'prestashop');
-       // print_r($data['psshop']);
+        // print_r($data['psshop']);
         $this->load->view('usuarios/profile', $data);
 
 
@@ -118,7 +119,7 @@ class Usuarios extends CI_Controller {
             "id_craftshop" => $this->session->userdata('id_craftshop'),
             "nametype" => $this->input->post("psurl"),
             "id_craftshop_shop" => $this->input->post('id_craftshop_shop')
-         );
+        );
 
         $this->craft_lib->update_config_shop_user($prestaconfig,$userconfig);
 

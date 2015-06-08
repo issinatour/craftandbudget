@@ -18,6 +18,8 @@ class Producto extends CI_Controller{
         }
 
 
+
+
     }
 
 
@@ -106,44 +108,44 @@ class Producto extends CI_Controller{
             if($this->product_lib->verify_product_craftshop($id_product,$id_craftshop_of_user)) {
 
 
-            $data['header'] = array(
-                "title" => "Mi producto",
-                "css" => array(
-                    "css/plugins/summernote/summernote.css",
-                    "css/plugins/summernote/summernote-bs3.css",
-                    "css/plugins/jQueryUI/jquery-ui-1.10.4.custom.min.css",
-                    "css/plugins/jqGrid/ui.jqgrid.css"
-                )
+                $data['header'] = array(
+                    "title" => "Mi producto",
+                    "css" => array(
+                        "css/plugins/summernote/summernote.css",
+                        "css/plugins/summernote/summernote-bs3.css",
+                        "css/plugins/jQueryUI/jquery-ui-1.10.4.custom.min.css",
+                        "css/plugins/jqGrid/ui.jqgrid.css"
+                    )
 
-            );
+                );
                 $data['menu'] = array(
                     "full_width" =>1
                 );
 
                 $data['footer'] = array(
-                "script" => array(
-                    "js/plugins/summernote/summernote.min.js",
-                    "js/custom/customsummernote.js",
-                    "js/plugins/jqGrid/i18n/grid.locale-es.js",
-                    "js/plugins/jqGrid/jquery.jqGrid.min.js",
-                    "js/plugins/peity/jquery.peity.min.js"
-                )
-            );
-             $data['materiales']   =$this->material_lib->get_material_product($id_product);
+                    "script" => array(
+                        "js/plugins/summernote/summernote.min.js",
+                        "js/custom/customsummernote.js",
+                        "js/plugins/jqGrid/i18n/grid.locale-es.js",
+                        "js/plugins/jqGrid/jquery.jqGrid.min.js",
+                        "js/plugins/peity/jquery.peity.min.js"
+                    )
+                );
+                $data['materiales']   =$this->material_lib->get_material_product($id_product);
 
-            $data['productdata'] = $this->product_lib->get_product_data($id_craftshop_of_user, $id_product);
-        }else{
+                $data['productdata'] = $this->product_lib->get_product_data($id_craftshop_of_user, $id_product);
+            }else{
 
+            }
+
+
+
+            //
+
+            //s   redirect('producto');
+
+            //
         }
-
-
-
-      //
-
-         //s   redirect('producto');
-
-     //
-    }
         $this->load->view('templates/miproductotemplate', $data);
     }
 
@@ -162,41 +164,40 @@ class Producto extends CI_Controller{
         );
 
         $arr =array();
-      $myuserid=$this->session->userdata('id');
-       $urld='uploads/' . $myuserid . '/p/';
+        $myuserid=$this->session->userdata('id');
+        $urld='uploads/' . $myuserid . '/p/';
 
-    $config['upload_path'] = 'uploads/' . $myuserid . '/p';
-    $config['allowed_types'] = 'gif|jpg|png';
-    $config['max_size'] = '1000';
-    $config['max_width'] = '1024';
-    $config['max_height'] = '768';
-        
+        $config['upload_path'] = 'uploads/' . $myuserid . '/p';
+        $config['allowed_types'] = '*';
+        $config['max_size'] = '5000';
+        $config['max_width'] = '3000';
+        $config['max_height'] = '3000';
 
 
-    $this->load->library('upload');
 
-    $this->upload->initialize($config);
+        $this->load->library('upload',$config);
 
-    if (!$this->upload->do_upload("fichero")) {
-        //$error = array('error' => $this->upload->display_errors());
-        //var_dump($error);
-    } else {
-        $data = $this->upload->data();
 
-        $arr = array(
-           // "id_media_type" => 1,
-         //   "name" => $data["raw_name"],
-         //   "name" => $data["raw_name"],
-            "file" => $data["file_name"]
-        );
-      // $id_media = $this->product_mod->create_media($arr);
+        if (!$this->upload->do_upload("fichero")) {
+            $error = array('error' => $this->upload->display_errors());
 
-     //   $professional["avatar"] = $id_media;
-    }
+        } else {
+            $data = $this->upload->data();
+
+            $arr = array(
+                //  "id_media_type" => 1,
+                //   "name" => $data["raw_name"],
+                //   "name" => $data["raw_name"],
+                "file" => $data["file_name"]
+            );
+            // $id_media = $this->product_mod->create_media($arr);
+
+            //   $professional["avatar"] = $id_media;
+        }
 
         $product['id_product']= $this->product_lib->save_product($product,$product_lang,$arr);
 
-       redirect('Producto/miproducto/'.$product['id_product']);
+        redirect('Producto/miproducto/'.$product['id_product']);
 
     }
 
@@ -236,11 +237,11 @@ class Producto extends CI_Controller{
 
     function delete_material_product(){
         $this->load->library('material_lib');
-      $myid=  $this->input->post("myids");
+        $myid=  $this->input->post("myids");
 
-foreach($myid as $id){
-    $this->material_lib->delete_product_material($id['id_material'],$id['id_producto']);
-}
+        foreach($myid as $id){
+            $this->material_lib->delete_product_material($id['id_material'],$id['id_producto']);
+        }
     }
 
     function save_material_product($id_material,$id_product,$quantity){
@@ -297,7 +298,7 @@ foreach($myid as $id){
         $this->load->library('Product_lib');
         $this->product_lib->import_presta_products_full($ps_config['url_shop'],$ps_config['apikey'],$debug,$product_imp_options);
 
-     //   redirect('Producto/importproducts');
+        redirect('Producto/importproducts');
     }
 
 }

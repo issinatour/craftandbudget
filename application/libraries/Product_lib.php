@@ -34,14 +34,14 @@ class Product_lib {
             $objectproduct->setcraftshopid($product['id_craftshop']);
             $objectproduct->setproducttype($this->instance->product_mod->get_product_type($product['id_product']));
             $objectproduct->setproductprice($product['productprice']);
-      //      $objectcomb->setstock($product['stock']);
+            //      $objectcomb->setstock($product['stock']);
 
             $objectproduct->setproductcombination($objectcomb);
             array_push($myproducts, $objectproduct);
         }
 
 
-      return  $myproducts;
+        return  $myproducts;
 
     }
 
@@ -96,7 +96,7 @@ class Product_lib {
 
         $id_shop_product = $this->instance->product_mod->get_verify_product_by_craftshop($id_product);
         if($id_shop_product['id_craftshop']==$idshop){
-             return true;
+            return true;
         } else{
             return false;
         }
@@ -129,12 +129,15 @@ class Product_lib {
         if (!isset($data["id_product"]) || !$data["id_product"]) {
 
             // Create professional
-           $datalang["id_product"] = $this->instance->product_mod->create_product($data,$datalang);
+            $datalang["id_product"] = $this->instance->product_mod->create_product($data,$datalang);
 
-                $mmedia['id_media']=  $this->instance->product_mod->create_media($media);
-                $mmedia['id_product']=$datalang["id_product"];
-                $this->instance->product_mod->create_product_media($mmedia);
-                return $datalang["id_product"];
+
+            //print_r($media);
+            //   die();
+            $mmedia['id_media']=  $this->instance->product_mod->create_media($media);
+            $mmedia['id_product']=$datalang["id_product"];
+            $this->instance->product_mod->create_product_media($mmedia);
+            return $datalang["id_product"];
 
 
         } else {
@@ -167,17 +170,17 @@ class Product_lib {
                 //  echo 'id producto'.$miproducto['id'].'<br>';
                 if (sizeof($miproducto['combinations'] > 0)) {
                     if($config['combinations']=='on') {
-                    foreach ($miproducto['combinations'] as &$product_combination) {
+                        foreach ($miproducto['combinations'] as &$product_combination) {
 
                             $product_combination = array_merge($product_combination, $mycombinations[$product_combination['id']]);
 
-                        if($config['atributtes']=='on') {
-                        foreach ($product_combination['product_option_values'] as &$productoptionvalues) {
+                            if($config['atributtes']=='on') {
+                                foreach ($product_combination['product_option_values'] as &$productoptionvalues) {
 
-                                $productoptionvalues = array_merge($productoptionvalues, $product_op_value[$productoptionvalues['id']]);
+                                    $productoptionvalues = array_merge($productoptionvalues, $product_op_value[$productoptionvalues['id']]);
+                                }
                             }
-                            }
-                    }
+                        }
                     }
                 }
 
@@ -197,7 +200,7 @@ class Product_lib {
                 array_push($product_type,$ptype);
             }
         }
-       return $product_type;
+        return $product_type;
     }
 
 
@@ -206,98 +209,96 @@ class Product_lib {
         $this->instance->load->model('product_mod');
         $myshop= $this->instance->session->userdata('id_craftshop');
         $id_user = $this->instance->session->userdata('id');
-     //   $psapi= new ps_api($web,$api,$debug);
+        //   $psapi= new ps_api($web,$api,$debug);
         $myproductsfull = $this->get_products_ps_full($web,$api,$debug,$config);
-        echo '<pre>';
-        print_r($myproductsfull);
-        echo '</pre>';
         set_time_limit(800);
 
         if($config['products']=='on'){
-        foreach($myproductsfull as $miproducto){
+            foreach($myproductsfull as $miproducto){
 
                 $my_product_get = $this->instance->product_mod->get_product_ps($myshop,$miproducto['id']);
 
-            if(!empty($my_product_get)){
-                $productdata=array(
-                    "price" => $miproducto['price']
-                );
-                $this->instance->product_mod->update_product_ps($productdata,$miproducto['id'],$myshop);
+                if(!empty($my_product_get)){
+                    $productdata=array(
+                        "price" => $miproducto['price']
+                    );
+                    $this->instance->product_mod->update_product_ps($productdata,$miproducto['id'],$myshop);
 
-            if($config['images']=='on'):
-                $url = $web.'/api/images/products/'.$miproducto['id']."/".$miproducto['id_default_image'].'&ws_key=2RE9HIPQVCPP3N3RYLAQW79IW9XR1U34';
-                $fp ='uploads/'.$id_user."/p/".$miproducto['id_default_image'].'.jpg';
-                $url2= 'http://'.$web.'/'.$miproducto['id_default_image'].'-'.$config['radioimage'].'/'.str_replace(" ","-",$miproducto['name'][0]['name'].'.jpg');
-                //descargamos la imagen y reducimos tamaño y calidad (mas mejor!)
+                    if($config['images']=='on'):
+                        $url = $web.'/api/images/products/'.$miproducto['id']."/".$miproducto['id_default_image'].'&ws_key=2RE9HIPQVCPP3N3RYLAQW79IW9XR1U34';
+                        $fp ='uploads/'.$id_user."/p/".$miproducto['id_default_image'].'.jpg';
+                        $url2= 'http://'.$web.'/'.$miproducto['id_default_image'].'-'.$config['radioimage'].'/'.str_replace(" ","-",$miproducto['name'][0]['name'].'.jpg');
+                        //descargamos la imagen y reducimos tamaño y calidad (mas mejor!)
 
 
-                copy('',$fp);
+                        copy($url2,$fp);
 
-                $media_product =$this->instance->product_mod->get_product_media($miproducto['id_default_image'].'.jpg',$my_product_get['id_product']);
-                if(empty($media_product)){
-                    $mmedia['id_insert_media']= $this->instance->product_mod->create_media(array("is_default" => 1,"file" => $miproducto['id_default_image'].'.jpg'));
-                    $this->instance->product_mod->create_product_media(array("id_product"=>$my_product_get['id_product'],"id_media" =>$mmedia['id_insert_media']));
+                        //   $this->download_and_resize($url,$fp,0.1);
+
+                        $media_product =$this->instance->product_mod->get_product_media($miproducto['id_default_image'].'.jpg',$my_product_get['id_product']);
+                        if(empty($media_product)){
+                            $mmedia['id_insert_media']= $this->instance->product_mod->create_media(array("is_default" => 1,"file" => $miproducto['id_default_image'].'.jpg'));
+                            $this->instance->product_mod->create_product_media(array("id_product"=>$my_product_get['id_product'],"id_media" =>$mmedia['id_insert_media']));
+                        }else{
+                            $this->instance->product_mod->delete_product_media_product($media_product['id_media'],$my_product_get['id_product']);
+                            $this->instance->product_mod->delete_product_media($media_product['id_media']);
+
+                            $mmedia['id_insert_media']= $this->instance->product_mod->create_media(array("is_default" => 1,"file" => $miproducto['id_default_image'].'.jpg'));
+                            $this->instance->product_mod->create_product_media(array("id_product"=>$my_product_get['id_product'],"id_media" =>$mmedia['id_insert_media']));
+                        }
+
+                    endif;
                 }else{
-                    $this->instance->product_mod->delete_product_media_product($media_product['id_media'],$my_product_get['id_product']);
-                    $this->instance->product_mod->delete_product_media($media_product['id_media']);
+                    $productdata=array(
+                        "id_product_prestashop" => $miproducto['id'],
+                        "id_craftshop"=> $myshop,
+                        "price" => $miproducto['price']
+                    );
+                    $my_product_get['id_product']=  $this->instance->product_mod->insert_product_ps($productdata);
+                    $product_type =$this->instance->product_mod->get_product_type($my_product_get['id_product']);
 
-                    $mmedia['id_insert_media']= $this->instance->product_mod->create_media(array("is_default" => 1,"file" => $miproducto['id_default_image'].'.jpg'));
-                    $this->instance->product_mod->create_product_media(array("id_product"=>$my_product_get['id_product'],"id_media" =>$mmedia['id_insert_media']));
+                    //copy("http://buhoplace.es/api/images/products/".$miproducto['id_default_image'],"uploads/".$id_user.'/p/'.$miproducto['id_default_image']);
+
+                    //   $this->download_and_resize($url,$fp,0.3);
+                    if(empty($product_type)){
+                        $this->instance->product_mod->insert_product_data(array("id_product" => $my_product_get['id_product'], "id_type" => 1));
+                    }
+
                 }
 
-              endif;
-            }else{
-                $productdata=array(
-                    "id_product_prestashop" => $miproducto['id'],
-                    "id_craftshop"=> $myshop,
-                    "price" => $miproducto['price']
-                );
-                $my_product_get['id_product']=  $this->instance->product_mod->insert_product_ps($productdata);
-                $product_type =$this->instance->product_mod->get_product_type($my_product_get['id_product']);
+                if($config['combinations']=='on'):
+                    foreach ($miproducto['combinations'] as $product_combination) {
 
-                //copy("http://buhoplace.es/api/images/products/".$miproducto['id_default_image'],"uploads/".$id_user.'/p/'.$miproducto['id_default_image']);
+                        foreach($product_combination['product_option_values'] as $productoptionvalues){
 
-             //   $this->download_and_resize($url,$fp,0.3);
-                if(empty($product_type)){
-                    $this->instance->product_mod->insert_product_data(array("id_product" => $my_product_get['id_product'], "id_type" => 1));
-                }
+                        }
+                    }
+                endif;
+                if($config['atributtes']=='on'):
+                    foreach($miproducto['name'] as $product_name){
+                        $my_product_get_lang = $this->instance->product_mod->get_product_ps_languaje($my_product_get['id_product']);
+
+                        if(!empty($my_product_get_lang)){
+                            $productdatalang=array(
+                                "name" => $product_name['name']
+                            );
+                            $this->instance->product_mod->update_product_ps_languaje($productdatalang,$my_product_get['id_product']);
+                        }else{
+                            $productdatalang=array(
+                                "id_product" =>$my_product_get['id_product'],
+                                "name" => $product_name['name'],
+                                "id_lang" => 1,
+                                "id_language_ps" =>1
+                            );
+                            $this->instance->product_mod->insert_product_ps_languaje($productdatalang);
+                        }
+
+                    }
+                endif;
+
+
 
             }
-
-            if($config['combinations']=='on'):
-                foreach ($miproducto['combinations'] as $product_combination) {
-
-                    foreach($product_combination['product_option_values'] as $productoptionvalues){
-
-                    }
-                }
-            endif;
-            if($config['atributtes']=='on'):
-                foreach($miproducto['name'] as $product_name){
-                    $my_product_get_lang = $this->instance->product_mod->get_product_ps_languaje($my_product_get['id_product']);
-
-                    if(!empty($my_product_get_lang)){
-                        $productdatalang=array(
-                            "name" => $product_name['name']
-                        );
-                        $this->instance->product_mod->update_product_ps_languaje($productdatalang,$my_product_get['id_product']);
-                    }else{
-                        $productdatalang=array(
-                            "id_product" =>$my_product_get['id_product'],
-                            "name" => $product_name['name'],
-                            "id_lang" => 1,
-                            "id_language_ps" =>1
-                        );
-                        $this->instance->product_mod->insert_product_ps_languaje($productdatalang);
-                    }
-
-               }
-              endif;
-
-
-
-
-        }
         }
 
 
