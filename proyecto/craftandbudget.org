@@ -1,3 +1,4 @@
+
 * resumen
   Craft&budget es una web app destinada para que aquellos artesanos que tengan una 
   tienda online en el CMS prestashop puedan manejar el stock de su tienda. Podrán 
@@ -38,7 +39,6 @@
   products that the artisan have in prestashop. For saving all the
   products, materials and suppliers we will use a mysql database.
 
-
 * Codeigniter librería SimpleLoginSecure
   Para la realización del login se ha recurrido a una librería libre
   de codeigniter para php hecha por Stéphane Bourzeix. Se ha
@@ -68,8 +68,6 @@
   fácilmente. Es más recomendable usar algoritmos de cifrados más
   robustos como bcrypt, scrypt o sha-512.
 
-  
-  
 * Implementación de la bases de datos
 ** Introducción a nuestra base de datos
   Se ha tratado de implementar una base de datos los más completa y
@@ -240,7 +238,6 @@ Se consigue así que los artesanos puedan utilizar craft&shop para
   rojo; interesa relacionar el atributo "pintura roja para mesas" a la
   combinación, y no al producto mesa.
   
-   
 * Apartado 3. Conclusiones
   En la realización de esta práctica nos hemos dado cuenta de la
   importancia que tienen las apis a la hora de crear tus propias
@@ -284,3 +281,55 @@ Se consigue así que los artesanos puedan utilizar craft&shop para
    abrir el navegador web para usar craft and budget, sino que podrían
    abrilo como una aplicación más de su dispositivo móvil.
    
+* Mutlilengüaje en php
+  Para la creación de páginas web multilenguaje, codeigniter facilita
+  la librería "Language". Esta librería ofrece clases y funciones que
+  te ayudan a la hora de internacionalizar tu aplicación.
+
+  Los lenguajes se cargan a través de dos ficheros. El primer fichero
+  de traducciones se encuentra en la carpeta "system/languages". En
+  este, se encontrará un subdirectorio por cada lenguaje que se quiere
+  implementar. En este fichero es donde se ponen los mensajes del
+  sistema, errores, y información general de la aplicación. 
+
+  El segundo fichero se usa para añadir información específica de la
+  aplicación. Para utilizarla, hay que crear un sistema de ficheros
+  llamado languague en la carpeta "application" de nuestro
+  proyecto. En esta carpeta puedes crear tus propios ficheros, en
+  donde podrás poner las traducciones que se considere oportuno para
+  tu aplicaición. Como con el anterior sistema de ficheros, cada
+  lenguaje debe estar en su propia carpeta, por ejemplo, si se
+  quisisera tener la página web en inglés y en español, habría que
+  crear dos carpetas: "application/language/spanish" y
+  "applicaction/language/english". Además, los ficheros donde
+  almacenes las traducciones deben terminar en "lang.php".
+
+  Cuando codeigniter carga algún idioma, primero carga las
+  traducciónes del archivo "system/language/'tulenguaje'. Luego,
+  cargará los ficheros de las carpeta
+  "application/language/'tulenguaje', sobrescribiendo las traducciones
+  de la carpeta system si existiese alguna colisión.
+
+  En estos ficheros se guardarán las traducciones en un array llamado
+  "lang". Cada índice del array será la key para poder acceder a esa
+  traducción:
+
+  "$lang[traduccionkey'] = 'The actual message to be shown';"
+  
+  El sistema se encargará de cargar automáticamente cada palabra
+  dependiendo del lenguaje que se haya solicitado. Para introducir la
+  traducción en la página, se usa la instrucción php
+  "lang->line('language_key')". Donde "language_key" es la key de la traducción.
+
+  Para implementar el sistema de traducción, se ha optado por guardar
+  el lenguaje del usuario en una variable "lang" en la caché; en donde
+  también se almacenan datos básicos del usuario. Esta memoria caché
+  es inicializada cuando el usuario hace login. Cada vez que se carga
+  una vista, antes habrá que cargar el idioma en el controlador
+  mediante la instrucción "$this->lang->load('filename', 'language');"
+  El filename dependerá de la traducción que precise cada vista, pero
+  el 'language' se cogerá de la memoria caché antes almacenada.
+
+
+
+  
