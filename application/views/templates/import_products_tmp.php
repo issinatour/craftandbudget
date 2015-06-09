@@ -1,10 +1,5 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: Issam
- * Date: 21/05/2015
- * Time: 12:30
- */
+
 
 $this->load->view('templates/header_backoffice',$header);
 
@@ -13,7 +8,6 @@ if(isset($menu)){
 }else{
     $this->load->view('menu');
 }
-
 
 ?>
 
@@ -41,7 +35,11 @@ if(isset($menu)){
                     <div class="tab-content">
                         <div id="tab-4" class="tab-pane active">
 
+                            <?php if(!is_null($tipos)){ ?>
                             <?php $this->load->view('imports/presta_import_view',$tipos);?>
+                            <?php } else {?>
+                                <a> <?=$errores?> </a>
+                        <?php } ?>
                         </div>
 
                         <div id="tab-5" class="tab-pane">

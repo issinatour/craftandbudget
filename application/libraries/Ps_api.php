@@ -158,8 +158,6 @@ class ps_api {
         $xml = $webService->get($opt);
         $images = $xml->children()->children();
 
-
-        echo '<br>';
         foreach ($images as  $type)
         {
              $mytype= array(

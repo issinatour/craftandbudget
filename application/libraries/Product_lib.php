@@ -211,6 +211,7 @@ class Product_lib {
         $id_user = $this->instance->session->userdata('id');
         //   $psapi= new ps_api($web,$api,$debug);
         $myproductsfull = $this->get_products_ps_full($web,$api,$debug,$config);
+
         set_time_limit(800);
 
         if($config['products']=='on'){
@@ -248,55 +249,64 @@ class Product_lib {
                         }
 
                     endif;
-                }else{
-                    $productdata=array(
+                }else {
+                    $productdata = array(
                         "id_product_prestashop" => $miproducto['id'],
-                        "id_craftshop"=> $myshop,
+                        "id_craftshop" => $myshop,
                         "price" => $miproducto['price']
                     );
-                    $my_product_get['id_product']=  $this->instance->product_mod->insert_product_ps($productdata);
-                    $product_type =$this->instance->product_mod->get_product_type($my_product_get['id_product']);
+                    $my_product_get['id_product'] = $this->instance->product_mod->insert_product_ps($productdata);
+                    $product_type = $this->instance->product_mod->get_product_type($my_product_get['id_product']);
 
-                    //copy("http://buhoplace.es/api/images/products/".$miproducto['id_default_image'],"uploads/".$id_user.'/p/'.$miproducto['id_default_image']);
 
-                    //   $this->download_and_resize($url,$fp,0.3);
-                    if(empty($product_type)){
+                    if (empty($product_type)) {
                         $this->instance->product_mod->insert_product_data(array("id_product" => $my_product_get['id_product'], "id_type" => 1));
                     }
 
+
+                    if ($config['images'] == 'on'):
+                        $fp = 'uploads/' . $id_user . "/p/" . $miproducto['id_default_image'] . '.jpg';
+                        $url2 = 'http://' . $web . '/' . $miproducto['id_default_image'] . '-' . $config['radioimage'] . '/' . str_replace(" ", "-", $miproducto['name'][0]['name'] . '.jpg');
+                        //descargamos la imagen y reducimos tamaño y calidad (mas mejor!)
+
+
+                        copy($url2, $fp);
+
+
+                        $mmedia['id_insert_media'] = $this->instance->product_mod->create_media(array("is_default" => 1, "file" => $miproducto['id_default_image'] . '.jpg'));
+                        $this->instance->product_mod->create_product_media(array("id_product" => $my_product_get['id_product'], "id_media" => $mmedia['id_insert_media']));
+                    endif;
+                    if ($config['combinations'] == 'on'):
+                        foreach ($miproducto['combinations'] as $product_combination) {
+
+                            foreach ($product_combination['product_option_values'] as $productoptionvalues) {
+
+                            }
+                        }
+                    endif;
+                    if ($config['atributtes'] == 'on'):
+                        foreach ($miproducto['name'] as $product_name) {
+                            $my_product_get_lang = $this->instance->product_mod->get_product_ps_languaje($my_product_get['id_product']);
+
+                            if (!empty($my_product_get_lang)) {
+                                $productdatalang = array(
+                                    "name" => $product_name['name']
+                                );
+                                $this->instance->product_mod->update_product_ps_languaje($productdatalang, $my_product_get['id_product']);
+                            } else {
+                                $productdatalang = array(
+                                    "id_product" => $my_product_get['id_product'],
+                                    "name" => $product_name['name'],
+                                    "id_lang" => 1,
+                                    "id_language_ps" => 1
+                                );
+                                $this->instance->product_mod->insert_product_ps_languaje($productdatalang);
+                            }
+
+                        }
+                    endif;
+
                 }
-
-                if($config['combinations']=='on'):
-                    foreach ($miproducto['combinations'] as $product_combination) {
-
-                        foreach($product_combination['product_option_values'] as $productoptionvalues){
-
-                        }
-                    }
-                endif;
-                if($config['atributtes']=='on'):
-                    foreach($miproducto['name'] as $product_name){
-                        $my_product_get_lang = $this->instance->product_mod->get_product_ps_languaje($my_product_get['id_product']);
-
-                        if(!empty($my_product_get_lang)){
-                            $productdatalang=array(
-                                "name" => $product_name['name']
-                            );
-                            $this->instance->product_mod->update_product_ps_languaje($productdatalang,$my_product_get['id_product']);
-                        }else{
-                            $productdatalang=array(
-                                "id_product" =>$my_product_get['id_product'],
-                                "name" => $product_name['name'],
-                                "id_lang" => 1,
-                                "id_language_ps" =>1
-                            );
-                            $this->instance->product_mod->insert_product_ps_languaje($productdatalang);
-                        }
-
-                    }
-                endif;
-
-
 
             }
         }

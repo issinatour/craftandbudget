@@ -65,11 +65,9 @@ if(isset($script)) {
     });
 </script>
 
-
+<?php if($tables==1){?>
 <script>
     $(document).ready(function () {
-        // Configuration for jqGrid Example 2
-
 
         var host = window.location.host;
         var base_url = window.location.origin;
@@ -324,6 +322,8 @@ if(isset($script)) {
     });
 
 </script>
+
+<?php } ?>
 <!--
 <script>
     $(document).ready(function () {
