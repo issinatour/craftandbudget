@@ -1,3 +1,5 @@
+
+<?php if(!isset($errores)){ ?>
 <div class="row">
 <div class="col-lg-9">
 <div class="ibox float-e-margins">
@@ -53,3 +55,7 @@
 
 
 </div>
+
+<?php } else{?>
+<a> <?=$errores?> </a>
+<?php } ?>

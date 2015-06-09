@@ -93,7 +93,8 @@ class Producto extends CI_Controller{
                 "script" => array(
                     "js/plugins/summernote/summernote.min.js",
                     "js/custom/customsummernote.js"
-                )
+                ),
+                "tables" =>1
             );
 
             $data['menu'] = array(
@@ -129,7 +130,8 @@ class Producto extends CI_Controller{
                         "js/plugins/jqGrid/i18n/grid.locale-es.js",
                         "js/plugins/jqGrid/jquery.jqGrid.min.js",
                         "js/plugins/peity/jquery.peity.min.js"
-                    )
+                    ),
+                    "tables" =>1
                 );
                 $data['materiales']   =$this->material_lib->get_material_product($id_product);
 
@@ -269,14 +271,21 @@ class Producto extends CI_Controller{
                 "js/custom/customsummernote.js",
                 "js/plugins/iCheck/icheck.min.js"
             )
+
         );
 
         $this->load->library('craft_lib');
         $ps_config=$this->craft_lib->get_craftshop_shops_by_type($this->session->userdata('id_craftshop'),'prestashop');
 
-        $data['tipos'] = $this->product_lib->get_products_image_type($ps_config['url_shop'],$ps_config['apikey'],false);
-
+        try{
+            $data['tipos'] = $this->product_lib->get_products_image_type($ps_config['url_shop'],$ps_config['apikey'],false);
+            $this->load->view('templates/import_products_tmp',$data);
+        }catch(PrestaShopWebserviceException $ex){
+                $data['errores']=$ex->getMessage();
+               $data['tipos']=null;
+        }
         $this->load->view('templates/import_products_tmp',$data);
+
     }
 
     function pslib(){
