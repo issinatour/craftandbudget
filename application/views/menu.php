@@ -1,5 +1,4 @@
 
-
 <?php if(isset($full_width) && $full_width==1){ ?>
 <body class="pace-done mini-navbar">
 <?php }else{?>

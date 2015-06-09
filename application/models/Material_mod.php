@@ -62,7 +62,6 @@ class Material_mod extends CI_Model
         $this->db->where('material_product.id_material', $id_material);
         $this->db->where('material_product.id_product', $id_product);
         $query = $this->db->get("material_product");
-        $this->db->last_query();
         return $query->row_array();
     }
 

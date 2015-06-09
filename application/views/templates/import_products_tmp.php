@@ -9,7 +9,6 @@ if(isset($menu)){
     $this->load->view('menu');
 }
 
-
 ?>
 
     <div class="row">

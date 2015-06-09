@@ -140,13 +140,6 @@ class Producto extends CI_Controller{
 
             }
 
-
-
-            //
-
-            //s   redirect('producto');
-
-            //
         }
         $this->load->view('templates/miproductotemplate', $data);
     }
@@ -275,14 +268,14 @@ class Producto extends CI_Controller{
         );
 
         $this->load->library('craft_lib');
-        $ps_config=$this->craft_lib->get_craftshop_shops_by_type($this->session->userdata('id_craftshop'),'prestashop');
+       $ps_config=$this->craft_lib->get_craftshop_shops_by_type($this->session->userdata('id_craftshop'),'prestashop');
 
         try{
-            $data['tipos'] = $this->product_lib->get_products_image_type($ps_config['url_shop'],$ps_config['apikey'],false);
-            $this->load->view('templates/import_products_tmp',$data);
+         $data['tipos'] = $this->product_lib->get_products_image_type($ps_config['url_shop'],$ps_config['apikey'],false);
+
         }catch(PrestaShopWebserviceException $ex){
                 $data['errores']=$ex->getMessage();
-               $data['tipos']=null;
+                $data['tipos']=null;
         }
         $this->load->view('templates/import_products_tmp',$data);
 

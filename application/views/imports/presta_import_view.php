@@ -4,7 +4,7 @@
 <div class="col-lg-9">
 <div class="ibox float-e-margins">
 <div class="ibox-title">
-    <h5>All form elements <small>With custom checbox and radion elements.</small></h5>
+    <h5>Importar elementos de prestashop</h5>
 
 </div>
 <div class="ibox-content">
@@ -29,7 +29,7 @@
 </div>
 
     <div class="form-group">
-        <label class="col-sm-2 control-label">Tipo de imagen(miniatura)<br/><small class="text-navy">yeah</small></label>
+        <label class="col-sm-2 control-label">Tipo de imagen(miniatura)<br/><small class="text-navy"></small></label>
 
         <div class="col-sm-10">
 
